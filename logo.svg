@@ -1,0 +1,32 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Modern gradient background -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0A0A0A"/>
+      <stop offset="100%" stop-color="#1A1A1A"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FDB91A"/>
+      <stop offset="100%" stop-color="#FFD700"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="32" height="32" rx="6" fill="url(#bgGrad)"/>
+  
+  <!-- Stylized "RD" monogram -->
+  <g transform="translate(16, 16)">
+    <!-- Letter R -->
+    <path d="M-8 -10 L-8 10 M-8 -10 L-2 -10 C0 -10 2 -8 2 -5 C2 -2 0 0 -2 0 L-8 0 M-2 0 L2 10" 
+          stroke="url(#goldGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    
+    <!-- Letter D -->
+    <path d="M4 -10 L4 10 M4 -10 L9 -10 C12 -10 14 -7 14 0 C14 7 12 10 9 10 L4 10" 
+          stroke="url(#goldGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+  
+  <!-- Decorative corner accents -->
+  <path d="M4 4L8 4L8 8" stroke="#FDB91A" stroke-width="1" fill="none" opacity="0.5"/>
+  <path d="M28 4L24 4L24 8" stroke="#FDB91A" stroke-width="1" fill="none" opacity="0.5"/>
+  <path d="M4 28L8 28L8 24" stroke="#FDB91A" stroke-width="1" fill="none" opacity="0.5"/>
+  <path d="M28 28L24 28L24 24" stroke="#FDB91A" stroke-width="1" fill="none" opacity="0.5"/>
+</svg>
