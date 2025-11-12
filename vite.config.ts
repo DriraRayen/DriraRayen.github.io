@@ -4,8 +4,9 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
-   // Use "/" for dev, "/lands-between-portfolio/" for production
-   base: command === "serve" ? "/" : "/lands-between-portfolio/",
+   // Production is a user site (DriraRayen.github.io) so use root base
+   // Use "/" for both dev and production so asset URLs point to the repo root
+   base: "/",
    server: {
       host: "::",
       port: 8080,
