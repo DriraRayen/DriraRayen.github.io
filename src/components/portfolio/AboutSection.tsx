@@ -1,4 +1,4 @@
-import { Shield, Cpu, Users } from "lucide-react";
+import { Shield, Cpu, Users, GraduationCap } from "lucide-react";
 
 const AboutSection = () => {
    return (
@@ -37,122 +37,266 @@ const AboutSection = () => {
 
                         <div className="space-y-5">
                            <p className="font-garamond text-xl leading-relaxed text-foreground/95">
-                              I'm a third-year student at{" "}
+                              I'm a third-year{" "}
+                              <span className="text-gold font-semibold">
+                                 Computer Engineering 
+                              </span>{" "}
+                              student specializing in IoT and Embedded Systems at{" "}
                               <span className="text-gold font-semibold">
                                  ISITCom
                               </span>
-                              , specializing in{" "}
-                              <span className="text-gold font-semibold">
-                                 IoT and Embedded Systems Engineering
-                              </span>
-                              . My passion lies at the intersection of hardware
-                              and software, where I create intelligent solutions
-                              that bridge the physical and digital worlds.
-                           </p>
-                           <p className="font-garamond text-xl leading-relaxed text-foreground/95">
-                              My technical journey spans across{" "}
-                              <span className="text-gold">
-                                 embedded systems
-                              </span>
-                              , <span className="text-gold">cybersecurity</span>
-                              , and{" "}
+                              . I'm passionate about{" "}
+                              <span className="text-gold">cybersecurity</span>{" "}
+                              and{" "}
                               <span className="text-gold">
                                  artificial intelligence
                               </span>
-                              . I'm certified in network security (FORTINET,
-                              CISCO) and continuously expanding my expertise in
-                              emerging technologies.
+                              , and I enjoy exploring how technology can solve
+                              real-world problems.
                            </p>
                            <p className="font-garamond text-xl leading-relaxed text-foreground/95">
-                              Beyond engineering, I've been a{" "}
+                              Outside of my studies, I'm an active member of the{" "}
                               <span className="text-gold font-semibold">
-                                 Scout Leader
-                              </span>{" "}
-                              with the Tunisian Scouts since 2012, where I
-                              develop leadership skills, mentor youth, and build
-                              strong community connections.
+                                 Tunisian Scouts
+                              </span>
+                              , where I lead activities, mentor younger members,
+                              and spend time outdoors. Scouting has shaped my
+                              sense of teamwork, responsibility, and curiosity —
+                              qualities I bring into everything I do.
+                           </p>
+                           <p className="font-garamond text-xl leading-relaxed text-foreground/95">
+                              When I'm not coding or tinkering with tech, you'll
+                              often find me exploring fantastical worlds like{" "}
+                              <span className="text-gold font-semibold">
+                                 Elden Ring
+                              </span>
+                              , drawing inspiration from its rich environments
+                              and intricate design for creativity and
+                              problem-solving in my own projects.
                            </p>
                         </div>
                      </div>
                   </div>
                </div>
 
-               {/* Expertise Cards */}
+               {/* Languages & Interests in place of Expertise */}
                <div
-                  className="space-y-5 animate-slideUp"
+                  className="space-y-6 animate-slideUp"
                   style={{ animationDelay: "0.15s" }}
                >
-                  {/* IoT & Embedded Systems */}
+                  {/* Languages */}
                   <div className="relative group">
                      <div className="absolute -inset-1 bg-gradient-to-r from-elden-gold/20 to-elden-gold/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                      <div className="relative bg-elden-dark-light/60 backdrop-blur-sm border border-elden-gold/40 p-7 rounded-xl hover:border-elden-gold/60 transition-all duration-300">
-                        <div className="flex items-start gap-5">
-                           <div className="flex-shrink-0">
-                              <div className="p-4 bg-elden-dark rounded-lg border-2 border-gold/60 group-hover:border-gold group-hover:shadow-lg group-hover:shadow-gold/30 transition-all duration-300">
-                                 <Cpu className="w-8 h-8 text-gold" />
-                              </div>
+                        <h3 className="font-cinzel text-2xl font-semibold text-gold mb-5 flex items-center gap-3">
+                           <span className="text-2xl">🌍</span>
+                           Languages
+                        </h3>
+                        <div className="space-y-4">
+                           <div className="flex items-center justify-between pb-3 border-b border-elden-gold/20">
+                              <span className="font-garamond text-lg text-foreground/90">
+                                 Arabic
+                              </span>
+                              <span className="font-cinzel text-sm text-gold/80 bg-elden-gold/10 px-3 py-1.5 rounded-full">
+                                 Native
+                              </span>
                            </div>
-                           <div className="flex-grow">
-                              <h3 className="font-cinzel text-2xl font-semibold text-gold mb-3 group-hover:text-gold-light transition-colors">
-                                 IoT & Embedded Systems
-                              </h3>
-                              <p className="font-garamond text-base text-muted-foreground/90 leading-relaxed">
-                                 Expertise in Arduino, VHDL, and embedded C/C++.
-                                 Building intelligent systems that connect
-                                 hardware with software to create real-world
-                                 solutions.
-                              </p>
+                           <div className="flex items-center justify-between pb-3 border-b border-elden-gold/20">
+                              <span className="font-garamond text-lg text-foreground/90">
+                                 French
+                              </span>
+                              <span className="font-cinzel text-sm text-gold/80 bg-elden-gold/10 px-3 py-1.5 rounded-full">
+                                 Fluent
+                              </span>
+                           </div>
+                           <div className="flex items-center justify-between">
+                              <span className="font-garamond text-lg text-foreground/90">
+                                 English
+                              </span>
+                              <span className="font-cinzel text-sm text-gold/80 bg-elden-gold/10 px-3 py-1.5 rounded-full">
+                                 Professional
+                              </span>
                            </div>
                         </div>
                      </div>
                   </div>
 
-                  {/* Cybersecurity */}
+                  {/* Interests */}
                   <div className="relative group">
                      <div className="absolute -inset-1 bg-gradient-to-r from-elden-gold/20 to-elden-gold/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                      <div className="relative bg-elden-dark-light/60 backdrop-blur-sm border border-elden-gold/40 p-7 rounded-xl hover:border-elden-gold/60 transition-all duration-300">
-                        <div className="flex items-start gap-5">
+                        <h3 className="font-cinzel text-2xl font-semibold text-gold mb-5 flex items-center gap-3">
+                           <span className="text-2xl">⚡</span>
+                           Interests
+                        </h3>
+                        <div className="flex flex-wrap gap-3">
+                           <span className="px-4 py-2 bg-elden-gold/10 border border-elden-gold/30 rounded-lg text-sm font-garamond text-foreground/90 hover:bg-elden-gold/20 hover:border-elden-gold/50 transition-all duration-300 cursor-default">
+                              🎮 Gaming
+                           </span>
+                           <span className="px-4 py-2 bg-elden-gold/10 border border-elden-gold/30 rounded-lg text-sm font-garamond text-foreground/90 hover:bg-elden-gold/20 hover:border-elden-gold/50 transition-all duration-300 cursor-default">
+                              🏕️ Scouting
+                           </span>
+                           <span className="px-4 py-2 bg-elden-gold/10 border border-elden-gold/30 rounded-lg text-sm font-garamond text-foreground/90 hover:bg-elden-gold/20 hover:border-elden-gold/50 transition-all duration-300 cursor-default">
+                              💻 Chess
+                           </span>
+                           <span className="px-4 py-2 bg-elden-gold/10 border border-elden-gold/30 rounded-lg text-sm font-garamond text-foreground/90 hover:bg-elden-gold/20 hover:border-elden-gold/50 transition-all duration-300 cursor-default">
+                              ⚽ Football
+                           </span>
+                           <span className="px-4 py-2 bg-elden-gold/10 border border-elden-gold/30 rounded-lg text-sm font-garamond text-foreground/90 hover:bg-elden-gold/20 hover:border-elden-gold/50 transition-all duration-300 cursor-default">
+                              🎬 Cinephile
+                           </span>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            {/* Education Section */}
+            <div className="mt-20">
+               <div className="text-center mb-12 animate-fadeIn">
+                  <h3 className="font-cinzel text-4xl md:text-5xl font-bold text-gold mb-6">
+                     Academic Path
+                  </h3>
+                  <div className="flex items-center justify-center gap-4 mb-4">
+                     <div className="h-px w-16 bg-gradient-to-r from-transparent via-elden-gold/70 to-elden-gold/40" />
+                     <div className="w-2 h-2 bg-elden-gold rounded-full shadow-lg shadow-elden-gold/50" />
+                     <div className="h-px w-16 bg-gradient-to-l from-transparent via-elden-gold/70 to-elden-gold/40" />
+                  </div>
+               </div>
+
+               <div className="max-w-4xl mx-auto space-y-6">
+                  {/* Current Education */}
+                  <div className="relative group animate-slideUp">
+                     <div className="absolute -inset-2 bg-elden-gold/5 rounded-xl blur-xl group-hover:bg-elden-gold/10 transition-all duration-500" />
+
+                     <div className="relative bg-elden-dark-light/50 backdrop-blur-sm border border-elden-gold/30 p-8 rounded-xl shadow-2xl">
+                        {/* Decorative corner accents */}
+                        <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-elden-gold/50" />
+                        <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-elden-gold/50" />
+
+                        <div className="flex items-start gap-6">
                            <div className="flex-shrink-0">
-                              <div className="p-4 bg-elden-dark rounded-lg border-2 border-gold/60 group-hover:border-gold group-hover:shadow-lg group-hover:shadow-gold/30 transition-all duration-300">
-                                 <Shield className="w-8 h-8 text-gold" />
+                              <div className="p-4 bg-elden-dark rounded-lg border-2 border-gold/60 shadow-lg shadow-gold/20">
+                                 <GraduationCap className="w-10 h-10 text-gold" />
                               </div>
                            </div>
                            <div className="flex-grow">
-                              <h3 className="font-cinzel text-2xl font-semibold text-gold mb-3 group-hover:text-gold-light transition-colors">
-                                 Cybersecurity
-                              </h3>
-                              <p className="font-garamond text-base text-muted-foreground/90 leading-relaxed">
-                                 FORTINET and CISCO certified. Specialized in
-                                 network security, threat analysis, and
-                                 implementing robust security architectures.
+                              <div className="flex items-start justify-between mb-3">
+                                 <div>
+                                    <h4 className="font-cinzel text-2xl font-bold text-gold mb-2">
+                                       Computer Engineering Student
+                                    </h4>
+                                    <p className="font-garamond text-lg text-foreground/90 mb-1">
+                                       Institut Supérieur d'Informatique et des
+                                       Techniques de Communication (ISITCom)
+                                    </p>
+                                    <p className="font-garamond text-base text-muted-foreground/70">
+                                       Hammam Sousse, Tunisia
+                                    </p>
+                                 </div>
+                                 <div className="text-right">
+                                    <span className="inline-block px-3 py-1 bg-elden-gold/20 border border-elden-gold/50 rounded-full text-gold font-cinzel text-sm mb-2">
+                                       In Progress
+                                    </span>
+                                    <p className="font-cinzel text-sm text-muted-foreground/70">
+                                       2023 - 2026
+                                    </p>
+                                 </div>
+                              </div>
+
+                              <p className="font-garamond text-base text-foreground/80 leading-relaxed mb-4">
+                                 Third-year computer engineering student
+                                 specializing in Internet of Things and embedded
+                                 systems.
                               </p>
+
+                              <div className="flex flex-wrap gap-2">
+                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
+                                    Embedded Systems
+                                 </span>
+                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
+                                    IoT Architecture
+                                 </span>
+                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
+                                    Network Security
+                                 </span>
+                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
+                                    Cybersecurity
+                                 </span>
+                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
+                                    Artificial Intelligence
+                                 </span>
+                              </div>
                            </div>
                         </div>
                      </div>
                   </div>
 
-                  {/* Leadership */}
-                  <div className="relative group">
-                     <div className="absolute -inset-1 bg-gradient-to-r from-elden-gold/20 to-elden-gold/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  {/* Baccalaureate */}
+                  <div
+                     className="relative group animate-slideUp"
+                     style={{ animationDelay: "0.1s" }}
+                  >
+                     <div className="absolute -inset-2 bg-elden-gold/5 rounded-xl blur-xl group-hover:bg-elden-gold/10 transition-all duration-500" />
 
-                     <div className="relative bg-elden-dark-light/60 backdrop-blur-sm border border-elden-gold/40 p-7 rounded-xl hover:border-elden-gold/60 transition-all duration-300">
-                        <div className="flex items-start gap-5">
+                     <div className="relative bg-elden-dark-light/50 backdrop-blur-sm border border-elden-gold/30 p-8 rounded-xl shadow-2xl">
+                        {/* Decorative corner accents */}
+                        <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-elden-gold/50" />
+                        <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-elden-gold/50" />
+
+                        <div className="flex items-start gap-6">
                            <div className="flex-shrink-0">
-                              <div className="p-4 bg-elden-dark rounded-lg border-2 border-gold/60 group-hover:border-gold group-hover:shadow-lg group-hover:shadow-gold/30 transition-all duration-300">
-                                 <Users className="w-8 h-8 text-gold" />
+                              <div className="p-4 bg-elden-dark rounded-lg border-2 border-gold/60 shadow-lg shadow-gold/20">
+                                 <GraduationCap className="w-10 h-10 text-gold" />
                               </div>
                            </div>
                            <div className="flex-grow">
-                              <h3 className="font-cinzel text-2xl font-semibold text-gold mb-3 group-hover:text-gold-light transition-colors">
-                                 Leadership & Mentorship
-                              </h3>
-                              <p className="font-garamond text-base text-muted-foreground/90 leading-relaxed">
-                                 13+ years as a Scout Leader with the Tunisian
-                                 Scouts. Developing leadership skills, mentoring
-                                 youth, and fostering community growth.
+                              <div className="flex items-start justify-between mb-3">
+                                 <div>
+                                    <h4 className="font-cinzel text-2xl font-bold text-gold mb-2">
+                                       Baccalaureate in Mathematics
+                                    </h4>
+                                    <p className="font-garamond text-lg text-foreground/90 mb-1">
+                                       Secondary Education
+                                    </p>
+                                    <p className="font-garamond text-base text-muted-foreground/70">
+                                       Tunisia
+                                    </p>
+                                 </div>
+                                 <div className="text-right">
+                                    <span className="inline-block px-3 py-1 bg-green-600/20 border border-green-500/50 rounded-full text-green-400 font-cinzel text-sm mb-2">
+                                       Completed
+                                    </span>
+                                    <p className="font-cinzel text-sm text-muted-foreground/70">
+                                       2023
+                                    </p>
+                                 </div>
+                              </div>
+
+                              <p className="font-garamond text-base text-foreground/80 leading-relaxed mb-4">
+                                 Specialized in Mathematics with strong
+                                 foundations in analytical thinking,
+                                 problem-solving, and mathematical reasoning.
+                                 This rigorous academic background laid the
+                                 groundwork for my next studies.
                               </p>
+
+                              <div className="flex flex-wrap gap-2">
+                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
+                                    Mathematics
+                                 </span>
+                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
+                                    Physics
+                                 </span>
+                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
+                                    Computer Science
+                                 </span>
+                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
+                                    Problem solving
+                                 </span>
+                              </div>
                            </div>
                         </div>
                      </div>

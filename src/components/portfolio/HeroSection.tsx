@@ -107,10 +107,8 @@ const HeroSection = () => {
 
                   {/* Description with better typography */}
                   <p className="font-garamond text-lg md:text-xl text-muted-foreground/90 mb-10 leading-relaxed max-w-2xl">
-                     Crafting innovative solutions at the intersection of
-                     hardware and software. Passionate about building
-                     intelligent embedded systems and IoT applications that
-                     bridge the physical and digital worlds.
+                     Rising through every challenge, mastering every path I
+                     take. GitGud!
                   </p>
 
                   {/* Enhanced CTA Button */}

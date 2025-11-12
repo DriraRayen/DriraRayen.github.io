@@ -10,7 +10,7 @@ const SkillsSection = () => {
          icon: Code2,
          title: "Languages",
          rune: "Core Programming",
-         skills: ["JavaScript", "PHP", "C/C++", "Java", "Python"],
+         skills: ["JavaScript","TypeScript", "PHP", "C/C++", "Java", "Python"],
          description:
             "Proficient in multiple programming languages for diverse development needs",
       },

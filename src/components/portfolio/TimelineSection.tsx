@@ -14,6 +14,10 @@ import raksha2 from "@/assets/gallery/raksha-2.jpg";
 import redroom1 from "@/assets/gallery/REDROOM-1.jpg";
 import redroom2 from "@/assets/gallery/REDROOM-2.jpg";
 import redroom3 from "@/assets/gallery/REDROOM-3.jpg";
+import redroom5 from "@/assets/gallery/REDROOM-5.jpg";
+import redroom7 from "@/assets/gallery/REDROOM-7.jpg";
+import night1 from "@/assets/gallery/night1.jpg";
+import night2 from "@/assets/gallery/night2.jpg";
 
 const TimelineSection = () => {
    const [activeImageIndexes, setActiveImageIndexes] = useState<{
@@ -32,7 +36,7 @@ const TimelineSection = () => {
          description:
             "Served as Design Responsible for my team in the Nuit d'Info, creating website designs and other visual elements for various challenges",
          details: ["Design Management", "Website Design", "Visual Elements"],
-         images: [],
+         images: [night1, night2],
       },
       {
          year: "2025",
@@ -47,7 +51,7 @@ const TimelineSection = () => {
             "Escape Room",
             "Cybersecurity Event",
          ],
-         images: [redroom1, redroom2, redroom3],
+         images: [redroom1, redroom2, redroom3, redroom5, redroom7],
       },
       {
          year: "2025",

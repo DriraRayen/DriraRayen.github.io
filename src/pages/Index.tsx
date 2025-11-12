@@ -11,6 +11,7 @@ import CertificatesSection from "@/components/portfolio/CertificatesSection";
 import TimelineSection from "@/components/portfolio/TimelineSection";
 import ContactSection from "@/components/portfolio/ContactSection";
 import EldenRingSection from "@/components/portfolio/EldenRingSection";
+import AchievementsModal from "@/components/portfolio/AchievementsModal";
 import { Menu } from "lucide-react";
 
 const Index = () => {
@@ -18,6 +19,7 @@ const Index = () => {
    const [isScrolled, setIsScrolled] = useState(false);
    const [activeSection, setActiveSection] = useState("hero");
    const [showEldenRing, setShowEldenRing] = useState(false);
+   const [showAchievements, setShowAchievements] = useState(false);
 
    useEffect(() => {
       setIsVisible(true);
@@ -177,17 +179,29 @@ const Index = () => {
                   © {new Date().getFullYear()} • All Rights Reserved
                </p>
 
-               {/* Hidden Elden Ring Easter Egg */}
-               <button
-                  onClick={() => setShowEldenRing(true)}
-                  className="group relative text-xs text-muted-foreground/40 hover:text-gold/80 transition-all duration-500 font-garamond italic mb-8"
-                  title="Discover the inspiration"
-               >
-                  <span className="relative z-10">
-                     Inspired by the Lands Between
-                  </span>
-                  <div className="absolute inset-0 bg-gold/5 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-               </button>
+               {/* Hidden Easter Eggs */}
+               <div className="flex flex-col items-center gap-3 mb-8">
+                  <button
+                     onClick={() => setShowEldenRing(true)}
+                     className="group relative text-xs text-muted-foreground/40 hover:text-gold/80 transition-all duration-500 font-garamond italic"
+                     title="Discover the inspiration"
+                  >
+                     <span className="relative z-10">
+                        Inspired by the Lands Between
+                     </span>
+                     <div className="absolute inset-0 bg-gold/5 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </button>
+                  <button
+                     onClick={() => setShowAchievements(true)}
+                     className="group relative text-xs text-muted-foreground/30 hover:text-gold/70 transition-all duration-500 font-garamond italic"
+                     title="View character stats"
+                  >
+                     <span className="relative z-10">
+                        ✦ Tarnished One's Legacy ✦
+                     </span>
+                     <div className="absolute inset-0 bg-gold/5 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </button>
+               </div>
 
                {/* Social links or additional info can go here */}
                <div className="flex items-center justify-center gap-4 text-muted-foreground/60 text-xs">
@@ -221,6 +235,12 @@ const Index = () => {
          <EldenRingSection
             isOpen={showEldenRing}
             onClose={() => setShowEldenRing(false)}
+         />
+
+         {/* Achievements Modal */}
+         <AchievementsModal
+            isOpen={showAchievements}
+            onClose={() => setShowAchievements(false)}
          />
       </div>
    );

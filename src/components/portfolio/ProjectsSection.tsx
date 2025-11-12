@@ -7,7 +7,7 @@ const ProjectsSection = () => {
          icon: ShoppingCart,
          title: "TawTaw Store",
          description:
-            "Full-featured e-commerce platform with product management, shopping cart functionality, and user authentication. Built with modern web technologies for optimal performance.",
+            "A full-featured e-commerce platform where users can browse products, add items to their cart, and complete secure purchases. ",
          technologies: ["JavaScript", "PHP", "MySQL"],
          year: "2025",
          category: "E-Commerce",
@@ -18,7 +18,7 @@ const ProjectsSection = () => {
          icon: Brain,
          title: "Memora",
          description:
-            "Interactive flashcard learning application developed using Agile Scrum methodology. Features spaced repetition algorithms and progress tracking for effective knowledge retention.",
+            "An interactive flashcard learning platform that helps students study and memorize information effectively through spaced repetition and a massive library of study sets.",
          technologies: ["JavaScript", "PHP", "MySQL", "Scrum"],
          year: "2025",
          category: "Education",
@@ -29,7 +29,7 @@ const ProjectsSection = () => {
          icon: HeartPulse,
          title: "VitaCare",
          description:
-            "Comprehensive health tracking web application with secure authentication using OAuth 2.0 and JWT tokens. Built with Spring Boot backend and React frontend featuring intuitive UI components.",
+            "A comprehensive health tracking application that allows users to monitor their vital signs, track medications and maintain a personal health diary with secure data management.",
          technologies: [
             "Spring Boot",
             "React.js",
@@ -44,7 +44,7 @@ const ProjectsSection = () => {
          icon: MessageSquare,
          title: "TawTaw Chat",
          description:
-            "Terminal-based chat application built in C with beautiful UI design. Features inter-terminal messaging without network dependencies, showcasing creative use of terminal graphics and user interface design.",
+            "A terminal-based messaging application that enables real-time communication between users on the same system through an elegant command-line interface with beautiful visual design.",
          technologies: ["C", "Terminal UI"],
          year: "2024",
          category: "Communication",
