@@ -34,7 +34,7 @@ const AchievementsModal = ({ isOpen, onClose }: AchievementsModalProps) => {
       },
       {
          name: "Vigor",
-         value: "15+",
+         value: "9+",
          description: "Projects Completed • Strength through creation",
          icon: Target,
          color: "text-red-400",
@@ -48,7 +48,7 @@ const AchievementsModal = ({ isOpen, onClose }: AchievementsModalProps) => {
       },
       {
          name: "Endurance",
-         value: "8",
+         value: "4",
          description: "Certifications Earned • Badges of honor",
          icon: Shield,
          color: "text-green-400",
@@ -88,6 +88,54 @@ const AchievementsModal = ({ isOpen, onClose }: AchievementsModalProps) => {
          unlocked: true,
          color: "from-yellow-600/20 to-amber-600/20",
          borderColor: "border-yellow-500/50",
+      },
+      {
+         title: "Content Creator",
+         description: "YouTube channel reached 10K+ views with multiple videos",
+         rarity: "Epic",
+         icon: "📹",
+         unlocked: true,
+         color: "from-red-600/20 to-pink-600/20",
+         borderColor: "border-red-500/50",
+      },
+      {
+         title: "Mathematical Prodigy",
+         description: "Won a Mathematics Competition at age 15",
+         rarity: "Legendary",
+         icon: "🧮",
+         unlocked: true,
+         color: "from-blue-600/20 to-cyan-600/20",
+         borderColor: "border-blue-500/50",
+      },
+      {
+         title: "Chess Strategist",
+         description:
+            "Mastered the art of thinking 10 moves ahead on the chessboard",
+         rarity: "Epic",
+         icon: "♟️",
+         unlocked: true,
+         color: "from-green-600/20 to-emerald-600/20",
+         borderColor: "border-green-500/50",
+      },
+      {
+         title: "Entertainment Connoisseur",
+         description:
+            "Watched 1000+ movies, series, and anime - a true cinephile and otaku",
+         rarity: "Rare",
+         icon: "🎬",
+         unlocked: true,
+         color: "from-amber-600/20 to-yellow-600/20",
+         borderColor: "border-amber-500/50",
+      },
+      {
+         title: "Gaming Champion",
+         description:
+            "Conquered Hollow Knight, Silksong, Dead Cells, Valorant, FIFA, A Dance of Fire and Ice, Ghost of Tsushima & more",
+         rarity: "Epic",
+         icon: "🎮",
+         unlocked: true,
+         color: "from-indigo-600/20 to-purple-600/20",
+         borderColor: "border-indigo-500/50",
       },
    ];
 

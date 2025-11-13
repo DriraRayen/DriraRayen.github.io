@@ -17,9 +17,18 @@ const AboutSection = () => {
                   <div className="w-2 h-2 bg-elden-gold rounded-full shadow-lg shadow-elden-gold/50" />
                   <div className="h-px w-20 bg-gradient-to-l from-transparent via-elden-gold/70 to-elden-gold/40" />
                </div>
-               <p className="font-garamond text-lg text-muted-foreground/70 max-w-2xl mx-auto">
-                  Engineer • Leader • Innovator
-               </p>
+               <div className="relative inline-block max-w-2xl mx-auto">
+                  {/* Glow effect behind text */}
+                  <div
+                     className="absolute inset-0 blur-2xl bg-elden-gold/20 animate-pulse"
+                     style={{ animationDuration: "3s" }}
+                  />
+
+                  {/* Main text with multiple effects */}
+                  <p className="relative font-garamond text-lg md:text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-gold via-elden-gold to-gold-light animate-shimmer bg-[length:200%_auto] hover:scale-105 transition-transform duration-300 cursor-default drop-shadow-[0_0_15px_rgba(218,165,32,0.5)]">
+                     Arise Ye Tarnished!
+                  </p>
+               </div>
             </div>
 
             {/* Main content */}
@@ -39,9 +48,10 @@ const AboutSection = () => {
                            <p className="font-garamond text-xl leading-relaxed text-foreground/95">
                               I'm a third-year{" "}
                               <span className="text-gold font-semibold">
-                                 Computer Engineering 
+                                 Computer Engineering
                               </span>{" "}
-                              student specializing in IoT and Embedded Systems at{" "}
+                              student specializing in IoT and Embedded Systems
+                              at{" "}
                               <span className="text-gold font-semibold">
                                  ISITCom
                               </span>

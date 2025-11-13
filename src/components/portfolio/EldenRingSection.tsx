@@ -137,7 +137,7 @@ const EldenRingSection = ({ isOpen, onClose }: EldenRingSectionProps) => {
                   style={{ animationDelay: "0.5s" }}
                >
                   <div className="text-xl font-cinzel font-bold text-gold mb-1">
-                     ✦
+                     All Bossses and enemies
                   </div>
                   <p className="font-garamond text-xs text-muted-foreground">
                      Epic Victories
@@ -148,7 +148,7 @@ const EldenRingSection = ({ isOpen, onClose }: EldenRingSectionProps) => {
                   style={{ animationDelay: "0.6s" }}
                >
                   <div className="text-xl font-cinzel font-bold text-gold mb-1">
-                     ⚔
+                     +500
                   </div>
                   <p className="font-garamond text-xs text-muted-foreground">
                      Hours Lost (Worth It)

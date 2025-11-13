@@ -205,17 +205,30 @@ const Index = () => {
 
                {/* Social links or additional info can go here */}
                <div className="flex items-center justify-center gap-4 text-muted-foreground/60 text-xs">
-                  <span className="hover:text-gold transition-colors cursor-pointer">
+                  <a
+                     href="https://linkedin.com/in/DriraRayen"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="hover:text-gold transition-colors cursor-pointer"
+                  >
                      LinkedIn
-                  </span>
+                  </a>
                   <span>•</span>
-                  <span className="hover:text-gold transition-colors cursor-pointer">
+                  <a
+                     href="https://github.com/DriraRayen"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="hover:text-gold transition-colors cursor-pointer"
+                  >
                      GitHub
-                  </span>
+                  </a>
                   <span>•</span>
-                  <span className="hover:text-gold transition-colors cursor-pointer">
+                  <a
+                     href="mailto:drirarayen@isitc.u-sousse.tn"
+                     className="hover:text-gold transition-colors cursor-pointer"
+                  >
                      Email
-                  </span>
+                  </a>
                </div>
 
                {/* Subtle floating particles */}

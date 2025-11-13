@@ -44,12 +44,12 @@ const TimelineSection = () => {
          type: "achievement",
          icon: Trophy,
          description:
-            "Secured 3rd place in the 26-hour cybersecurity hackathon at Securients ISITCOM",
+            "Secured 3rd place with Team bitwi$e in the 26-hour cybersecurity hackathon at Securients ISITCOM",
          details: [
             "CTF Challenges",
             "Penetration Testing",
             "Escape Room",
-            "Cybersecurity Event",
+            "Team bitwi$e",
          ],
          images: [redroom1, redroom2, redroom3, redroom5, redroom7],
       },
