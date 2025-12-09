@@ -9,7 +9,7 @@ const AboutSection = () => {
          <div className="max-w-7xl mx-auto">
             {/* Section title */}
             <div className="text-center mb-20 animate-fadeIn">
-               <h2 className="font-cinzel text-5xl md:text-6xl font-bold text-gold mb-6 tracking-wide">
+               <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-gold mb-6 tracking-wide">
                   About Me
                </h2>
                <div className="flex items-center justify-center gap-4 mb-4">
@@ -39,7 +39,7 @@ const AboutSection = () => {
                      {/* Glow effect */}
                      <div className="absolute -inset-2 bg-elden-gold/5 rounded-xl blur-xl group-hover:bg-elden-gold/10 transition-all duration-500" />
 
-                     <div className="relative bg-elden-dark-light/50 backdrop-blur-sm border border-elden-gold/30 p-10 rounded-xl shadow-2xl">
+                     <div className="relative bg-elden-dark-light/50 backdrop-blur-sm border border-elden-gold/30 p-10 rounded-xl shadow-2xl hover:border-elden-gold/50 transition-all duration-300">
                         {/* Decorative corner accent */}
                         <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-elden-gold/50" />
                         <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-elden-gold/50" />
@@ -164,9 +164,9 @@ const AboutSection = () => {
             </div>
 
             {/* Education Section */}
-            <div className="mt-20">
-               <div className="text-center mb-12 animate-fadeIn">
-                  <h3 className="font-cinzel text-4xl md:text-5xl font-bold text-gold mb-6">
+            <div className="mt-12 md:mt-20">
+               <div className="text-center mb-8 md:mb-12 animate-fadeIn">
+                  <h3 className="font-cinzel text-3xl md:text-4xl lg:text-5xl font-bold text-gold mb-4 md:mb-6">
                      Academic Path
                   </h3>
                   <div className="flex items-center justify-center gap-4 mb-4">
@@ -176,41 +176,41 @@ const AboutSection = () => {
                   </div>
                </div>
 
-               <div className="max-w-4xl mx-auto space-y-6">
+               <div className="max-w-4xl mx-auto space-y-4 md:space-y-6">
                   {/* Current Education */}
                   <div className="relative group animate-slideUp">
                      <div className="absolute -inset-2 bg-elden-gold/5 rounded-xl blur-xl group-hover:bg-elden-gold/10 transition-all duration-500" />
 
-                     <div className="relative bg-elden-dark-light/50 backdrop-blur-sm border border-elden-gold/30 p-8 rounded-xl shadow-2xl">
+                     <div className="relative bg-elden-dark-light/50 backdrop-blur-sm border border-elden-gold/30 p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl">
                         {/* Decorative corner accents */}
                         <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-elden-gold/50" />
                         <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-elden-gold/50" />
 
-                        <div className="flex items-start gap-6">
+                        <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                            <div className="flex-shrink-0">
-                              <div className="p-4 bg-elden-dark rounded-lg border-2 border-gold/60 shadow-lg shadow-gold/20">
-                                 <GraduationCap className="w-10 h-10 text-gold" />
+                              <div className="p-3 sm:p-4 bg-elden-dark rounded-lg border-2 border-gold/60 shadow-lg shadow-gold/20">
+                                 <GraduationCap className="w-8 h-8 sm:w-10 sm:h-10 text-gold" />
                               </div>
                            </div>
-                           <div className="flex-grow">
-                              <div className="flex items-start justify-between mb-3">
-                                 <div>
-                                    <h4 className="font-cinzel text-2xl font-bold text-gold mb-2">
+                           <div className="flex-grow w-full">
+                              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-0 mb-3">
+                                 <div className="flex-grow">
+                                    <h4 className="font-cinzel text-xl sm:text-2xl font-bold text-gold mb-2">
                                        Computer Engineering Student
                                     </h4>
-                                    <p className="font-garamond text-lg text-foreground/90 mb-1">
+                                    <p className="font-garamond text-base sm:text-lg text-foreground/90 mb-1">
                                        Institut Supérieur d'Informatique et des
                                        Techniques de Communication (ISITCom)
                                     </p>
-                                    <p className="font-garamond text-base text-muted-foreground/70">
+                                    <p className="font-garamond text-sm sm:text-base text-muted-foreground/70">
                                        Hammam Sousse, Tunisia
                                     </p>
                                  </div>
-                                 <div className="text-right">
-                                    <span className="inline-block px-3 py-1 bg-elden-gold/20 border border-elden-gold/50 rounded-full text-gold font-cinzel text-sm mb-2">
+                                 <div className="flex sm:flex-col items-center sm:items-end gap-2 sm:gap-0 sm:text-right">
+                                    <span className="inline-block px-3 py-1 bg-elden-gold/20 border border-elden-gold/50 rounded-full text-gold font-cinzel text-xs sm:text-sm mb-0 sm:mb-2">
                                        In Progress
                                     </span>
-                                    <p className="font-cinzel text-sm text-muted-foreground/70">
+                                    <p className="font-cinzel text-xs sm:text-sm text-muted-foreground/70">
                                        2023 - 2026
                                     </p>
                                  </div>
@@ -251,35 +251,35 @@ const AboutSection = () => {
                   >
                      <div className="absolute -inset-2 bg-elden-gold/5 rounded-xl blur-xl group-hover:bg-elden-gold/10 transition-all duration-500" />
 
-                     <div className="relative bg-elden-dark-light/50 backdrop-blur-sm border border-elden-gold/30 p-8 rounded-xl shadow-2xl">
+                     <div className="relative bg-elden-dark-light/50 backdrop-blur-sm border border-elden-gold/30 p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl">
                         {/* Decorative corner accents */}
                         <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-elden-gold/50" />
                         <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-elden-gold/50" />
 
-                        <div className="flex items-start gap-6">
+                        <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                            <div className="flex-shrink-0">
-                              <div className="p-4 bg-elden-dark rounded-lg border-2 border-gold/60 shadow-lg shadow-gold/20">
-                                 <GraduationCap className="w-10 h-10 text-gold" />
+                              <div className="p-3 sm:p-4 bg-elden-dark rounded-lg border-2 border-gold/60 shadow-lg shadow-gold/20">
+                                 <GraduationCap className="w-8 h-8 sm:w-10 sm:h-10 text-gold" />
                               </div>
                            </div>
-                           <div className="flex-grow">
-                              <div className="flex items-start justify-between mb-3">
-                                 <div>
-                                    <h4 className="font-cinzel text-2xl font-bold text-gold mb-2">
+                           <div className="flex-grow w-full">
+                              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-0 mb-3">
+                                 <div className="flex-grow">
+                                    <h4 className="font-cinzel text-xl sm:text-2xl font-bold text-gold mb-2">
                                        Baccalaureate in Mathematics
                                     </h4>
-                                    <p className="font-garamond text-lg text-foreground/90 mb-1">
+                                    <p className="font-garamond text-base sm:text-lg text-foreground/90 mb-1">
                                        Secondary Education
                                     </p>
-                                    <p className="font-garamond text-base text-muted-foreground/70">
+                                    <p className="font-garamond text-sm sm:text-base text-muted-foreground/70">
                                        Tunisia
                                     </p>
                                  </div>
-                                 <div className="text-right">
-                                    <span className="inline-block px-3 py-1 bg-green-600/20 border border-green-500/50 rounded-full text-green-400 font-cinzel text-sm mb-2">
+                                 <div className="flex sm:flex-col items-center sm:items-end gap-2 sm:gap-0 sm:text-right">
+                                    <span className="inline-block px-3 py-1 bg-green-600/20 border border-green-500/50 rounded-full text-green-400 font-cinzel text-xs sm:text-sm mb-0 sm:mb-2">
                                        Completed
                                     </span>
-                                    <p className="font-cinzel text-sm text-muted-foreground/70">
+                                    <p className="font-cinzel text-xs sm:text-sm text-muted-foreground/70">
                                        2023
                                     </p>
                                  </div>
@@ -299,9 +299,6 @@ const AboutSection = () => {
                                  </span>
                                  <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
                                     Physics
-                                 </span>
-                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
-                                    Computer Science
                                  </span>
                                  <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
                                     Problem solving

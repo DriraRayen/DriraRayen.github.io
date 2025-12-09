@@ -40,8 +40,9 @@ const HeroSection = () => {
                         {/* Profile Photo */}
                         <img
                            src={profilePhoto}
-                           alt="Rayen Drira"
+                           alt="Rayen Drira - IoT & Embedded Systems Engineering Student"
                            className="w-full h-full object-cover object-center"
+                           loading="eager"
                            onError={(e) => {
                               console.error("Failed to load profile image");
                               e.currentTarget.style.display = "none";
@@ -84,7 +85,7 @@ const HeroSection = () => {
                   style={{ animationDelay: "0.15s" }}
                >
                   {/* Name with enhanced styling */}
-                  <h1 className="font-cinzel text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gold tracking-wide leading-tight">
+                  <h1 className="font-cinzel text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gold tracking-wide leading-tight">
                      RAYEN DRIRA
                   </h1>
 

@@ -10,7 +10,7 @@ const SkillsSection = () => {
          icon: Code2,
          title: "Languages",
          rune: "Core Programming",
-         skills: ["JavaScript","TypeScript", "PHP", "C/C++", "Java", "Python"],
+         skills: ["JavaScript", "TypeScript", "PHP", "C/C++", "Java", "Python"],
          description:
             "Proficient in multiple programming languages for diverse development needs",
       },
@@ -60,7 +60,7 @@ const SkillsSection = () => {
          <div className="max-w-7xl mx-auto">
             {/* Section title */}
             <div className="text-center mb-20 animate-fadeIn">
-               <h2 className="font-cinzel text-5xl md:text-6xl font-bold text-gold mb-6 tracking-wide">
+               <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-gold mb-6 tracking-wide">
                   Skills
                </h2>
                <div className="flex items-center justify-center gap-4 mb-4">

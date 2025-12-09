@@ -59,7 +59,7 @@ const ProjectsSection = () => {
          <div className="max-w-7xl mx-auto">
             {/* Section title */}
             <div className="text-center mb-20 animate-fadeIn">
-               <h2 className="font-cinzel text-5xl md:text-6xl font-bold text-gold mb-6 tracking-wide">
+               <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-gold mb-6 tracking-wide">
                   Projects
                </h2>
                <div className="flex items-center justify-center gap-4 mb-4">

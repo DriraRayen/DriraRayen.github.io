@@ -10,7 +10,26 @@ const EldenRingSection = ({ isOpen, onClose }: EldenRingSectionProps) => {
    if (!isOpen) return null;
 
    return (
-      <div className="fixed inset-0 z-50 bg-elden-dark/98 backdrop-blur-lg flex items-center justify-center p-6 animate-fadeIn overflow-y-auto">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-6 animate-fadeIn overflow-y-auto">
+         {/* Backdrop with mystical fog effect */}
+         <div className="absolute inset-0 bg-black/90 backdrop-blur-md">
+            {/* Animated particles/stars */}
+            <div className="absolute inset-0 overflow-hidden">
+               {[...Array(20)].map((_, i) => (
+                  <div
+                     key={i}
+                     className="absolute w-1 h-1 bg-elden-gold/30 rounded-full animate-float"
+                     style={{
+                        left: `${Math.random() * 100}%`,
+                        top: `${Math.random() * 100}%`,
+                        animationDelay: `${Math.random() * 3}s`,
+                        animationDuration: `${3 + Math.random() * 4}s`,
+                     }}
+                  />
+               ))}
+            </div>
+         </div>
+
          <button
             onClick={onClose}
             className="fixed top-6 right-6 p-2 bg-elden-dark border-2 border-gold rounded-full hover:bg-elden-gold hover:text-elden-dark transition-all duration-300 z-10 shadow-xl shadow-gold/30"
@@ -19,7 +38,7 @@ const EldenRingSection = ({ isOpen, onClose }: EldenRingSectionProps) => {
             <X className="w-5 h-5 text-gold hover:text-elden-dark" />
          </button>
 
-         <div className="max-w-5xl w-full max-h-[85vh] overflow-y-auto bg-elden-dark-light/80 border-2 border-gold/60 rounded-xl shadow-2xl shadow-gold/30 p-8 my-auto scrollbar-thin scrollbar-track-elden-dark/50 scrollbar-thumb-gold/60 hover:scrollbar-thumb-gold/80">
+         <div className="relative max-w-5xl w-full max-h-[85vh] overflow-y-auto bg-elden-dark-light/80 border-2 border-gold/60 rounded-xl shadow-2xl shadow-gold/30 p-8 my-auto scrollbar-thin scrollbar-track-elden-dark/50 scrollbar-thumb-gold/60 hover:scrollbar-thumb-gold/80">
             {/* Header with Photo */}
             <div className="text-center mb-6 animate-slideUp">
                {/* Profile Photo as Elden Lord */}

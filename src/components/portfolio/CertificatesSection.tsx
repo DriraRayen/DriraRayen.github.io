@@ -57,13 +57,13 @@ const CertificatesSection = () => {
          <div className="max-w-7xl mx-auto">
             {/* Section title */}
             <div className="text-center mb-16 animate-fadeIn">
-               <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-foreground mb-4 glow-gold">
+               <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-gold mb-4">
                   Sacred Seals of Achievement
                </h2>
-               <div className="flex items-center justify-center gap-2 mb-6">
-                  <div className="h-px w-16 bg-elden-gold" />
-                  <div className="w-1.5 h-1.5 bg-elden-gold rounded-full" />
-                  <div className="h-px w-16 bg-elden-gold" />
+               <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="h-px w-20 bg-gradient-to-r from-transparent via-elden-gold/70 to-elden-gold/40" />
+                  <div className="w-2 h-2 bg-elden-gold rounded-full shadow-lg shadow-elden-gold/50" />
+                  <div className="h-px w-20 bg-gradient-to-l from-transparent via-elden-gold/70 to-elden-gold/40" />
                </div>
                <p className="font-garamond text-lg text-muted-foreground max-w-2xl mx-auto">
                   Legendary marks of mastery, bestowed by ancient guilds of
@@ -76,15 +76,16 @@ const CertificatesSection = () => {
                {certificates.map((cert, index) => (
                   <div
                      key={index}
-                     className="group relative bg-card border border-elden-mist rounded-lg overflow-hidden shadow-gold hover:shadow-gold-intense transition-all duration-500 cursor-pointer animate-slideUp"
+                     className="group relative bg-card border border-elden-mist rounded-lg overflow-hidden shadow-gold hover:shadow-gold-intense hover:scale-[1.02] transition-all duration-500 cursor-pointer animate-slideUp"
                      style={{ animationDelay: `${index * 0.15}s` }}
                      onClick={() => setSelectedCert(index)}
                   >
                      <div className="relative aspect-[16/9] overflow-hidden">
                         <img
                            src={cert.image}
-                           alt={cert.title}
+                           alt={`Certificate: ${cert.title} from ${cert.issuer}`}
                            className="w-full h-full object-contain bg-elden-dark/50 transition-transform duration-500 group-hover:scale-105"
+                           loading="lazy"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-elden-dark via-transparent to-transparent opacity-40" />
                         <div className="absolute top-3 right-3">

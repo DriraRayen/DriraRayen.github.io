@@ -151,24 +151,25 @@ All colors MUST be HSL.
    html {
       scrollbar-width: thin;
       scrollbar-color: hsl(45 100% 62% / 0.6) hsl(220 20% 8% / 0.5);
+      scroll-behavior: smooth;
    }
 
    html::-webkit-scrollbar {
-      width: 10px;
+      width: 8px;
    }
 
    html::-webkit-scrollbar-track {
-      background: hsl(220 20% 8% / 0.5);
+      background: hsl(220 20% 8% / 0.8);
    }
 
    html::-webkit-scrollbar-thumb {
-      background: hsl(45 100% 62% / 0.6);
-      border-radius: 5px;
+      background: linear-gradient(180deg, hsl(45 100% 52%), hsl(45 100% 72%));
+      border-radius: 4px;
       transition: background 0.3s ease;
    }
 
    html::-webkit-scrollbar-thumb:hover {
-      background: hsl(45 100% 62% / 0.9);
+      background: linear-gradient(180deg, hsl(45 100% 62%), hsl(45 100% 82%));
    }
 
    h1,
@@ -204,6 +205,7 @@ All colors MUST be HSL.
 
    .shadow-gold {
       box-shadow: var(--shadow-gold);
+      transition: box-shadow 0.3s ease;
    }
 
    .shadow-gold-intense {
@@ -219,16 +221,24 @@ All colors MUST be HSL.
          0 0 40px hsl(45 100% 60% / 0.4);
    }
 
+   /* Selection styling */
+   ::selection {
+      background-color: hsl(var(--elden-gold) / 0.3);
+      color: hsl(var(--elden-gold));
+   }
+
    .border-gold {
       border-color: hsl(var(--elden-gold));
    }
 
    .animate-float {
       animation: float 6s ease-in-out infinite;
+      will-change: transform;
    }
 
    .animate-glow {
       animation: glow 2s ease-in-out infinite alternate;
+      will-change: filter;
    }
 
    .animate-fadeIn {
@@ -262,10 +272,10 @@ All colors MUST be HSL.
    @keyframes float {
       0%,
       100% {
-         transform: translateY(0px);
+         transform: translate3d(0, 0px, 0);
       }
       50% {
-         transform: translateY(-20px);
+         transform: translate3d(0, -20px, 0);
       }
    }
 
@@ -290,11 +300,11 @@ All colors MUST be HSL.
    @keyframes slideUp {
       from {
          opacity: 0;
-         transform: translateY(50px);
+         transform: translate3d(0, 50px, 0);
       }
       to {
          opacity: 1;
-         transform: translateY(0);
+         transform: translate3d(0, 0, 0);
       }
    }
 
@@ -327,6 +337,41 @@ All colors MUST be HSL.
       100% {
          background-position: 200% center;
       }
+   }
+
+   /* Image loading skeleton */
+   @keyframes skeleton {
+      0% {
+         background-position: -200% 0;
+      }
+      100% {
+         background-position: 200% 0;
+      }
+   }
+
+   /* Slideshow progress bar animation */
+   @keyframes progress {
+      0% {
+         width: 0%;
+      }
+      100% {
+         width: 100%;
+      }
+   }
+
+   .animate-progress {
+      animation: progress 3s linear infinite;
+   }
+
+   .skeleton-loading {
+      background: linear-gradient(
+         90deg,
+         hsl(220 18% 13%) 0%,
+         hsl(220 15% 20%) 50%,
+         hsl(220 18% 13%) 100%
+      );
+      background-size: 200% 100%;
+      animation: skeleton 1.5s ease-in-out infinite;
    }
 
    .scroll-smooth {
@@ -472,6 +517,42 @@ All colors MUST be HSL.
 
    .scrollbar-thin::-webkit-scrollbar-thumb:hover {
       background: hsl(45 100% 62% / 0.9);
+   }
+
+   /* Parallax layers */
+   .parallax-slow {
+      transform: translateZ(-1px) scale(2);
+   }
+
+   .parallax-fast {
+      transform: translateZ(-2px) scale(3);
+   }
+
+   /* Custom cursor styles */
+   * {
+      cursor: url("/cursor.cur"), auto;
+   }
+
+   a,
+   button,
+   input[type="submit"],
+   input[type="button"] {
+      cursor: url("/cursor.cur"), pointer;
+   }
+
+   /* Enhanced focus styles for accessibility */
+   *:focus-visible {
+      outline: 2px solid hsl(var(--elden-gold));
+      outline-offset: 2px;
+      border-radius: 4px;
+   }
+
+   /* Smooth transitions for all interactive elements */
+   button,
+   a,
+   input,
+   textarea {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
    }
 
    /* Firefox scrollbar */

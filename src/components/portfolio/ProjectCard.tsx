@@ -25,8 +25,10 @@ const ProjectCard = ({
 }: ProjectCardProps) => {
    return (
       <div
-         className="bg-card border border-elden-mist p-8 rounded-lg shadow-gold hover:shadow-gold-intense transition-all duration-500 group animate-slideUp"
+         className="bg-card border border-elden-mist p-4 sm:p-6 md:p-8 rounded-lg shadow-gold hover:shadow-gold-intense hover:scale-[1.02] transition-all duration-500 group animate-slideUp"
          style={{ animationDelay: `${index * 0.1}s` }}
+         role="article"
+         aria-label={`Project: ${title}`}
       >
          {/* Header */}
          <div className="flex items-start justify-between mb-6">
@@ -41,7 +43,7 @@ const ProjectCard = ({
          </div>
 
          {/* Title */}
-         <h3 className="font-cinzel text-2xl font-bold text-foreground mb-3 group-hover:text-gold transition-colors">
+         <h3 className="font-cinzel text-xl md:text-2xl font-bold text-foreground mb-3 group-hover:text-gold transition-colors">
             {title}
          </h3>
 

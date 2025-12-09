@@ -31,8 +31,8 @@ const MysticalFog = () => {
    }, []);
 
    // Reduce fog complexity on mobile
-   const fogOpacity = isMobile ? 0.12 : 0.18;
-   const particleOpacity = isMobile ? 0.05 : 0.08;
+   const fogOpacity = isMobile ? 0.25 : 0.35;
+   const particleOpacity = isMobile ? 0.12 : 0.18;
 
    return (
       <div className="fixed inset-0 pointer-events-none z-5 overflow-hidden">
