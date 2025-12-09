@@ -1,0 +1,563 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+   :root {
+      --background: 220 20% 8%;
+      --foreground: 45 100% 88%;
+
+      --card: 220 18% 13%;
+      --card-foreground: 45 100% 88%;
+
+      --popover: 220 18% 10%;
+      --popover-foreground: 45 100% 88%;
+
+      --primary: 45 100% 62%;
+      --primary-foreground: 220 20% 8%;
+
+      --secondary: 220 15% 22%;
+      --secondary-foreground: 45 100% 88%;
+
+      --muted: 220 15% 20%;
+      --muted-foreground: 45 25% 68%;
+
+      --accent: 45 100% 55%;
+      --accent-foreground: 220 20% 8%;
+
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 45 100% 88%;
+
+      --border: 220 15% 28%;
+      --input: 220 15% 22%;
+      --ring: 45 100% 62%;
+
+      --radius: 0.625rem;
+
+      /* Enhanced Elden Ring Theme Colors */
+      --elden-gold: 45 100% 62%;
+      --elden-gold-light: 45 100% 72%;
+      --elden-gold-dark: 45 100% 52%;
+      --elden-dark: 220 20% 8%;
+      --elden-dark-light: 220 18% 13%;
+      --elden-mist: 220 15% 28%;
+      --elden-accent: 45 90% 58%;
+
+      /* Enhanced Gradients */
+      --gradient-gold: linear-gradient(
+         135deg,
+         hsl(45 100% 52%) 0%,
+         hsl(45 100% 72%) 100%
+      );
+      --gradient-dark: linear-gradient(
+         180deg,
+         hsl(220 20% 8%) 0%,
+         hsl(220 18% 13%) 100%
+      );
+      --gradient-hero: linear-gradient(
+         180deg,
+         hsl(220 20% 6%) 0%,
+         hsl(220 18% 13%) 50%,
+         hsl(220 20% 8%) 100%
+      );
+
+      /* Enhanced Shadows with better depth */
+      --shadow-gold: 0 2px 20px hsl(45 100% 62% / 0.25),
+         0 4px 40px hsl(45 100% 62% / 0.12);
+      --shadow-gold-intense: 0 4px 30px hsl(45 100% 62% / 0.4),
+         0 8px 60px hsl(45 100% 62% / 0.2), 0 12px 90px hsl(45 100% 62% / 0.08);
+      --shadow-card: 0 2px 8px hsl(220 20% 0% / 0.3),
+         0 4px 16px hsl(220 20% 0% / 0.2);
+      --shadow-elevated: 0 8px 24px hsl(220 20% 0% / 0.4),
+         0 16px 48px hsl(220 20% 0% / 0.25);
+
+      /* Animations */
+      --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+      --radius: 0.5rem;
+
+      --sidebar-background: 0 0% 98%;
+
+      --sidebar-foreground: 240 5.3% 26.1%;
+
+      --sidebar-primary: 240 5.9% 10%;
+
+      --sidebar-primary-foreground: 0 0% 98%;
+
+      --sidebar-accent: 240 4.8% 95.9%;
+
+      --sidebar-accent-foreground: 240 5.9% 10%;
+
+      --sidebar-border: 220 13% 91%;
+
+      --sidebar-ring: 217.2 91.2% 59.8%;
+   }
+
+   .dark {
+      --background: 220 20% 8%;
+      --foreground: 45 100% 85%;
+
+      --card: 220 18% 12%;
+      --card-foreground: 45 100% 85%;
+
+      --popover: 220 18% 10%;
+      --popover-foreground: 45 100% 85%;
+
+      --primary: 45 100% 60%;
+      --primary-foreground: 220 20% 8%;
+
+      --secondary: 220 15% 20%;
+      --secondary-foreground: 45 100% 85%;
+
+      --muted: 220 15% 18%;
+      --muted-foreground: 45 20% 65%;
+
+      --accent: 45 100% 50%;
+      --accent-foreground: 220 20% 8%;
+
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 45 100% 85%;
+
+      --border: 220 15% 25%;
+      --input: 220 15% 20%;
+      --ring: 45 100% 60%;
+
+      --sidebar-background: 220 20% 8%;
+      --sidebar-foreground: 45 100% 85%;
+      --sidebar-primary: 45 100% 60%;
+      --sidebar-primary-foreground: 220 20% 8%;
+      --sidebar-accent: 220 15% 20%;
+      --sidebar-accent-foreground: 45 100% 85%;
+      --sidebar-border: 220 15% 25%;
+      --sidebar-ring: 45 100% 60%;
+   }
+}
+
+@layer base {
+   * {
+      @apply border-border;
+   }
+
+   body {
+      @apply bg-background text-foreground;
+      font-family: "EB Garamond", serif;
+   }
+
+   /* Apply custom scrollbar to entire website */
+   html {
+      scrollbar-width: thin;
+      scrollbar-color: hsl(45 100% 62% / 0.6) hsl(220 20% 8% / 0.5);
+      scroll-behavior: smooth;
+   }
+
+   html::-webkit-scrollbar {
+      width: 8px;
+   }
+
+   html::-webkit-scrollbar-track {
+      background: hsl(220 20% 8% / 0.8);
+   }
+
+   html::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, hsl(45 100% 52%), hsl(45 100% 72%));
+      border-radius: 4px;
+      transition: background 0.3s ease;
+   }
+
+   html::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, hsl(45 100% 62%), hsl(45 100% 82%));
+   }
+
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   h6 {
+      font-family: "Cinzel", serif;
+   }
+}
+
+@layer utilities {
+   .text-gold {
+      color: hsl(var(--elden-gold));
+   }
+
+   .text-gold-light {
+      color: hsl(var(--elden-gold-light));
+   }
+
+   .bg-gold {
+      background: hsl(var(--elden-gold));
+   }
+
+   .gradient-gold {
+      background: var(--gradient-gold);
+   }
+
+   .gradient-dark {
+      background: var(--gradient-dark);
+   }
+
+   .shadow-gold {
+      box-shadow: var(--shadow-gold);
+      transition: box-shadow 0.3s ease;
+   }
+
+   .shadow-gold-intense {
+      box-shadow: var(--shadow-gold-intense);
+   }
+
+   .shadow-elden-mist {
+      box-shadow: 0 0 30px hsl(220 15% 25% / 0.5);
+   }
+
+   .glow-gold {
+      text-shadow: 0 0 20px hsl(45 100% 60% / 0.8),
+         0 0 40px hsl(45 100% 60% / 0.4);
+   }
+
+   /* Selection styling */
+   ::selection {
+      background-color: hsl(var(--elden-gold) / 0.3);
+      color: hsl(var(--elden-gold));
+   }
+
+   .border-gold {
+      border-color: hsl(var(--elden-gold));
+   }
+
+   .animate-float {
+      animation: float 6s ease-in-out infinite;
+      will-change: transform;
+   }
+
+   .animate-glow {
+      animation: glow 2s ease-in-out infinite alternate;
+      will-change: filter;
+   }
+
+   .animate-fadeIn {
+      animation: fadeIn 1s ease-out forwards;
+   }
+
+   .animate-slideUp {
+      animation: slideUp 1s ease-out forwards;
+   }
+
+   .animate-slideInLeft {
+      animation: slideInLeft 0.8s ease-out forwards;
+   }
+
+   .animate-slideInRight {
+      animation: slideInRight 0.8s ease-out forwards;
+   }
+
+   .animate-shimmer {
+      animation: shimmer 3s ease-in-out infinite;
+   }
+
+   .animate-pulse-slow {
+      animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+   }
+
+   .animate-spin-slow {
+      animation: spin 8s linear infinite;
+   }
+
+   @keyframes float {
+      0%,
+      100% {
+         transform: translate3d(0, 0px, 0);
+      }
+      50% {
+         transform: translate3d(0, -20px, 0);
+      }
+   }
+
+   @keyframes glow {
+      0% {
+         filter: drop-shadow(0 0 10px hsl(45 100% 60% / 0.5));
+      }
+      100% {
+         filter: drop-shadow(0 0 30px hsl(45 100% 60% / 1));
+      }
+   }
+
+   @keyframes fadeIn {
+      from {
+         opacity: 0;
+      }
+      to {
+         opacity: 1;
+      }
+   }
+
+   @keyframes slideUp {
+      from {
+         opacity: 0;
+         transform: translate3d(0, 50px, 0);
+      }
+      to {
+         opacity: 1;
+         transform: translate3d(0, 0, 0);
+      }
+   }
+
+   @keyframes slideInLeft {
+      from {
+         opacity: 0;
+         transform: translateX(-50px);
+      }
+      to {
+         opacity: 1;
+         transform: translateX(0);
+      }
+   }
+
+   @keyframes slideInRight {
+      from {
+         opacity: 0;
+         transform: translateX(50px);
+      }
+      to {
+         opacity: 1;
+         transform: translateX(0);
+      }
+   }
+
+   @keyframes shimmer {
+      0% {
+         background-position: -200% center;
+      }
+      100% {
+         background-position: 200% center;
+      }
+   }
+
+   /* Image loading skeleton */
+   @keyframes skeleton {
+      0% {
+         background-position: -200% 0;
+      }
+      100% {
+         background-position: 200% 0;
+      }
+   }
+
+   /* Slideshow progress bar animation */
+   @keyframes progress {
+      0% {
+         width: 0%;
+      }
+      100% {
+         width: 100%;
+      }
+   }
+
+   .animate-progress {
+      animation: progress 3s linear infinite;
+   }
+
+   .skeleton-loading {
+      background: linear-gradient(
+         90deg,
+         hsl(220 18% 13%) 0%,
+         hsl(220 15% 20%) 50%,
+         hsl(220 18% 13%) 100%
+      );
+      background-size: 200% 100%;
+      animation: skeleton 1.5s ease-in-out infinite;
+   }
+
+   .scroll-smooth {
+      scroll-behavior: smooth;
+   }
+
+   .rune-pattern {
+      background-image: radial-gradient(
+            circle at 20% 30%,
+            hsl(45 100% 60% / 0.1) 1px,
+            transparent 1px
+         ),
+         radial-gradient(
+            circle at 80% 70%,
+            hsl(45 100% 60% / 0.1) 1px,
+            transparent 1px
+         ),
+         radial-gradient(
+            circle at 40% 80%,
+            hsl(45 100% 60% / 0.08) 1px,
+            transparent 1px
+         ),
+         radial-gradient(
+            circle at 90% 20%,
+            hsl(45 100% 60% / 0.08) 1px,
+            transparent 1px
+         );
+      background-size: 200px 200px, 250px 250px, 300px 300px, 180px 180px;
+      background-position: 0 0, 40px 40px, 80px 80px, 120px 120px;
+      animation: runeScroll 60s linear infinite;
+   }
+
+   @keyframes runeScroll {
+      0% {
+         background-position: 0 0, 40px 40px, 80px 80px, 120px 120px;
+      }
+      100% {
+         background-position: 200px 200px, 240px 240px, 280px 280px, 320px 320px;
+      }
+   }
+
+   /* Mystical glass effect */
+   .glass-panel {
+      background: rgba(12, 14, 18, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid hsl(var(--elden-gold) / 0.3);
+   }
+
+   /* Portal ring effect */
+   .portal-ring {
+      position: relative;
+   }
+
+   .portal-ring::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      padding: 2px;
+      background: linear-gradient(
+         45deg,
+         hsl(45 100% 60%),
+         hsl(45 100% 70%),
+         hsl(45 100% 50%),
+         hsl(45 100% 60%)
+      );
+      background-size: 200% 200%;
+      animation: portalRotate 3s linear infinite;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+         linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.3s;
+   }
+
+   .portal-ring:hover::before {
+      opacity: 1;
+   }
+
+   @keyframes portalRotate {
+      0% {
+         background-position: 0% 50%;
+      }
+      50% {
+         background-position: 100% 50%;
+      }
+      100% {
+         background-position: 0% 50%;
+      }
+   }
+
+   /* Mystical reveal on scroll */
+   .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+   }
+
+   .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+   }
+
+   /* Ember particles */
+   .ember-particle {
+      animation: emberRise 4s ease-in infinite;
+   }
+
+   @keyframes emberRise {
+      0% {
+         transform: translateY(0) translateX(0) scale(1);
+         opacity: 0;
+      }
+      20% {
+         opacity: 1;
+      }
+      80% {
+         opacity: 1;
+      }
+      100% {
+         transform: translateY(-200px) translateX(20px) scale(0);
+         opacity: 0;
+      }
+   }
+
+   /* Custom Scrollbar Styles */
+   .scrollbar-thin::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+   }
+
+   .scrollbar-thin::-webkit-scrollbar-track {
+      background: hsl(220 20% 8% / 0.5);
+      border-radius: 4px;
+   }
+
+   .scrollbar-thin::-webkit-scrollbar-thumb {
+      background: hsl(45 100% 62% / 0.6);
+      border-radius: 4px;
+      transition: background 0.3s ease;
+   }
+
+   .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+      background: hsl(45 100% 62% / 0.9);
+   }
+
+   /* Parallax layers */
+   .parallax-slow {
+      transform: translateZ(-1px) scale(2);
+   }
+
+   .parallax-fast {
+      transform: translateZ(-2px) scale(3);
+   }
+
+   /* Custom cursor styles */
+   * {
+      cursor: url("/cursor.cur"), auto;
+   }
+
+   a,
+   button,
+   input[type="submit"],
+   input[type="button"] {
+      cursor: url("/cursor.cur"), pointer;
+   }
+
+   /* Enhanced focus styles for accessibility */
+   *:focus-visible {
+      outline: 2px solid hsl(var(--elden-gold));
+      outline-offset: 2px;
+      border-radius: 4px;
+   }
+
+   /* Smooth transitions for all interactive elements */
+   button,
+   a,
+   input,
+   textarea {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+   }
+
+   /* Firefox scrollbar */
+   .scrollbar-thin {
+      scrollbar-width: thin;
+      scrollbar-color: hsl(45 100% 62% / 0.6) hsl(220 20% 8% / 0.5);
+   }
+}
