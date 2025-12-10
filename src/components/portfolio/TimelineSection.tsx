@@ -96,6 +96,7 @@ const TimelineSection = () => {
          description:
             "Secured 3rd place in the 26-hour cybersecurity hackathon at Securients ISITCOM",
          details: [
+            "Workshops",
             "CTF Challenges",
             "Penetration Testing",
             "Escape Room",
