@@ -15,7 +15,7 @@ import raksha2 from "@/assets/gallery/raksha-2.jpg";
 import redroom1 from "@/assets/gallery/REDROOM-1.jpg";
 import redroom2 from "@/assets/gallery/REDROOM-2.jpg";
 import redroom3 from "@/assets/gallery/REDROOM-3.jpg";
-import redroom4 from "@/assets/gallery/REDROOM-4.jpg";
+
 import redroom5 from "@/assets/gallery/REDROOM-5.jpg";
 import redroom7 from "@/assets/gallery/REDROOM-7.jpg";
 import night1 from "@/assets/gallery/night1.jpg";
@@ -101,7 +101,7 @@ const TimelineSection = () => {
             "Escape Room",
             "Team bitwi$e",
          ],
-         images: [redroom1, redroom2, redroom3, redroom4, redroom5, redroom7],
+         images: [redroom1, redroom2, redroom3, redroom5, redroom7],
       },
       {
          year: "2024",
