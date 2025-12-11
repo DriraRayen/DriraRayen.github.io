@@ -53,6 +53,9 @@ const LoadingScreen = () => {
          };
       }
    }, []);
+
+   if (!isLoading) return null;
+
    return (
       <div
          className={`fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-b from-elden-dark via-elden-dark-light to-elden-dark transition-opacity duration-500 ${

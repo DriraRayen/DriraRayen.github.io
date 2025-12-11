@@ -249,8 +249,13 @@ const ScoutSection = () => {
    );
 
    const filteredPhotos = useMemo(() => {
-      if (selectedYear === "all") return scoutPhotos;
-      return scoutPhotos.filter((photo) => photo.year === selectedYear);
+      const filtered =
+         selectedYear === "all"
+            ? scoutPhotos
+            : scoutPhotos.filter((photo) => photo.year === selectedYear);
+
+      // Reverse to show latest photos first
+      return [...filtered].reverse();
    }, [selectedYear, scoutPhotos]);
 
    const years: YearCategory[] = [
@@ -404,7 +409,7 @@ const ScoutSection = () => {
                      key={index}
                      onClick={() => openLightbox(index)}
                      className="relative aspect-square rounded-lg overflow-hidden border-2 border-elden-gold/30 
-                                hover:border-elden-gold/60 hover:scale-105 transition-all duration-300 group"
+                                 hover:border-elden-gold/60 hover:scale-105 transition-all duration-300 group"
                   >
                      {/* Skeleton placeholder */}
                      {!loadedImages.has(index) && (
@@ -421,7 +426,7 @@ const ScoutSection = () => {
                      />
                      <div
                         className="absolute inset-0 bg-gradient-to-t from-elden-dark/80 via-transparent to-transparent 
-                                     opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                        opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                      >
                         <span className="absolute bottom-2 left-2 font-cinzel text-xs text-gold">
                            {photo.year}
