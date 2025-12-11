@@ -16,6 +16,41 @@
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=EB+Garamond:wght@400;500;600;700&display=swap"
     rel="stylesheet">
 
+  <style>
+    /* Prevent FOUT - hide content until fonts load */
+    body {
+      opacity: 0;
+      transition: opacity 0.3s ease-in;
+    }
+
+    body.fonts-loaded {
+      opacity: 1;
+    }
+  </style>
+
+  <script>
+    // Load fonts before showing content
+    if (document.fonts) {
+      Promise.all([
+        document.fonts.load('600 1em Cinzel'),
+        document.fonts.load('400 1em "EB Garamond"')
+      ]).then(() => {
+        document.body.classList.add('fonts-loaded');
+      }).catch(() => {
+        // Fallback if font loading fails
+        document.body.classList.add('fonts-loaded');
+      });
+
+      // Timeout fallback - show content after 3 seconds regardless
+      setTimeout(() => {
+        document.body.classList.add('fonts-loaded');
+      }, 3000);
+    } else {
+      // Browser doesn't support Font Loading API
+      document.body.classList.add('fonts-loaded');
+    }
+  </script>
+
   <meta property="og:title" content="Rayen Drira | IoT & Embedded Systems Engineer" />
   <meta property="og:description"
     content="Portfolio of Rayen Drira - IoT & Embedded Systems Engineering Student, Cybersecurity Enthusiast, and Scout Leader" />
