@@ -11,7 +11,7 @@ const LoadingScreen = () => {
          setFadeIn(true);
       }, 100);
 
-      const minLoadTime = 2500; // 2.5 seconds
+      const minLoadTime = 1800; // 1.8 seconds
       const startTime = Date.now();
       const handleLoad = async () => {
          // Wait for fonts to load
