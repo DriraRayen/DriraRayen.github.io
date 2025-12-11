@@ -10,7 +10,7 @@ const SkillsSection = () => {
          icon: Code2,
          title: "Languages",
          rune: "Core Programming",
-         skills: ["JavaScript", "TypeScript", "PHP", "C/C++", "Java", "Python"],
+         skills: ["JS", "TS", "PHP", "C/C++", "Java", "Python"],
          description:
             "Proficient in multiple programming languages for diverse development needs",
       },
@@ -74,7 +74,7 @@ const SkillsSection = () => {
             </div>
 
             {/* Skills grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
                {skillCategories.map((category, index) => (
                   <SkillRune
                      key={category.title}

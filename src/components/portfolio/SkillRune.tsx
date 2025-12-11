@@ -25,7 +25,7 @@ const SkillRune = ({
 }: SkillRuneProps) => {
    return (
       <div
-         className="relative bg-card border border-elden-mist p-6 rounded-lg shadow-gold hover:shadow-gold-intense hover:scale-[1.02] transition-all duration-500 group cursor-pointer animate-slideUp"
+         className="relative bg-card border border-elden-mist p-6 rounded-lg shadow-gold hover:shadow-gold-intense transition-all duration-300 group cursor-pointer animate-slideUp"
          style={{ animationDelay: `${index * 0.1}s` }}
          onMouseEnter={onHover}
          onMouseLeave={onLeave}
@@ -77,7 +77,7 @@ const SkillRune = ({
 
          {/* Description (revealed on hover) */}
          <div
-            className={`overflow-hidden transition-all duration-500 ${
+            className={`overflow-hidden transition-all duration-300 ${
                isActive ? "max-h-24 opacity-100" : "max-h-0 opacity-0"
             }`}
          >
