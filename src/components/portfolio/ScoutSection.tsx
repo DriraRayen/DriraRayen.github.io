@@ -108,7 +108,7 @@ import img_2025_21 from "@/assets/scout/542754460_1211661801001757_8374699059719
 import img_2025_22 from "@/assets/scout/542755469_1211662341001703_1081942842471227287_n.jpg";
 import img_2025_23 from "@/assets/scout/565151223_1255038413330762_9010870579905776087_n.jpg";
 import img_2025_24 from "@/assets/scout/565624865_1255039493330654_9192054243005857325_n.jpg";
-
+import img_2025_25 from "@/assets/scout/a1528d76-2ba7-483e-97ad-827df32177e1.jpg";
 type YearCategory = "all" | "2018" | "2019" | "2020" | "2024" | "2025";
 
 interface ScoutPhoto {
@@ -244,6 +244,7 @@ const ScoutSection = () => {
          { url: img_2025_22, year: "2025" },
          { url: img_2025_23, year: "2025" },
          { url: img_2025_24, year: "2025" },
+         { url: img_2025_25, year: "2025" },
       ],
       []
    );

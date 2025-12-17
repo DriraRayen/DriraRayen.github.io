@@ -9,30 +9,38 @@ import {
    Palette,
    Flag,
 } from "lucide-react";
-import { useState } from "react";
-import raksha1 from "@/assets/gallery/raksha-1 .jpg";
-import raksha2 from "@/assets/gallery/raksha-2.jpg";
-import redroom1 from "@/assets/gallery/REDROOM-1.jpg";
-import redroom2 from "@/assets/gallery/REDROOM-2.jpg";
-import redroom3 from "@/assets/gallery/REDROOM-3.jpg";
-
-import redroom5 from "@/assets/gallery/REDROOM-5.jpg";
-import redroom7 from "@/assets/gallery/REDROOM-7.jpg";
-import night1 from "@/assets/gallery/night1.jpg";
-import night2 from "@/assets/gallery/night2.jpg";
-import nuit2025_1 from "@/assets/gallery/Nuit_2025_1.jpg";
-import nuit2025_2 from "@/assets/gallery/Nuit_2025_2.png";
-import nuit2025_3 from "@/assets/gallery/Nuit_2025_3.jpg";
-import nuit2025_4 from "@/assets/gallery/Nuit_2025_4.jpg";
+import { useState, useEffect } from "react";
+import {
+   loadGalleryImages,
+   filterImagesByEvent,
+   type GalleryImage,
+} from "@/lib/galleryLoader";
 
 const TimelineSection = () => {
    const [activeImageIndexes, setActiveImageIndexes] = useState<{
       [key: number]: number;
    }>({});
-   const [showGallery, setShowGallery] = useState<{
-      [key: number]: boolean;
-   }>({});
+   const [showGallery, setShowGallery] = useState<{ [key: number]: boolean }>(
+      {}
+   );
+   const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
+   const [loading, setLoading] = useState(true);
 
+   useEffect(() => {
+      const loadImages = async () => {
+         try {
+            const images = await loadGalleryImages();
+            setGalleryImages(images);
+         } catch (error) {
+            console.error("Failed to load gallery images:", error);
+         } finally {
+            setLoading(false);
+         }
+      };
+      loadImages();
+   }, []);
+
+   // Map event keys to timeline events
    const timelineEvents = [
       {
          year: "2025",
@@ -42,7 +50,7 @@ const TimelineSection = () => {
          icon: Trophy,
          description: "Won the Silver Medal in MiniMind challenge, ",
          details: ["Silver Medal", "Team Collaboration", "Global Event"],
-         images: [nuit2025_1, nuit2025_2, nuit2025_3, nuit2025_4],
+         eventKey: "nuit-2025",
       },
       {
          year: "2025",
@@ -58,11 +66,11 @@ const TimelineSection = () => {
             "Problem Solving",
             "Global Event",
          ],
-         images: [],
+         eventKey: "xtreme",
       },
       {
          year: "2025",
-         title: "KYBISEC Online CTF",
+         title: "KYUBISEC Online CTF",
          team: "Team HYDR4",
          type: "ctf",
          icon: Flag,
@@ -74,7 +82,7 @@ const TimelineSection = () => {
             "Team Collaboration",
             "Top 5 Finish",
          ],
-         images: [],
+         eventKey: "KYBS",
       },
       {
          year: "2025",
@@ -85,7 +93,7 @@ const TimelineSection = () => {
          description:
             "Participated in the first penetration testing event in Tunisia by Securients ISITCOM & Securinets EPI",
          details: ["Penetration Testing", "King of the hill", "Bomb diffuse"],
-         images: [raksha1, raksha2],
+         eventKey: "raksha",
       },
       {
          year: "2025",
@@ -102,7 +110,7 @@ const TimelineSection = () => {
             "Escape Room",
             "Team bitwi$e",
          ],
-         images: [redroom1, redroom2, redroom3, redroom5, redroom7],
+         eventKey: "redroom",
       },
       {
          year: "2024",
@@ -113,7 +121,7 @@ const TimelineSection = () => {
          description:
             "Participated in the Nuit d'Info as a designer, the annual all-night competition featuring diverse challenges",
          details: ["Team Collaboration", "Global Event"],
-         images: [night1, night2],
+         eventKey: "nuit-2024",
       },
    ];
 
@@ -166,7 +174,11 @@ const TimelineSection = () => {
                <div className="space-y-8 md:space-y-12">
                   {timelineEvents.map((event, index) => {
                      const Icon = event.icon;
-
+                     // Dynamically filter images for this event
+                     const eventImages = filterImagesByEvent(
+                        galleryImages,
+                        event.eventKey
+                     );
                      return (
                         <div
                            key={index}
@@ -224,19 +236,18 @@ const TimelineSection = () => {
                                  </div>
 
                                  {/* Image Gallery */}
-                                 {event.images &&
-                                    event.images.length > 0 &&
+                                 {eventImages.length > 0 &&
                                     showGallery[index] && (
                                        <div className="mt-6 relative group/gallery">
                                           <div className="relative w-full rounded-lg border-2 border-elden-gold/30 bg-elden-dark">
                                              {/* Image */}
                                              <img
                                                 src={
-                                                   event.images[
+                                                   eventImages[
                                                       activeImageIndexes[
                                                          index
                                                       ] || 0
-                                                   ]
+                                                   ]?.src
                                                 }
                                                 alt={`${event.title} - Image ${
                                                    (activeImageIndexes[index] ||
@@ -244,15 +255,14 @@ const TimelineSection = () => {
                                                 }`}
                                                 className="w-full h-auto object-contain rounded-lg"
                                              />
-
                                              {/* Navigation Buttons */}
-                                             {event.images.length > 1 && (
+                                             {eventImages.length > 1 && (
                                                 <>
                                                    <button
                                                       onClick={() =>
                                                          handlePrevImage(
                                                             index,
-                                                            event.images.length
+                                                            eventImages.length
                                                          )
                                                       }
                                                       className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 p-1.5 sm:p-2 bg-elden-dark/80 backdrop-blur-sm border border-elden-gold/50 rounded-lg opacity-100 sm:opacity-0 group-hover/gallery:opacity-100 hover:bg-elden-dark hover:border-gold transition-all duration-300"
@@ -264,7 +274,7 @@ const TimelineSection = () => {
                                                       onClick={() =>
                                                          handleNextImage(
                                                             index,
-                                                            event.images.length
+                                                            eventImages.length
                                                          )
                                                       }
                                                       className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 p-1.5 sm:p-2 bg-elden-dark/80 backdrop-blur-sm border border-elden-gold/50 rounded-lg opacity-100 sm:opacity-0 group-hover/gallery:opacity-100 hover:bg-elden-dark hover:border-gold transition-all duration-300"
@@ -274,24 +284,22 @@ const TimelineSection = () => {
                                                    </button>
                                                 </>
                                              )}
-
                                              {/* Image Counter */}
-                                             {event.images.length > 1 && (
+                                             {eventImages.length > 1 && (
                                                 <div className="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 px-2 sm:px-3 py-1 sm:py-1.5 bg-elden-dark/90 backdrop-blur-sm border border-elden-gold/50 rounded-md">
                                                    <span className="text-[10px] sm:text-xs font-cinzel text-gold">
                                                       {(activeImageIndexes[
                                                          index
                                                       ] || 0) + 1}{" "}
-                                                      / {event.images.length}
+                                                      / {eventImages.length}
                                                    </span>
                                                 </div>
                                              )}
                                           </div>
-
                                           {/* Thumbnail Navigation */}
-                                          {event.images.length > 1 && (
+                                          {eventImages.length > 1 && (
                                              <div className="flex gap-1.5 sm:gap-2 mt-2 sm:mt-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-elden-gold/30 scrollbar-track-transparent">
-                                                {event.images.map(
+                                                {eventImages.map(
                                                    (img, imgIndex) => (
                                                       <button
                                                          key={imgIndex}
@@ -313,7 +321,7 @@ const TimelineSection = () => {
                                                          }`}
                                                       >
                                                          <img
-                                                            src={img}
+                                                            src={img.src}
                                                             alt={`Thumbnail ${
                                                                imgIndex + 1
                                                             }`}
@@ -341,23 +349,22 @@ const TimelineSection = () => {
                                     </div>
 
                                     {/* View Photos Button */}
-                                    {event.images &&
-                                       event.images.length > 0 && (
-                                          <button
-                                             onClick={() =>
-                                                setShowGallery((prev) => ({
-                                                   ...prev,
-                                                   [index]: !prev[index],
-                                                }))
-                                             }
-                                             className="w-full sm:w-auto flex-shrink-0 px-4 sm:px-6 py-2 sm:py-2.5 bg-elden-gold/20 border-2 border-elden-gold/50 rounded-lg font-cinzel text-sm sm:text-base text-gold hover:bg-elden-gold/30 hover:border-gold hover:shadow-lg hover:shadow-gold/30 transition-all duration-300 flex items-center justify-center gap-2"
-                                          >
-                                             <Palette className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                                             {showGallery[index]
-                                                ? "Hide Photos"
-                                                : `View Photos (${event.images.length})`}
-                                          </button>
-                                       )}
+                                    {eventImages.length > 0 && (
+                                       <button
+                                          onClick={() =>
+                                             setShowGallery((prev) => ({
+                                                ...prev,
+                                                [index]: !prev[index],
+                                             }))
+                                          }
+                                          className="w-full sm:w-auto flex-shrink-0 px-4 sm:px-6 py-2 sm:py-2.5 bg-elden-gold/20 border-2 border-elden-gold/50 rounded-lg font-cinzel text-sm sm:text-base text-gold hover:bg-elden-gold/30 hover:border-gold hover:shadow-lg hover:shadow-gold/30 transition-all duration-300 flex items-center justify-center gap-2"
+                                       >
+                                          <Palette className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                                          {showGallery[index]
+                                             ? "Hide Photos"
+                                             : `View Photos (${eventImages.length})`}
+                                       </button>
+                                    )}
                                  </div>
                               </div>
                            </div>

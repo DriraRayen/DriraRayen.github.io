@@ -1,40 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import scoutsEvent from "@/assets/gallery/scouts-event-1.jpg";
-import iotWorkshop from "@/assets/gallery/iot-workshop.jpg";
-import hackathon from "@/assets/gallery/hackathon.jpg";
-import teamProject from "@/assets/gallery/team-project.jpg";
+import { loadGalleryImages, type GalleryImage } from "@/lib/galleryLoader";
 
 const GallerySection = () => {
    const [lightboxOpen, setLightboxOpen] = useState(false);
    const [currentImage, setCurrentImage] = useState(0);
+   const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
+   const [loading, setLoading] = useState(true);
 
-   const galleryImages = [
-      {
-         src: scoutsEvent,
-         title: "Scouts Leadership Gathering",
-         description: "Leading fellow scouts through ancient wisdom",
-         category: "Leadership",
-      },
-      {
-         src: iotWorkshop,
-         title: "IoT Workshop",
-         description: "Forging connections between circuits and souls",
-         category: "Technology",
-      },
-      {
-         src: hackathon,
-         title: "Hackathon Victory",
-         description: "Conquering challenges in the realm of code",
-         category: "Competition",
-      },
-      {
-         src: teamProject,
-         title: "Team Collaboration",
-         description: "United in purpose, bound by craft",
-         category: "Projects",
-      },
-   ];
+   useEffect(() => {
+      const loadImages = async () => {
+         try {
+            const images = await loadGalleryImages();
+            setGalleryImages(images);
+         } catch (error) {
+            console.error("Failed to load gallery images:", error);
+         } finally {
+            setLoading(false);
+         }
+      };
+
+      loadImages();
+   }, []);
 
    const openLightbox = (index: number) => {
       setCurrentImage(index);
@@ -71,35 +58,50 @@ const GallerySection = () => {
             </div>
 
             {/* Gallery grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-               {galleryImages.map((image, index) => (
-                  <div
-                     key={index}
-                     className="group relative aspect-square overflow-hidden rounded-lg border border-elden-mist shadow-gold hover:shadow-gold-intense hover:scale-[1.02] transition-all duration-500 cursor-pointer animate-slideUp"
-                     style={{ animationDelay: `${index * 0.1}s` }}
-                     onClick={() => openLightbox(index)}
-                  >
-                     <img
-                        src={image.src}
-                        alt={image.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                     />
-                     <div className="absolute inset-0 bg-gradient-to-t from-elden-dark via-elden-dark/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <div className="absolute bottom-0 left-0 right-0 p-4">
-                           <span className="inline-block px-2 py-1 bg-elden-gold text-elden-dark text-xs font-cinzel font-semibold rounded mb-2">
-                              {image.category}
-                           </span>
-                           <h3 className="font-cinzel text-lg font-bold text-gold mb-1">
-                              {image.title}
-                           </h3>
-                           <p className="font-garamond text-sm text-gold-light">
-                              {image.description}
-                           </p>
+            {loading ? (
+               <div className="text-center py-12">
+                  <p className="font-garamond text-lg text-muted-foreground/70">
+                     Loading chronicles...
+                  </p>
+               </div>
+            ) : galleryImages.length === 0 ? (
+               <div className="text-center py-12">
+                  <p className="font-garamond text-lg text-muted-foreground/70">
+                     No chronicles found. Add images to event folders to see
+                     them here.
+                  </p>
+               </div>
+            ) : (
+               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {galleryImages.map((image, index) => (
+                     <div
+                        key={index}
+                        className="group relative aspect-square overflow-hidden rounded-lg border border-elden-mist shadow-gold hover:shadow-gold-intense hover:scale-[1.02] transition-all duration-500 cursor-pointer animate-slideUp"
+                        style={{ animationDelay: `${index * 0.1}s` }}
+                        onClick={() => openLightbox(index)}
+                     >
+                        <img
+                           src={image.src}
+                           alt={image.title}
+                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-elden-dark via-elden-dark/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                           <div className="absolute bottom-0 left-0 right-0 p-4">
+                              <span className="inline-block px-2 py-1 bg-elden-gold text-elden-dark text-xs font-cinzel font-semibold rounded mb-2">
+                                 {image.category}
+                              </span>
+                              <h3 className="font-cinzel text-lg font-bold text-gold mb-1">
+                                 {image.title}
+                              </h3>
+                              <p className="font-garamond text-sm text-gold-light">
+                                 {image.description}
+                              </p>
+                           </div>
                         </div>
                      </div>
-                  </div>
-               ))}
-            </div>
+                  ))}
+               </div>
+            )}
          </div>
 
          {/* Lightbox */}

@@ -1,4 +1,11 @@
-import { ShoppingCart, Brain, HeartPulse, MessageSquare } from "lucide-react";
+import {
+   Filter,
+   ShoppingCart,
+   Brain,
+   HeartPulse,
+   MessageSquare,
+   Lock,
+} from "lucide-react";
 import ProjectCard from "./ProjectCard";
 
 const ProjectsSection = () => {
@@ -39,6 +46,40 @@ const ProjectsSection = () => {
          ],
          year: "2025",
          category: "Healthcare",
+      },
+      {
+         icon: Filter,
+         title: "SuperCleaner",
+         description:
+            "A Chrome extension that lets users permanently hide unwanted elements on websites, such as ads, pop-ups, images, and cluttered sections.",
+         technologies: [
+            "JavaScript",
+            "HTML",
+            "CSS",
+            "Chrome Extensions (Manifest V3)",
+         ],
+         year: "2025",
+         category: "Productivity",
+         githubLink:
+            "https://github.com/Hallous-Yassine/super-cleaner-extension",
+      },
+      {
+         icon: Lock,
+         title: "CryptoVerse",
+         description:
+            "A web-based cryptography demo showcasing hybrid encryption using TRNG-generated RSA keys from a Raspberry Pi and AES-256-GCM via the Web Crypto API.",
+         technologies: [
+            "React",
+            "Web Crypto API",
+            "AES-256-GCM",
+            "RSA-OAEP",
+            "Raspberry Pi",
+            "TRNG",
+            "Framer Motion",
+         ],
+         year: "2025",
+         category: "Cybersecurity",
+         githubLink: "https://github.com/Reoozi/pattern-trust",
       },
       {
          icon: MessageSquare,
