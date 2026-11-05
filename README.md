@@ -103,6 +103,14 @@ npm run build
 npm run deploy
 ```
 
+### Automatic deployment
+
+The repository also includes a GitHub Actions workflow at
+`.github/workflows/deploy-pages.yml`. After pushing changes to the `main`
+branch with GitHub Desktop, GitHub automatically builds and deploys the site.
+In the repository settings, go to **Pages** and set the source to **GitHub
+Actions**. Once enabled, local `npm run deploy` is no longer needed.
+
 The editable content sections are `skills.json`, `certificates.json`,
 `projects.json`, `timeline.json`, and `education.json`.
 Internships are editable in `internships.json`. IEEE activity photos are
