@@ -125,6 +125,24 @@ export async function loadGalleryImages(): Promise<GalleryImage[]> {
    return images;
 }
 
+export async function loadIEEEImages(): Promise<GalleryImage[]> {
+   const imageModules = import.meta.glob<{ default: string }>(
+      "@/assets/ieee/**/*.{jpg,jpeg,png,gif,webp}",
+      { eager: true }
+   );
+   return Object.entries(imageModules).map(([path, module]) => {
+      const pathParts = path.split("/");
+      const year = pathParts[pathParts.length - 2];
+      return {
+         src: module.default,
+         title: `IEEE Activities ${year}`,
+         description: `IEEE activities organized in ${year}`,
+         category: "IEEE",
+         event: year,
+      };
+   });
+}
+
 /**
  * Formats event folder name into readable title
  * Example: "team-project" -> "Team Project"

@@ -1,53 +1,9 @@
 import { useState } from "react";
 import { Award, X } from "lucide-react";
-import nvidiaCert from "@/assets/certificates/nvidia-cert.jpg";
-import fortinetCert from "@/assets/certificates/cybersecurityfun.png";
-import deepLearningCert from "@/assets/certificates/DEEPLEARNING.png";
-import ciscoCyberCert from "@/assets/certificates/introcyber.png";
-import ciscoNetworkingCert from "@/assets/certificates/notiondebasecisco.png";
+import { certificateItems } from "@/lib/content";
 
 const CertificatesSection = () => {
    const [selectedCert, setSelectedCert] = useState<number | null>(null);
-
-   const certificates = [
-      {
-         image: fortinetCert,
-         title: "Certified Fundamentals in Cybersecurity",
-         issuer: "FORTINET",
-         date: "May 2025",
-         description: "Certified in network security and firewall management",
-         skills: [
-            "Network Security",
-            "Firewall Management",
-            "Threat Detection",
-         ],
-      },
-      {
-         image: deepLearningCert,
-         title: "Fundamentals in Deep Learning",
-         issuer: "NVIDIA",
-         date: "September 2025",
-         description:
-            "Certified in deep learning fundamentals and neural network architecture",
-         skills: ["Deep Learning", "Neural Networks", "AI/ML"],
-      },
-      {
-         image: ciscoCyberCert,
-         title: "Certified Cybersecurity Introduction",
-         issuer: "CISCO",
-         date: "October 2025",
-         description: "Foundation in networking principles and infrastructure",
-         skills: ["Networking", "Routing", "Network Architecture"],
-      },
-      {
-         image: ciscoNetworkingCert,
-         title: "Certified Networking Basics",
-         issuer: "CISCO",
-         date: "March 2025",
-         description: "Foundation in networking principles and infrastructure",
-         skills: ["Networking", "Routing", "Network Architecture"],
-      },
-   ];
 
    return (
       <section
@@ -73,7 +29,7 @@ const CertificatesSection = () => {
 
             {/* Certificates grid */}
             <div className="grid md:grid-cols-2 gap-6">
-               {certificates.map((cert, index) => (
+               {certificateItems.map((cert, index) => (
                   <div
                      key={index}
                      className="group relative bg-card border border-elden-mist rounded-lg overflow-hidden shadow-gold hover:shadow-gold-intense hover:scale-[1.02] transition-all duration-500 cursor-pointer animate-slideUp"
@@ -82,7 +38,7 @@ const CertificatesSection = () => {
                   >
                      <div className="relative aspect-[16/9] overflow-hidden">
                         <img
-                           src={cert.image}
+                           src={cert.imageUrl}
                            alt={`Certificate: ${cert.title} from ${cert.issuer}`}
                            className="w-full h-full object-contain bg-elden-dark/50 transition-transform duration-500 group-hover:scale-105"
                            loading="lazy"
@@ -130,8 +86,8 @@ const CertificatesSection = () => {
 
                <div className="max-w-2xl w-full bg-card border-2 border-gold rounded-lg overflow-hidden shadow-gold-intense my-8">
                   <img
-                     src={certificates[selectedCert].image}
-                     alt={certificates[selectedCert].title}
+                     src={certificateItems[selectedCert].imageUrl}
+                     alt={certificateItems[selectedCert].title}
                      className="w-full h-auto max-h-[60vh] object-contain"
                   />
                   <div className="p-6">
@@ -141,21 +97,21 @@ const CertificatesSection = () => {
                         </div>
                         <div>
                            <h3 className="font-cinzel text-xl font-bold text-gold mb-1">
-                              {certificates[selectedCert].title}
+                              {certificateItems[selectedCert].title}
                            </h3>
                            <p className="font-garamond text-sm text-gold-light">
-                              {certificates[selectedCert].issuer}
+                              {certificateItems[selectedCert].issuer}
                            </p>
                            <p className="font-garamond text-xs text-muted-foreground">
-                              {certificates[selectedCert].date}
+                              {certificateItems[selectedCert].date}
                            </p>
                         </div>
                      </div>
                      <p className="font-garamond text-base text-muted-foreground mb-4 italic">
-                        {certificates[selectedCert].description}
+                        {certificateItems[selectedCert].description}
                      </p>
                      <div className="flex flex-wrap gap-2">
-                        {certificates[selectedCert].skills.map((skill) => (
+                        {certificateItems[selectedCert].skills.map((skill) => (
                            <span
                               key={skill}
                               className="px-2.5 py-1 bg-elden-dark-light text-gold-light border border-elden-mist rounded-md font-garamond text-xs"

@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Languages",
+    "rune": "Core Programming",
+    "skills": ["JS", "TS", "PHP", "C/C++", "Java", "Python"],
+    "description": "Proficient in multiple programming languages for diverse development needs"
+  },
+  {
+    "title": "Frameworks",
+    "rune": "Web Development",
+    "skills": ["Spring Boot", "Laravel", "React.js"],
+    "description": "Modern frameworks for building scalable and maintainable applications"
+  },
+  {
+    "title": "Databases",
+    "rune": "Data Management",
+    "skills": ["MySQL", "MongoDB"],
+    "description": "Database design and management for efficient data storage"
+  },
+  {
+    "title": "Embedded Systems",
+    "rune": "Hardware Programming",
+    "skills": ["VHDL", "Arduino", "ESP32", "STM32", "Raspberry Pi"],
+    "description": "Hardware design and embedded system development expertise"
+  },
+  {
+    "title": "Systems & Security",
+    "rune": "DevOps & Security",
+    "skills": ["Kali Linux", "Git", "Postman"],
+    "description": "Security tools, version control, and API testing"
+  },
+  {
+    "title": "Design Tools",
+    "rune": "UI/UX Design",
+    "skills": ["Figma", "Canva"],
+    "description": "Design tools for creating user interfaces and visual content"
+  }
+]

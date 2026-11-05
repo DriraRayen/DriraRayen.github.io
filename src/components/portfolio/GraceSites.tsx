@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
    Home,
@@ -10,12 +10,13 @@ import {
    Scroll,
    Mail,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 interface GraceSite {
    id: string;
    label: string;
    position: number;
-   icon: any;
+   icon: LucideIcon;
    path: string;
 }
 
@@ -26,7 +27,7 @@ const GraceSites = () => {
    const [isVisible, setIsVisible] = useState(false);
    const [hasScrolled, setHasScrolled] = useState(false);
 
-   const graceSites: GraceSite[] = [
+   const graceSites = useMemo<GraceSite[]>(() => [
       {
          id: "hero",
          label: "The Beginning",
@@ -83,7 +84,7 @@ const GraceSites = () => {
          icon: Mail,
          path: "#contact",
       },
-   ];
+   ], []);
 
    useEffect(() => {
       const handleScroll = () => {
@@ -126,7 +127,7 @@ const GraceSites = () => {
       return () => {
          window.removeEventListener("scroll", handleScroll);
       };
-   }, []);
+   }, [graceSites]);
 
    const scrollToSection = (sectionId: string) => {
       document

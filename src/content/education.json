@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Computer Engineering Student",
+    "institution": "Institut Supérieur d'Informatique et des Techniques de Communication (ISITCom)",
+    "location": "Hammam Sousse, Tunisia",
+    "status": "In Progress",
+    "period": "2023 - 2026",
+    "description": "Third-year computer engineering student specializing in Internet of Things and embedded systems.",
+    "tags": ["Embedded Systems", "IoT Architecture", "Network Security", "Cybersecurity", "Artificial Intelligence"]
+  },
+  {
+    "title": "Baccalaureate in Mathematics",
+    "institution": "Secondary Education",
+    "location": "Tunisia",
+    "status": "Completed",
+    "period": "2023",
+    "description": "Specialized in Mathematics with strong foundations in analytical thinking, problem-solving, and mathematical reasoning. This rigorous academic background laid the groundwork for my next studies.",
+    "tags": ["Mathematics", "Physics", "Problem solving"]
+  }
+]

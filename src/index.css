@@ -145,6 +145,7 @@ All colors MUST be HSL.
    body {
       @apply bg-background text-foreground;
       font-family: "EB Garamond", serif;
+      overflow-x: hidden;
    }
 
    /* Apply custom scrollbar to entire website */

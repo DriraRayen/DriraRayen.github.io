@@ -1,59 +1,12 @@
 import { useState } from "react";
 import { Code2, Database, Cpu, Shield, Palette, Server } from "lucide-react";
 import SkillRune from "./SkillRune";
+import { skillCategories } from "@/lib/content";
+
+const skillIcons = { Languages: Code2, Frameworks: Server, Databases: Database, "Embedded Systems": Cpu, "Systems & Security": Shield, "Design Tools": Palette };
 
 const SkillsSection = () => {
    const [activeSkill, setActiveSkill] = useState<string | null>(null);
-
-   const skillCategories = [
-      {
-         icon: Code2,
-         title: "Languages",
-         rune: "Core Programming",
-         skills: ["JS", "TS", "PHP", "C/C++", "Java", "Python"],
-         description:
-            "Proficient in multiple programming languages for diverse development needs",
-      },
-      {
-         icon: Server,
-         title: "Frameworks",
-         rune: "Web Development",
-         skills: ["Spring Boot", "Laravel", "React.js"],
-         description:
-            "Modern frameworks for building scalable and maintainable applications",
-      },
-      {
-         icon: Database,
-         title: "Databases",
-         rune: "Data Management",
-         skills: ["MySQL", "MongoDB"],
-         description:
-            "Database design and management for efficient data storage",
-      },
-      {
-         icon: Cpu,
-         title: "Embedded Systems",
-         rune: "Hardware Programming",
-         skills: ["VHDL", "Arduino", "ESP32", "STM32", "Raspberry Pi"],
-         description:
-            "Hardware design and embedded system development expertise",
-      },
-      {
-         icon: Shield,
-         title: "Systems & Security",
-         rune: "DevOps & Security",
-         skills: ["Kali Linux", "Git", "Postman"],
-         description: "Security tools, version control, and API testing",
-      },
-      {
-         icon: Palette,
-         title: "Design Tools",
-         rune: "UI/UX Design",
-         skills: ["Figma", "Canva"],
-         description:
-            "Design tools for creating user interfaces and visual content",
-      },
-   ];
 
    return (
       <section id="skills" className="relative py-24 px-4 md:px-8 lg:px-16">
@@ -79,6 +32,7 @@ const SkillsSection = () => {
                   <SkillRune
                      key={category.title}
                      {...category}
+                     icon={skillIcons[category.title as keyof typeof skillIcons]}
                      index={index}
                      isActive={activeSkill === category.title}
                      onHover={() => setActiveSkill(category.title)}

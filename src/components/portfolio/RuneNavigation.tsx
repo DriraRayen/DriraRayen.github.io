@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Home, User, Briefcase, Sparkles, Image, Award, Scroll, Mail } from 'lucide-react';
+import { Home, User, Briefcase, Sparkles, Image, Award, Scroll, Mail, GraduationCap, Camera } from 'lucide-react';
 
 const RuneNavigation = () => {
   const navigate = useNavigate();
@@ -11,8 +11,10 @@ const RuneNavigation = () => {
     { path: '/', label: 'Main Menu', icon: Home, rune: '⚔' },
     { path: '/about', label: 'The Wanderer', icon: User, rune: '🜃' },
     { path: '/projects', label: 'Forged Works', icon: Briefcase, rune: '🜁' },
+    { path: '/internships', label: 'Field Training', icon: GraduationCap, rune: '🜅' },
     { path: '/skills', label: 'Rune Mastery', icon: Sparkles, rune: '🜄' },
     { path: '/gallery', label: 'Chronicles', icon: Image, rune: '🜂' },
+    { path: '/ieee-gallery', label: 'IEEE Activities', icon: Camera, rune: '🜆' },
     { path: '/certificates', label: 'Sacred Seals', icon: Award, rune: '⚜' },
     { path: '/timeline', label: 'Battle Log', icon: Scroll, rune: '⚔' },
     { path: '/contact', label: 'Summon Stone', icon: Mail, rune: '✉' },
@@ -32,15 +34,15 @@ const RuneNavigation = () => {
 
   return (
     <div
-      className={`fixed right-8 top-1/2 -translate-y-1/2 z-40 transition-all duration-1000 ${
+      className={`fixed right-8 top-1/2 -translate-y-1/2 z-40 transition-all duration-1000 max-md:left-2 max-md:right-2 max-md:top-auto max-md:bottom-1 max-md:translate-y-0 max-md:translate-x-0 max-md:rounded-lg max-md:border max-md:border-elden-gold/30 max-md:bg-elden-dark/90 max-md:px-1 max-md:backdrop-blur-md ${
         isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
       }`}
     >
       {/* Mystical path line connecting runes */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-elden-mist via-elden-gold/30 to-elden-mist" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-elden-mist via-elden-gold/30 to-elden-mist max-md:top-1/2 max-md:left-0 max-md:right-0 max-md:w-full max-md:h-px max-md:translate-x-0 max-md:-translate-y-1/2" />
 
       {/* Rune navigation points */}
-      <div className="relative flex flex-col gap-8 py-4">
+      <div className="relative flex flex-col gap-8 py-4 max-md:flex-row max-md:gap-4 max-md:overflow-x-auto max-md:px-2 max-md:py-3 max-md:touch-pan-x">
         {runePoints.map((point, index) => {
           const Icon = point.icon;
           const isActive = location.pathname === point.path;
@@ -50,7 +52,8 @@ const RuneNavigation = () => {
             <button
               key={point.path}
               onClick={() => navigateToPage(point.path)}
-              className="group relative"
+              title={point.label}
+              className="group relative flex-shrink-0 max-md:flex max-md:items-center max-md:gap-1.5 max-md:rounded-full max-md:border max-md:border-elden-mist max-md:bg-card/80 max-md:px-2 max-md:py-1.5"
               aria-label={`Navigate to ${point.label}`}
             >
               {/* Outer glow ring */}
@@ -91,9 +94,13 @@ const RuneNavigation = () => {
                 )}
               </div>
 
+              <span className="hidden max-md:block whitespace-nowrap font-cinzel text-[10px] uppercase tracking-wide text-gold-light">
+                {point.label}
+              </span>
+
               {/* Tooltip label */}
               <div
-                className={`absolute right-full mr-4 top-1/2 -translate-y-1/2 whitespace-nowrap transition-all duration-300 pointer-events-none ${
+                className={`absolute right-full mr-4 top-1/2 -translate-y-1/2 whitespace-nowrap transition-all duration-300 pointer-events-none max-md:hidden ${
                   isActive || isPassed
                     ? 'opacity-100 translate-x-0'
                     : 'opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0'

@@ -1,0 +1,34 @@
+[
+  {
+    "image": "cybersecurityfun.png",
+    "title": "Certified Fundamentals in Cybersecurity",
+    "issuer": "FORTINET",
+    "date": "May 2025",
+    "description": "Certified in network security and firewall management",
+    "skills": ["Network Security", "Firewall Management", "Threat Detection"]
+  },
+  {
+    "image": "DEEPLEARNING.png",
+    "title": "Fundamentals in Deep Learning",
+    "issuer": "NVIDIA",
+    "date": "September 2025",
+    "description": "Certified in deep learning fundamentals and neural network architecture",
+    "skills": ["Deep Learning", "Neural Networks", "AI/ML"]
+  },
+  {
+    "image": "introcyber.png",
+    "title": "Certified Cybersecurity Introduction",
+    "issuer": "CISCO",
+    "date": "October 2025",
+    "description": "Foundation in networking principles and infrastructure",
+    "skills": ["Networking", "Routing", "Network Architecture"]
+  },
+  {
+    "image": "notiondebasecisco.png",
+    "title": "Certified Networking Basics",
+    "issuer": "CISCO",
+    "date": "March 2025",
+    "description": "Foundation in networking principles and infrastructure",
+    "skills": ["Networking", "Routing", "Network Architecture"]
+  }
+]

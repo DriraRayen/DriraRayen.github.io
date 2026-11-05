@@ -7,6 +7,8 @@ import {
    Award,
    Scroll,
    Mail,
+   GraduationCap,
+   Camera,
    Volume2,
    VolumeX,
 } from "lucide-react";
@@ -40,6 +42,13 @@ const Menu = () => {
          desc: "Explore legendary creations and artifacts",
       },
       {
+         path: "/internships",
+         label: "Field Training",
+         icon: GraduationCap,
+         rune: "🜅",
+         desc: "Record practical experience and internships",
+      },
+      {
          path: "/skills",
          label: "Rune Mastery",
          icon: Sparkles,
@@ -52,6 +61,13 @@ const Menu = () => {
          icon: Image,
          rune: "🜂",
          desc: "Witness battles fought and victories won",
+      },
+      {
+         path: "/ieee-gallery",
+         label: "IEEE Activities",
+         icon: Camera,
+         rune: "🜆",
+         desc: "Browse IEEE activities by year",
       },
       {
          path: "/certificates",

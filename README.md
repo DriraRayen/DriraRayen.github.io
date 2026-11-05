@@ -89,6 +89,31 @@ DriraRayen.github.io/
 -  Node.js 18+
 -  npm or yarn
 
+## Local content dashboard
+
+Run `npm run admin`, then open `http://127.0.0.1:4173` in your browser. The
+dashboard edits the JSON files in `src/content/` and uploads images into the
+existing certificate or gallery asset folders. It is intentionally local-only
+and is never included in the public GitHub Pages build.
+
+After saving changes, preview and deploy the site as usual:
+
+```bash
+npm run build
+npm run deploy
+```
+
+The editable content sections are `skills.json`, `certificates.json`,
+`projects.json`, `timeline.json`, and `education.json`.
+Internships are editable in `internships.json`. IEEE activity photos are
+uploaded through the dashboard using the IEEE upload type and a year folder,
+for example `2026`.
+
+Dashboard saves validate the content structure and create a timestamped
+`.bak` copy before replacing a JSON file. Invalid certificate references,
+unsupported project/timeline icons, malformed entries, and non-year IEEE
+folders are rejected.
+
 ---
 
 ## 📦 Key Sections

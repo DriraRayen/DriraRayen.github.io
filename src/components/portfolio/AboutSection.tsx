@@ -1,4 +1,6 @@
-import { Shield, Cpu, Users, GraduationCap } from "lucide-react";
+import { Shield, Cpu, Users } from "lucide-react";
+import { educationItems } from "@/lib/content";
+import EducationCard from "./EducationCard";
 
 const AboutSection = () => {
    return (
@@ -177,137 +179,9 @@ const AboutSection = () => {
                </div>
 
                <div className="max-w-4xl mx-auto space-y-4 md:space-y-6">
-                  {/* Current Education */}
-                  <div className="relative group animate-slideUp">
-                     <div className="absolute -inset-2 bg-elden-gold/5 rounded-xl blur-xl group-hover:bg-elden-gold/10 transition-all duration-500" />
-
-                     <div className="relative bg-elden-dark-light/50 backdrop-blur-sm border border-elden-gold/30 p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl">
-                        {/* Decorative corner accents */}
-                        <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-elden-gold/50" />
-                        <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-elden-gold/50" />
-
-                        <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
-                           <div className="flex-shrink-0">
-                              <div className="p-3 sm:p-4 bg-elden-dark rounded-lg border-2 border-gold/60 shadow-lg shadow-gold/20">
-                                 <GraduationCap className="w-8 h-8 sm:w-10 sm:h-10 text-gold" />
-                              </div>
-                           </div>
-                           <div className="flex-grow w-full">
-                              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-0 mb-3">
-                                 <div className="flex-grow">
-                                    <h4 className="font-cinzel text-xl sm:text-2xl font-bold text-gold mb-2">
-                                       Computer Engineering Student
-                                    </h4>
-                                    <p className="font-garamond text-base sm:text-lg text-foreground/90 mb-1">
-                                       Institut Supérieur d'Informatique et des
-                                       Techniques de Communication (ISITCom)
-                                    </p>
-                                    <p className="font-garamond text-sm sm:text-base text-muted-foreground/70">
-                                       Hammam Sousse, Tunisia
-                                    </p>
-                                 </div>
-                                 <div className="flex sm:flex-col items-center sm:items-end gap-2 sm:gap-0 sm:text-right">
-                                    <span className="inline-block px-3 py-1 bg-elden-gold/20 border border-elden-gold/50 rounded-full text-gold font-cinzel text-xs sm:text-sm mb-0 sm:mb-2">
-                                       In Progress
-                                    </span>
-                                    <p className="font-cinzel text-xs sm:text-sm text-muted-foreground/70">
-                                       2023 - 2026
-                                    </p>
-                                 </div>
-                              </div>
-
-                              <p className="font-garamond text-base text-foreground/80 leading-relaxed mb-4">
-                                 Third-year computer engineering student
-                                 specializing in Internet of Things and embedded
-                                 systems.
-                              </p>
-
-                              <div className="flex flex-wrap gap-2">
-                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
-                                    Embedded Systems
-                                 </span>
-                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
-                                    IoT Architecture
-                                 </span>
-                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
-                                    Network Security
-                                 </span>
-                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
-                                    Cybersecurity
-                                 </span>
-                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
-                                    Artificial Intelligence
-                                 </span>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-
-                  {/* Baccalaureate */}
-                  <div
-                     className="relative group animate-slideUp"
-                     style={{ animationDelay: "0.1s" }}
-                  >
-                     <div className="absolute -inset-2 bg-elden-gold/5 rounded-xl blur-xl group-hover:bg-elden-gold/10 transition-all duration-500" />
-
-                     <div className="relative bg-elden-dark-light/50 backdrop-blur-sm border border-elden-gold/30 p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl">
-                        {/* Decorative corner accents */}
-                        <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-elden-gold/50" />
-                        <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-elden-gold/50" />
-
-                        <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
-                           <div className="flex-shrink-0">
-                              <div className="p-3 sm:p-4 bg-elden-dark rounded-lg border-2 border-gold/60 shadow-lg shadow-gold/20">
-                                 <GraduationCap className="w-8 h-8 sm:w-10 sm:h-10 text-gold" />
-                              </div>
-                           </div>
-                           <div className="flex-grow w-full">
-                              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-0 mb-3">
-                                 <div className="flex-grow">
-                                    <h4 className="font-cinzel text-xl sm:text-2xl font-bold text-gold mb-2">
-                                       Baccalaureate in Mathematics
-                                    </h4>
-                                    <p className="font-garamond text-base sm:text-lg text-foreground/90 mb-1">
-                                       Secondary Education
-                                    </p>
-                                    <p className="font-garamond text-sm sm:text-base text-muted-foreground/70">
-                                       Tunisia
-                                    </p>
-                                 </div>
-                                 <div className="flex sm:flex-col items-center sm:items-end gap-2 sm:gap-0 sm:text-right">
-                                    <span className="inline-block px-3 py-1 bg-green-600/20 border border-green-500/50 rounded-full text-green-400 font-cinzel text-xs sm:text-sm mb-0 sm:mb-2">
-                                       Completed
-                                    </span>
-                                    <p className="font-cinzel text-xs sm:text-sm text-muted-foreground/70">
-                                       2023
-                                    </p>
-                                 </div>
-                              </div>
-
-                              <p className="font-garamond text-base text-foreground/80 leading-relaxed mb-4">
-                                 Specialized in Mathematics with strong
-                                 foundations in analytical thinking,
-                                 problem-solving, and mathematical reasoning.
-                                 This rigorous academic background laid the
-                                 groundwork for my next studies.
-                              </p>
-
-                              <div className="flex flex-wrap gap-2">
-                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
-                                    Mathematics
-                                 </span>
-                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
-                                    Physics
-                                 </span>
-                                 <span className="px-3 py-1 bg-elden-gold/10 border border-elden-gold/30 rounded-full text-xs font-garamond text-muted-foreground/80">
-                                    Problem solving
-                                 </span>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                  {educationItems.map((education, index) => (
+                     <EducationCard key={`${education.institution}-${education.title}`} education={education} index={index} />
+                  ))}
                </div>
             </div>
          </div>

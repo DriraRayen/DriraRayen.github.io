@@ -12,6 +12,8 @@ import ContactSection from "@/components/portfolio/ContactSection";
 import EldenRingSection from "@/components/portfolio/EldenRingSection";
 import AchievementsModal from "@/components/portfolio/AchievementsModal";
 import ScoutSection from "@/components/portfolio/ScoutSection";
+import InternshipsSection from "@/components/portfolio/InternshipsSection";
+import IEEEGallerySection from "@/components/portfolio/IEEEGallerySection";
 import { Menu } from "lucide-react";
 
 const Index = () => {
@@ -55,10 +57,12 @@ const Index = () => {
             "hero",
             "about",
             "projects",
+            "internships",
             "skills",
             "certificates",
             "timeline",
             "scouts",
+            "ieee-gallery",
             "contact",
          ];
          for (const sectionId of sections) {
@@ -92,10 +96,12 @@ const Index = () => {
       { id: "hero", label: "Home" },
       { id: "about", label: "About" },
       { id: "projects", label: "Projects" },
+      { id: "internships", label: "Internships" },
       { id: "skills", label: "Skills" },
       { id: "certificates", label: "Certificates" },
       { id: "timeline", label: "Timeline" },
       { id: "scouts", label: "Scouts" },
+      { id: "ieee-gallery", label: "IEEE" },
       { id: "contact", label: "Contact" },
    ];
 
@@ -256,10 +262,12 @@ const Index = () => {
             <HeroSection />
             <AboutSection />
             <ProjectsSection />
+            <InternshipsSection />
             <SkillsSection />
             <CertificatesSection />
             <TimelineSection />
             <ScoutSection />
+            <IEEEGallerySection />
             <ContactSection />
          </main>
 
