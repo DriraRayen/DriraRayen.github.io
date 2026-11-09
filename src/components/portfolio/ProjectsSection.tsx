@@ -1,8 +1,12 @@
 import { Filter, ShoppingCart, Brain, HeartPulse, MessageSquare, Lock } from "lucide-react";
 import ProjectCard from "./ProjectCard";
 import { projectItems } from "@/lib/content";
+import projectPlaceholder from "@/assets/hero-background.jpg";
 
 const projectIcons = { Filter, ShoppingCart, Brain, HeartPulse, MessageSquare, Lock };
+const projectImages = {
+   placeholder: projectPlaceholder,
+};
 
 const ProjectsSection = () => {
    return (
@@ -29,7 +33,13 @@ const ProjectsSection = () => {
             {/* Projects grid */}
             <div className="grid md:grid-cols-2 gap-8">
                {projectItems.map((project, index) => (
-                  <ProjectCard key={project.title} {...project} icon={projectIcons[project.icon as keyof typeof projectIcons]} index={index} />
+                  <ProjectCard
+                     key={project.title}
+                     {...project}
+                     imageUrl={projectImages[project.image as keyof typeof projectImages]}
+                     icon={projectIcons[project.icon as keyof typeof projectIcons]}
+                     index={index}
+                  />
                ))}
             </div>
          </div>

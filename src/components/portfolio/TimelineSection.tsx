@@ -18,12 +18,14 @@ import {
 import { timelineEvents as contentTimelineEvents } from "@/lib/content";
 
 const timelineIcons = { Calendar, Briefcase, GraduationCap, Trophy, Users, Palette, Flag };
+type TimelineTab = "ieee" | "other";
 
 const TimelineSection = () => {
+   const [activeTab, setActiveTab] = useState<TimelineTab>("other");
    const [activeImageIndexes, setActiveImageIndexes] = useState<{
-      [key: number]: number;
+      [key: string]: number;
    }>({});
-   const [showGallery, setShowGallery] = useState<{ [key: number]: boolean }>(
+   const [showGallery, setShowGallery] = useState<{ [key: string]: boolean }>(
       {}
    );
    const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
@@ -48,19 +50,25 @@ const TimelineSection = () => {
       ...event,
       icon: timelineIcons[event.icon as keyof typeof timelineIcons],
    }));
+   const visibleTimelineEvents = timelineEvents.filter((event) => {
+      const isIeeeEvent =
+         event.title.toLowerCase().includes("ieee") ||
+         event.details.some((detail) => detail.toLowerCase().includes("ieee"));
+      return activeTab === "ieee" ? isIeeeEvent : !isIeeeEvent;
+   });
 
-   const handleNextImage = (eventIndex: number, totalImages: number) => {
+   const handleNextImage = (eventKey: string, totalImages: number) => {
       setActiveImageIndexes((prev) => ({
          ...prev,
-         [eventIndex]: ((prev[eventIndex] || 0) + 1) % totalImages,
+         [eventKey]: ((prev[eventKey] || 0) + 1) % totalImages,
       }));
    };
 
-   const handlePrevImage = (eventIndex: number, totalImages: number) => {
+   const handlePrevImage = (eventKey: string, totalImages: number) => {
       setActiveImageIndexes((prev) => ({
          ...prev,
-         [eventIndex]:
-            ((prev[eventIndex] || 0) - 1 + totalImages) % totalImages,
+         [eventKey]:
+            ((prev[eventKey] || 0) - 1 + totalImages) % totalImages,
       }));
    };
 
@@ -89,6 +97,39 @@ const TimelineSection = () => {
                </p>
             </div>
 
+            <div className="flex justify-center mb-12">
+               <div
+                  className="inline-flex flex-col sm:flex-row gap-2 p-2 rounded-xl border-2 border-elden-gold/30 bg-elden-dark-light/60 shadow-lg shadow-elden-gold/10"
+                  role="tablist"
+                  aria-label="Filter events timeline"
+               >
+                  {[
+                     { id: "other" as const, label: "Other Events", icon: Flag },
+                     { id: "ieee" as const, label: "IEEE Events", icon: Trophy },
+                  ].map((tab) => {
+                     const Icon = tab.icon;
+                     const isActive = activeTab === tab.id;
+                     return (
+                        <button
+                           key={tab.id}
+                           type="button"
+                           role="tab"
+                           aria-selected={isActive}
+                           onClick={() => setActiveTab(tab.id)}
+                           className={`flex items-center justify-center gap-2 px-5 py-3 rounded-lg border font-cinzel text-sm sm:text-base tracking-wide transition-all duration-300 ${
+                              isActive
+                                 ? "border-gold bg-elden-gold/20 text-gold shadow-lg shadow-elden-gold/30"
+                                 : "border-transparent text-muted-foreground hover:border-elden-gold/40 hover:text-gold-light"
+                           }`}
+                        >
+                           <Icon className="w-4 h-4" />
+                           {tab.label}
+                        </button>
+                     );
+                  })}
+               </div>
+            </div>
+
             {/* Timeline - Vertical Design */}
             <div className="relative max-w-4xl mx-auto">
                {/* Vertical line on left */}
@@ -96,7 +137,7 @@ const TimelineSection = () => {
 
                {/* Timeline events */}
                <div className="space-y-8 md:space-y-12">
-                  {timelineEvents.map((event, index) => {
+                  {visibleTimelineEvents.map((event, index) => {
                      const Icon = event.icon;
                      // Dynamically filter images for this event
                      const eventImages = filterImagesByEvent(
@@ -105,7 +146,7 @@ const TimelineSection = () => {
                      );
                      return (
                         <div
-                           key={index}
+                           key={event.eventKey}
                            className="relative pl-8 sm:pl-12 md:pl-24 animate-slideUp group"
                            style={{ animationDelay: `${index * 0.15}s` }}
                         >
@@ -161,7 +202,7 @@ const TimelineSection = () => {
 
                                  {/* Image Gallery */}
                                  {eventImages.length > 0 &&
-                                    showGallery[index] && (
+                                    showGallery[event.eventKey] && (
                                        <div className="mt-6 relative group/gallery">
                                           <div className="relative w-full rounded-lg border-2 border-elden-gold/30 bg-elden-dark">
                                              {/* Image */}
@@ -169,12 +210,12 @@ const TimelineSection = () => {
                                                 src={
                                                    eventImages[
                                                       activeImageIndexes[
-                                                         index
+                                                         event.eventKey
                                                       ] || 0
                                                    ]?.src
                                                 }
                                                 alt={`${event.title} - Image ${
-                                                   (activeImageIndexes[index] ||
+                                                   (activeImageIndexes[event.eventKey] ||
                                                       0) + 1
                                                 }`}
                                                 className="w-full h-auto object-contain rounded-lg"
@@ -185,7 +226,7 @@ const TimelineSection = () => {
                                                    <button
                                                       onClick={() =>
                                                          handlePrevImage(
-                                                            index,
+                                                            event.eventKey,
                                                             eventImages.length
                                                          )
                                                       }
@@ -197,7 +238,7 @@ const TimelineSection = () => {
                                                    <button
                                                       onClick={() =>
                                                          handleNextImage(
-                                                            index,
+                                                            event.eventKey,
                                                             eventImages.length
                                                          )
                                                       }
@@ -213,7 +254,7 @@ const TimelineSection = () => {
                                                 <div className="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 px-2 sm:px-3 py-1 sm:py-1.5 bg-elden-dark/90 backdrop-blur-sm border border-elden-gold/50 rounded-md">
                                                    <span className="text-[10px] sm:text-xs font-cinzel text-gold">
                                                       {(activeImageIndexes[
-                                                         index
+                                                         event.eventKey
                                                       ] || 0) + 1}{" "}
                                                       / {eventImages.length}
                                                    </span>
@@ -231,14 +272,14 @@ const TimelineSection = () => {
                                                             setActiveImageIndexes(
                                                                (prev) => ({
                                                                   ...prev,
-                                                                  [index]:
+                                                                  [event.eventKey]:
                                                                      imgIndex,
                                                                })
                                                             )
                                                          }
                                                          className={`flex-shrink-0 w-12 h-9 sm:w-16 sm:h-12 rounded-md border-2 overflow-hidden transition-all duration-300 ${
                                                             (activeImageIndexes[
-                                                               index
+                                                               event.eventKey
                                                             ] || 0) === imgIndex
                                                                ? "border-gold shadow-lg shadow-gold/30"
                                                                : "border-elden-gold/30 hover:border-elden-gold/60"
@@ -278,13 +319,13 @@ const TimelineSection = () => {
                                           onClick={() =>
                                              setShowGallery((prev) => ({
                                                 ...prev,
-                                                [index]: !prev[index],
+                                                [event.eventKey]: !prev[event.eventKey],
                                              }))
                                           }
                                           className="w-full sm:w-auto flex-shrink-0 px-4 sm:px-6 py-2 sm:py-2.5 bg-elden-gold/20 border-2 border-elden-gold/50 rounded-lg font-cinzel text-sm sm:text-base text-gold hover:bg-elden-gold/30 hover:border-gold hover:shadow-lg hover:shadow-gold/30 transition-all duration-300 flex items-center justify-center gap-2"
                                        >
                                           <Palette className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                                          {showGallery[index]
+                                          {showGallery[event.eventKey]
                                              ? "Hide Photos"
                                              : `View Photos (${eventImages.length})`}
                                        </button>

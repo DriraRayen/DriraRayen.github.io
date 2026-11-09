@@ -5,7 +5,7 @@ const InternshipsSection = () => (
    <section id="internships" className="relative py-24 px-4 md:px-8 lg:px-16 bg-elden-dark-light/30">
       <div className="max-w-6xl mx-auto">
          <div className="text-center mb-16 animate-fadeIn">
-            <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-gold mb-4">Internships</h2>
+            <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-gold mb-4">Experience</h2>
             <div className="flex items-center justify-center gap-4 mb-6">
                <div className="h-px w-20 bg-gradient-to-r from-transparent via-elden-gold/70 to-elden-gold/40" />
                <div className="w-2 h-2 bg-elden-gold rounded-full shadow-lg shadow-elden-gold/50" />

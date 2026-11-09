@@ -7,6 +7,7 @@ interface ProjectCardProps {
    technologies: string[];
    year: string;
    category: string;
+   imageUrl: string;
    index: number;
    githubLink?: string;
    liveLink?: string;
@@ -19,6 +20,7 @@ const ProjectCard = ({
    technologies,
    year,
    category,
+   imageUrl,
    index,
    githubLink,
    liveLink,
@@ -31,21 +33,28 @@ const ProjectCard = ({
          aria-label={`Project: ${title}`}
       >
          {/* Header */}
-         <div className="flex items-start justify-between mb-6">
-            <div className="p-4 bg-elden-dark-light rounded-lg border border-gold group-hover:animate-glow">
+         <div className="flex items-center gap-4 mb-6">
+            <div className="flex-shrink-0 p-4 bg-elden-dark-light rounded-lg border border-gold group-hover:animate-glow">
                <Icon className="w-8 h-8 text-gold" />
             </div>
-            <div className="text-right">
+            <h3 className="min-w-0 flex-1 font-cinzel text-xl md:text-2xl font-bold text-foreground group-hover:text-gold transition-colors">
+               {title}
+            </h3>
+            <div className="flex-shrink-0 text-right">
                <span className="font-garamond text-sm text-gold border border-gold px-3 py-1 rounded-full">
                   {category}
                </span>
             </div>
          </div>
 
-         {/* Title */}
-         <h3 className="font-cinzel text-xl md:text-2xl font-bold text-foreground mb-3 group-hover:text-gold transition-colors">
-            {title}
-         </h3>
+         {/* Interface preview */}
+         <div className="mb-6 overflow-hidden rounded-lg border border-elden-gold/30 bg-elden-dark">
+            <img
+               src={imageUrl}
+               alt={`${title} interface preview`}
+               className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+         </div>
 
          {/* Description */}
          <p className="font-garamond text-muted-foreground leading-relaxed mb-6">

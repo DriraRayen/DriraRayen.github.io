@@ -10,8 +10,8 @@ const RuneNavigation = () => {
   const runePoints = [
     { path: '/', label: 'Main Menu', icon: Home, rune: '⚔' },
     { path: '/about', label: 'The Wanderer', icon: User, rune: '🜃' },
+    { path: '/internships', label: 'Experience', icon: GraduationCap, rune: '🜅' },
     { path: '/projects', label: 'Forged Works', icon: Briefcase, rune: '🜁' },
-    { path: '/internships', label: 'Field Training', icon: GraduationCap, rune: '🜅' },
     { path: '/skills', label: 'Rune Mastery', icon: Sparkles, rune: '🜄' },
     { path: '/gallery', label: 'Chronicles', icon: Image, rune: '🜂' },
     { path: '/ieee-gallery', label: 'IEEE Activities', icon: Camera, rune: '🜆' },

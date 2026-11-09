@@ -360,7 +360,7 @@ const ScoutSection = () => {
             {/* Section Header */}
             <div className="text-center mb-16 animate-fadeIn">
                <h2 className="font-cinzel text-3xl md:text-4xl lg:text-5xl font-bold text-gold mb-6">
-                  Scout Leadership
+                  Scouts Gallery
                </h2>
                <div className="flex items-center justify-center gap-4 mb-6">
                   <div className="h-px w-20 bg-gradient-to-r from-transparent via-elden-gold/70 to-elden-gold/40" />

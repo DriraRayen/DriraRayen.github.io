@@ -43,10 +43,10 @@ const Menu = () => {
       },
       {
          path: "/internships",
-         label: "Field Training",
+         label: "Experience",
          icon: GraduationCap,
          rune: "🜅",
-         desc: "Record practical experience and internships",
+         desc: "Professional experience and practical learning",
       },
       {
          path: "/skills",
@@ -130,7 +130,7 @@ const Menu = () => {
                {/* Header - positioned lower */}
                <div className="absolute top-[15%] left-1/2 -translate-x-1/2 text-center animate-fadeIn z-20">
                   <h1 className="font-cinzel text-5xl md:text-7xl font-bold text-gold glow-gold mb-4">
-                     <span className="hidden sm:inline">RAYEN DRIRA</span>
+                     <span className="hidden whitespace-nowrap sm:inline">RAYEN DRIRA</span>
                      <span className="sm:hidden">RD</span>
                   </h1>
                   <div className="flex items-center justify-center gap-3 mb-4">

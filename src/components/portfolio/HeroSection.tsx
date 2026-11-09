@@ -86,7 +86,7 @@ const HeroSection = () => {
                >
                   {/* Name with enhanced styling */}
                   <h1 className="font-cinzel text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gold tracking-wide leading-tight">
-                     RAYEN DRIRA
+                     <span className="whitespace-nowrap">RAYEN DRIRA</span>
                   </h1>
 
                   {/* Elegant divider */}
@@ -115,16 +115,16 @@ const HeroSection = () => {
                   {/* Enhanced CTA Button */}
                   <button
                      onClick={scrollToAbout}
-                     className="relative inline-flex items-center gap-3 px-10 py-5 bg-transparent border-2 border-gold/70 hover:border-gold rounded-lg hover:bg-gold/10 transition-all duration-300 group overflow-hidden"
+                     className="group relative inline-flex items-center gap-4 overflow-hidden rounded-sm border border-elden-gold/70 bg-black/30 px-10 py-4 font-cinzel shadow-[0_0_22px_rgba(218,165,32,0.12)] transition-all duration-500 hover:-translate-y-1 hover:border-gold hover:bg-elden-gold/10 hover:shadow-[0_0_32px_rgba(218,165,32,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-elden-dark active:translate-y-0"
                      aria-label="Explore my portfolio"
                   >
                      {/* Button shine effect */}
                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
 
-                     <span className="relative font-garamond text-lg font-semibold text-gold group-hover:text-gold-light transition-colors tracking-wide">
+                     <span className="relative text-sm font-semibold uppercase tracking-[0.3em] text-gold transition-colors group-hover:text-gold-light">
                         Game Start
                      </span>
-                     <ArrowDown className="relative w-5 h-5 text-gold group-hover:text-gold-light group-hover:translate-y-1 transition-all" />
+                     <ArrowDown className="relative h-5 w-5 text-gold transition-all duration-300 group-hover:translate-y-1 group-hover:text-gold-light" />
                   </button>
                </div>
             </div>

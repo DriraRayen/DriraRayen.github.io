@@ -9,6 +9,7 @@ import GallerySection from "@/components/portfolio/GallerySection";
 import CertificatesSection from "@/components/portfolio/CertificatesSection";
 import TimelineSection from "@/components/portfolio/TimelineSection";
 import ContactSection from "@/components/portfolio/ContactSection";
+import DispatchSection from "@/components/portfolio/DispatchSection";
 import EldenRingSection from "@/components/portfolio/EldenRingSection";
 import AchievementsModal from "@/components/portfolio/AchievementsModal";
 import ScoutSection from "@/components/portfolio/ScoutSection";
@@ -24,6 +25,7 @@ const Index = () => {
    const [showAchievements, setShowAchievements] = useState(false);
    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
    const [showBackToTop, setShowBackToTop] = useState(false);
+   const [notification, setNotification] = useState<"message" | "cv" | null>(null);
 
    useEffect(() => {
       setIsVisible(true);
@@ -56,13 +58,14 @@ const Index = () => {
          const sections = [
             "hero",
             "about",
-            "projects",
             "internships",
+            "projects",
             "skills",
             "certificates",
             "timeline",
             "scouts",
             "ieee-gallery",
+            "dispatch",
             "contact",
          ];
          for (const sectionId of sections) {
@@ -82,6 +85,15 @@ const Index = () => {
       return () => window.removeEventListener("scroll", handleScroll);
    }, []);
 
+   useEffect(() => {
+      if (!notification) {
+         return;
+      }
+
+      const timeout = window.setTimeout(() => setNotification(null), 5000);
+      return () => window.clearTimeout(timeout);
+   }, [notification]);
+
    const scrollToSection = (sectionId: string) => {
       const element = document.getElementById(sectionId);
       if (element) {
@@ -95,13 +107,14 @@ const Index = () => {
    const sections = [
       { id: "hero", label: "Home" },
       { id: "about", label: "About" },
+      { id: "internships", label: "Experience" },
       { id: "projects", label: "Projects" },
-      { id: "internships", label: "Internships" },
       { id: "skills", label: "Skills" },
       { id: "certificates", label: "Certificates" },
       { id: "timeline", label: "Timeline" },
       { id: "scouts", label: "Scouts" },
       { id: "ieee-gallery", label: "IEEE" },
+      { id: "dispatch", label: "Dispatch" },
       { id: "contact", label: "Contact" },
    ];
 
@@ -112,6 +125,28 @@ const Index = () => {
 
    return (
       <div className="relative min-h-screen bg-elden-dark overflow-hidden">
+         {notification && (
+            <div
+               role="status"
+               className="fixed inset-0 z-[60] flex items-center justify-center bg-black/75 px-4 text-center"
+            >
+               <div className="w-full border-y border-elden-gold/40 bg-black px-4 py-8 shadow-[0_0_40px_rgba(218,165,32,0.2)]">
+                  <p className="font-cinzel text-xs uppercase tracking-[0.35em] text-elden-gold/80">
+                     {notification === "message" ? "Message Delivered" : "Record Acquired"}
+                  </p>
+                  <p className="mt-2 font-cinzel text-2xl uppercase tracking-[0.2em] text-elden-gold sm:text-4xl">
+                     {notification === "message"
+                        ? "You have leveled up"
+                        : "The Tarnished's record is yours"}
+                  </p>
+                  <p className="mt-2 font-garamond text-base text-elden-gold/75">
+                     {notification === "message"
+                        ? "Your dispatch has reached the Lands Between."
+                        : "Your journey may now be studied across the Lands Between."}
+                  </p>
+               </div>
+            </div>
+         )}
          {/* Mystical atmospheric effects with parallax */}
          <div className="parallax-slow">
             <FloatingRunes />
@@ -128,12 +163,12 @@ const Index = () => {
                   : "bg-transparent"
             }`}
          >
-            <div className="max-w-7xl mx-auto px-6 py-5">
-               <div className="flex items-center justify-between">
+            <div className="mx-auto w-full max-w-[1600px] px-5 py-5 sm:px-7 lg:px-10">
+               <div className="flex items-center justify-between md:justify-center">
                   {/* Logo/Name with subtle glow */}
                   <button
                      onClick={() => handleNavClick("hero")}
-                     className="font-cinzel text-xl md:text-2xl font-bold text-gold hover:text-gold-light transition-all duration-300 relative group"
+                     className="relative whitespace-nowrap font-cinzel text-xl font-bold text-gold transition-all duration-300 group hover:text-gold-light md:text-2xl"
                   >
                      <span className="relative z-10">
                         <span className="hidden sm:inline">RAYEN DRIRA</span>
@@ -144,7 +179,7 @@ const Index = () => {
                   </button>
 
                   {/* Desktop Navigation with active indicators */}
-                  <div className="hidden md:flex items-center gap-10">
+                  <div className="ml-12 hidden items-center gap-6 md:flex">
                      {sections.slice(1).map((section) => (
                         <button
                            key={section.id}
@@ -264,14 +299,15 @@ const Index = () => {
          >
             <HeroSection />
             <AboutSection />
-            <ProjectsSection />
             <InternshipsSection />
+            <ProjectsSection />
             <SkillsSection />
             <CertificatesSection />
             <TimelineSection />
             <ScoutSection />
             <IEEEGallerySection />
-            <ContactSection />
+            <DispatchSection onMessageSent={() => setNotification("message")} />
+            <ContactSection onCvDownload={() => setNotification("cv")} />
          </main>
 
          {/* Enhanced Professional Footer */}

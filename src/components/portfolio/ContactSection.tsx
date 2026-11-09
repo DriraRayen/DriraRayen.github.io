@@ -1,7 +1,10 @@
-import { Mail, Github, Linkedin, Phone, MapPin, Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Download, Mail, Github, Linkedin, Phone, MapPin, Send } from "lucide-react";
 
-const ContactSection = () => {
+interface ContactSectionProps {
+   onCvDownload?: () => void;
+}
+
+const ContactSection = ({ onCvDownload = () => undefined }: ContactSectionProps) => {
    return (
       <section
          id="contact"
@@ -25,14 +28,14 @@ const ContactSection = () => {
             </div>
 
             {/* Contact content */}
-            <div className="grid md:grid-cols-2 gap-12">
+            <div className="grid items-stretch md:grid-cols-2 gap-12">
                {/* Left side - Mystical message */}
-               <div className="space-y-6 animate-slideUp">
-                  <div className="bg-card border border-elden-mist p-8 rounded-lg shadow-gold hover:shadow-gold-intense hover:border-elden-gold/50 transition-all duration-300">
-                     <h3 className="font-cinzel text-2xl font-bold text-gold mb-4">
+               <div className="flex h-full flex-col space-y-6 animate-slideUp">
+                  <div className="flex-1 bg-card border border-elden-mist p-8 rounded-lg shadow-gold hover:shadow-gold-intense hover:border-elden-gold/50 transition-all duration-300">
+                     <h3 className="font-cinzel text-2xl font-bold text-gold mb-3">
                         Seek an Alliance?
                      </h3>
-                     <p className="font-garamond text-lg text-muted-foreground leading-relaxed mb-6">
+                     <p className="font-garamond text-lg text-muted-foreground leading-relaxed mb-4">
                         Whether you seek collaboration on mystical projects,
                         wish to discuss the arcane arts of technology, or simply
                         desire to forge a new connection in this vast digital
@@ -59,11 +62,22 @@ const ContactSection = () => {
                         </p>
                      </div>
                   </div>
+
+                  {/* CV */}
+                  <a
+                     href="/Rayen-Drira-CV.pdf"
+                     download="Rayen-Drira-CV.pdf"
+                     onClick={onCvDownload}
+                     className="flex items-center justify-center gap-3 rounded-lg border-2 border-elden-gold/50 bg-card px-6 py-4 font-cinzel text-sm text-gold shadow-gold transition-all duration-300 hover:border-gold hover:bg-elden-gold/10 hover:shadow-gold-intense group"
+                  >
+                     <Download className="w-5 h-5 text-gold group-hover:animate-glow" />
+                     <span>Download My CV</span>
+                  </a>
                </div>
 
                {/* Right side - Contact methods */}
                <div
-                  className="space-y-4 animate-slideUp"
+                  className="flex h-full flex-col space-y-4 animate-slideUp"
                   style={{ animationDelay: "0.2s" }}
                >
                   {/* Email */}

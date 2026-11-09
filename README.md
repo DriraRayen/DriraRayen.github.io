@@ -17,7 +17,7 @@
 -  📱 **Fully Responsive** - Optimized for all devices
 -  ⚡ **Fast & Modern** - Built with React + TypeScript + Vite
 -  🎭 **Interactive UI** - Smooth animations and transitions
--  🖼️ **Scout Leadership Gallery** - 102+ photos showcasing scouting activities
+-  🖼️ **Scouts Gallery** - 102+ photos showcasing scouting activities
 -  🏆 **Achievements & Certifications** - Interactive display of credentials
 -  📊 **Timeline Section** - CTF competitions, hackathons, and events
 -  🎮 **Easter Eggs** - Hidden Elden Ring lore and character stats
