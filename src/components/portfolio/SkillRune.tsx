@@ -25,88 +25,47 @@ const SkillRune = ({
 }: SkillRuneProps) => {
    return (
       <div
-         className="relative bg-card border border-elden-mist p-6 rounded-lg shadow-gold hover:shadow-gold-intense transition-all duration-300 group cursor-pointer animate-slideUp"
+         className="relative animate-slideUp border border-elden-mist bg-card/80 p-5 transition-colors duration-300 hover:border-elden-gold/60"
          style={{ animationDelay: `${index * 0.1}s` }}
          onMouseEnter={onHover}
          onMouseLeave={onLeave}
       >
-         {/* Rune symbol */}
-         <div className="flex justify-center mb-4">
+         <div className="mb-5 flex items-start justify-between gap-4 border-b border-elden-mist pb-4">
             <div
-               className={`p-4 bg-elden-dark-light rounded-full border-2 transition-all duration-300 ${
-                  isActive
-                     ? "border-gold animate-glow scale-110"
-                     : "border-elden-mist"
+               className={`flex h-10 w-10 shrink-0 items-center justify-center border transition-all duration-300 ${
+                  isActive ? "border-gold text-gold" : "border-elden-mist text-gold-light"
                }`}
             >
-               <Icon
-                  className={`w-10 h-10 transition-colors ${
-                     isActive ? "text-gold" : "text-gold-light"
-                  }`}
-               />
+               <Icon className="h-5 w-5" />
             </div>
+            <div className="min-w-0 flex-1">
+               <p className="font-garamond text-xs uppercase tracking-[0.2em] text-elden-gold/70">
+                  {rune}
+               </p>
+               <h3 className="mt-1 font-cinzel text-lg font-bold text-foreground">
+                  {title}
+               </h3>
+            </div>
+            <span className="font-garamond text-xs text-muted-foreground/70">
+               {skills.length} skills
+            </span>
          </div>
 
-         {/* Title & Rune name */}
-         <h3
-            className={`font-cinzel text-xl font-bold text-center mb-2 transition-colors ${
-               isActive ? "text-gold glow-gold" : "text-foreground"
-            }`}
-         >
-            {title}
-         </h3>
-         <p className="font-garamond text-sm text-gold-light text-center mb-4 italic">
-            {rune}
+         <p className="mb-4 font-garamond text-sm leading-relaxed text-muted-foreground">
+            {description}
          </p>
 
-         {/* Skills list */}
-         <div className="flex flex-wrap gap-2 justify-center mb-4">
+         <div className="space-y-2">
             {skills.map((skill) => (
-               <span
+               <div
                   key={skill}
-                  className={`font-garamond text-xs px-2 py-1 rounded-md transition-all ${
-                     isActive
-                        ? "bg-elden-gold text-elden-dark font-semibold"
-                        : "bg-elden-dark-light text-gold-light border border-elden-mist"
-                  }`}
+                  className="flex items-center gap-3 border-b border-elden-mist/60 pb-2 last:border-b-0 last:pb-0"
                >
-                  {skill}
-               </span>
+                  <span className="h-1.5 w-1.5 shrink-0 bg-elden-gold" />
+                  <span className="font-garamond text-base text-foreground">{skill}</span>
+               </div>
             ))}
          </div>
-
-         {/* Description (revealed on hover) */}
-         <div
-            className={`overflow-hidden transition-all duration-300 ${
-               isActive ? "max-h-24 opacity-100" : "max-h-0 opacity-0"
-            }`}
-         >
-            <p className="font-garamond text-sm text-muted-foreground text-center pt-4 border-t border-elden-mist">
-               {description}
-            </p>
-         </div>
-
-         {/* Decorative corners */}
-         <div
-            className={`absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 transition-colors ${
-               isActive ? "border-gold" : "border-elden-mist"
-            }`}
-         />
-         <div
-            className={`absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 transition-colors ${
-               isActive ? "border-gold" : "border-elden-mist"
-            }`}
-         />
-         <div
-            className={`absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 transition-colors ${
-               isActive ? "border-gold" : "border-elden-mist"
-            }`}
-         />
-         <div
-            className={`absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 transition-colors ${
-               isActive ? "border-gold" : "border-elden-mist"
-            }`}
-         />
       </div>
    );
 };

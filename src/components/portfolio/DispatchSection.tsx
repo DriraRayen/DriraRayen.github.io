@@ -1,6 +1,6 @@
 import emailjs from "@emailjs/browser";
 import { FormEvent, useState } from "react";
-import { Send } from "lucide-react";
+import { Mail, MessageSquare, ScrollText, Send, Sparkles } from "lucide-react";
 
 interface DispatchSectionProps {
    onMessageSent: () => void;
@@ -10,6 +10,12 @@ const DispatchSection = ({ onMessageSent }: DispatchSectionProps) => {
    const [form, setForm] = useState({ email: "", subject: "", message: "" });
    const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
    const [errorMessage, setErrorMessage] = useState("");
+   const completedFields = [
+      form.email.trim().length > 0,
+      form.subject.trim().length > 0,
+      form.message.trim().length > 0,
+   ].filter(Boolean).length;
+   const completionProgress = status === "sent" ? 100 : completedFields * (100 / 3);
 
    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
@@ -67,10 +73,30 @@ const DispatchSection = ({ onMessageSent }: DispatchSectionProps) => {
                </p>
             </div>
 
-            <div className="relative overflow-hidden rounded-2xl border border-elden-gold/40 bg-gradient-to-br from-elden-dark-light/70 to-elden-dark/80 p-6 sm:p-12 shadow-gold">
+            <div className="relative overflow-hidden rounded-2xl border border-elden-gold/40 bg-gradient-to-br from-elden-dark-light/70 to-elden-dark/80 p-6 shadow-gold sm:p-12">
                <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-elden-gold/50" />
                <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-elden-gold/50" />
+               <div className="mx-auto mb-8 flex max-w-2xl items-center justify-between border-b border-elden-gold/25 pb-5">
+                  <div>
+                     <p className="font-cinzel text-xs uppercase tracking-[0.3em] text-elden-gold/70">
+                        Quest Available
+                     </p>
+                     <p className="mt-1 font-cinzel text-lg text-gold">Send a Summoning Signal</p>
+                  </div>
+                  <div className="text-right">
+                     <p className="font-garamond text-xs uppercase tracking-widest text-muted-foreground/70">
+                        Reward
+                     </p>
+                     <p className="mt-1 flex items-center gap-1 font-cinzel text-xs text-elden-gold">
+                        <Sparkles className="h-3.5 w-3.5" /> New alliance
+                     </p>
+                  </div>
+               </div>
                <form onSubmit={handleSubmit} className="mx-auto w-full max-w-2xl space-y-4">
+                     <label className="block">
+                        <span className="mb-2 flex items-center gap-2 font-cinzel text-xs uppercase tracking-widest text-elden-gold/80">
+                           <Mail className="h-4 w-4" /> Tarnished&apos;s email
+                        </span>
                      <input
                         type="email"
                         required
@@ -81,6 +107,11 @@ const DispatchSection = ({ onMessageSent }: DispatchSectionProps) => {
                         aria-label="Your email"
                         className="w-full rounded-lg border border-elden-gold/40 bg-elden-dark px-4 py-3 font-garamond text-foreground placeholder:text-muted-foreground focus:border-gold focus:outline-none"
                      />
+                     </label>
+                     <label className="block">
+                        <span className="mb-2 flex items-center gap-2 font-cinzel text-xs uppercase tracking-widest text-elden-gold/80">
+                           <ScrollText className="h-4 w-4" /> Dispatch subject
+                        </span>
                      <input
                         type="text"
                         required
@@ -91,6 +122,11 @@ const DispatchSection = ({ onMessageSent }: DispatchSectionProps) => {
                         aria-label="Subject"
                         className="w-full rounded-lg border border-elden-gold/40 bg-elden-dark px-4 py-3 font-garamond text-foreground placeholder:text-muted-foreground focus:border-gold focus:outline-none"
                      />
+                     </label>
+                     <label className="block">
+                        <span className="mb-2 flex items-center gap-2 font-cinzel text-xs uppercase tracking-widest text-elden-gold/80">
+                           <MessageSquare className="h-4 w-4" /> Message inscription
+                        </span>
                      <textarea
                         required
                         name="message"
@@ -101,6 +137,16 @@ const DispatchSection = ({ onMessageSent }: DispatchSectionProps) => {
                         aria-label="Your message"
                         className="w-full resize-y rounded-lg border border-elden-gold/40 bg-elden-dark px-4 py-3 font-garamond text-foreground placeholder:text-muted-foreground focus:border-gold focus:outline-none"
                      />
+                     </label>
+                     <div className="flex items-center gap-3 pt-2">
+                        <div className="h-1 flex-1 bg-elden-gold/15">
+                           <div
+                              className="h-full bg-elden-gold/60 transition-[width] duration-500 ease-out"
+                              style={{ width: `${completionProgress}%` }}
+                           />
+                        </div>
+                        <span className="font-garamond text-xs text-muted-foreground/70">Resolve the quest</span>
+                     </div>
                      <div className="flex justify-center">
                         <button
                            type="submit"
@@ -108,7 +154,7 @@ const DispatchSection = ({ onMessageSent }: DispatchSectionProps) => {
                            className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-elden-gold/50 bg-elden-dark px-6 py-3 font-cinzel text-sm text-gold-light transition-all hover:border-gold hover:text-gold hover:shadow-lg hover:shadow-gold/20 disabled:cursor-not-allowed disabled:opacity-60"
                         >
                            <Send className="w-5 h-5" />
-                           {status === "sending" ? "Sending..." : "Send Message"}
+                           {status === "sending" ? "Sending..." : "Embark Dispatch"}
                         </button>
                      </div>
                      {status === "error" && (

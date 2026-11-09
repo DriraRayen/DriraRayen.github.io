@@ -3,11 +3,11 @@ import {
    Briefcase,
    GraduationCap,
    Trophy,
-   ChevronLeft,
-   ChevronRight,
    Users,
    Palette,
    Flag,
+   ChevronLeft,
+   ChevronRight,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import {
@@ -22,15 +22,8 @@ type TimelineTab = "ieee" | "other";
 
 const TimelineSection = () => {
    const [activeTab, setActiveTab] = useState<TimelineTab>("other");
-   const [activeImageIndexes, setActiveImageIndexes] = useState<{
-      [key: string]: number;
-   }>({});
-   const [showGallery, setShowGallery] = useState<{ [key: string]: boolean }>(
-      {}
-   );
    const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
-   const [loading, setLoading] = useState(true);
-
+   const [activeImageIndexes, setActiveImageIndexes] = useState<Record<string, number>>({});
    useEffect(() => {
       const loadImages = async () => {
          try {
@@ -38,8 +31,6 @@ const TimelineSection = () => {
             setGalleryImages(images);
          } catch (error) {
             console.error("Failed to load gallery images:", error);
-         } finally {
-            setLoading(false);
          }
       };
       loadImages();
@@ -57,31 +48,12 @@ const TimelineSection = () => {
       return activeTab === "ieee" ? isIeeeEvent : !isIeeeEvent;
    });
 
-   const handleNextImage = (eventKey: string, totalImages: number) => {
-      setActiveImageIndexes((prev) => ({
-         ...prev,
-         [eventKey]: ((prev[eventKey] || 0) + 1) % totalImages,
-      }));
-   };
-
-   const handlePrevImage = (eventKey: string, totalImages: number) => {
-      setActiveImageIndexes((prev) => ({
-         ...prev,
-         [eventKey]:
-            ((prev[eventKey] || 0) - 1 + totalImages) % totalImages,
-      }));
-   };
-
-   const getTypeColor = (type: string) => {
-      return "bg-elden-gold/20 border-elden-gold text-gold";
-   };
-
    return (
       <section
          id="timeline"
          className="relative py-32 px-6 md:px-8 lg:px-16 bg-gradient-to-b from-elden-dark to-elden-dark/95"
       >
-         <div className="max-w-6xl mx-auto relative z-10">
+         <div className="relative z-10 mx-auto max-w-7xl">
             {/* Section title */}
             <div className="text-center mb-20 animate-fadeIn">
                <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-gold mb-6 tracking-wide">
@@ -131,9 +103,9 @@ const TimelineSection = () => {
             </div>
 
             {/* Timeline - Vertical Design */}
-            <div className="relative max-w-4xl mx-auto">
+            <div className="relative mr-auto max-w-7xl">
                {/* Vertical line on left */}
-               <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-elden-gold/40 via-elden-gold/60 to-elden-gold/40" />
+               <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-elden-gold/40 via-elden-gold/60 to-elden-gold/40 md:left-1/2" />
 
                {/* Timeline events */}
                <div className="space-y-8 md:space-y-12">
@@ -144,14 +116,19 @@ const TimelineSection = () => {
                         galleryImages,
                         event.eventKey
                      );
+                     const activeImageIndex =
+                        (activeImageIndexes[event.eventKey] ?? 0) % Math.max(eventImages.length, 1);
+                     const visibleImages = eventImages.length > 0
+                        ? [0, 1].map((offset) => eventImages[(activeImageIndex + offset) % eventImages.length])
+                        : [];
                      return (
                         <div
                            key={event.eventKey}
-                           className="relative pl-8 sm:pl-12 md:pl-24 animate-slideUp group"
+                           className="relative pl-8 sm:pl-12 md:grid md:grid-cols-[minmax(0,1fr)_2rem_minmax(0,1fr)] md:gap-6 md:pl-0 animate-slideUp group"
                            style={{ animationDelay: `${index * 0.15}s` }}
                         >
                            {/* Timeline dot */}
-                           <div className="absolute left-0 sm:left-0 md:left-8 top-6 sm:top-8 transform -translate-x-1/2">
+                           <div className="absolute left-0 top-6 -translate-x-1/2 sm:top-8 md:left-1/2">
                               <div className="relative">
                                  {/* Pulsing ring */}
                                  <div
@@ -163,23 +140,74 @@ const TimelineSection = () => {
                               </div>
                            </div>
 
+                           {/* Photo scroll */}
+                           {eventImages.length > 0 && (
+                              <div className="relative mb-4 md:col-start-3 md:row-start-1 md:mb-0">
+                                 <div className="grid grid-cols-2 gap-2">
+                                 {visibleImages.map((image, imageIndex) => (
+                                    <figure key={`${event.eventKey}-${imageIndex}`} className="border border-elden-gold/40 bg-elden-dark p-1 shadow-[0_0_16px_rgba(218,165,32,0.16)]">
+                                       <img
+                                          src={image.src}
+                                          alt={`${event.title} - Photo ${imageIndex + 1}`}
+                                          className="aspect-[4/3] w-full object-cover"
+                                       />
+                                    </figure>
+                                 ))}
+                                 </div>
+                                 {eventImages.length > 2 && (
+                                    <>
+                                       <button
+                                          type="button"
+                                          aria-label={`Previous ${event.title} photo`}
+                                          onClick={() =>
+                                             setActiveImageIndexes((indexes) => ({
+                                                ...indexes,
+                                                [event.eventKey]:
+                                                   (activeImageIndex - 1 + eventImages.length) %
+                                                   eventImages.length,
+                                             }))
+                                          }
+                                          className="absolute -left-3 top-1/2 z-10 flex h-5 w-5 -translate-y-1/2 items-center justify-center border border-elden-gold/60 bg-elden-dark text-elden-gold transition-colors hover:bg-elden-gold hover:text-elden-dark"
+                                       >
+                                          <ChevronLeft className="h-3 w-3" />
+                                       </button>
+                                       <button
+                                          type="button"
+                                          aria-label={`Next ${event.title} photo`}
+                                          onClick={() =>
+                                             setActiveImageIndexes((indexes) => ({
+                                                ...indexes,
+                                                [event.eventKey]:
+                                                   (activeImageIndex + 1) % eventImages.length,
+                                             }))
+                                          }
+                                          className="absolute -right-3 top-1/2 z-10 flex h-5 w-5 -translate-y-1/2 items-center justify-center border border-elden-gold/60 bg-elden-dark text-elden-gold transition-colors hover:bg-elden-gold hover:text-elden-dark"
+                                       >
+                                          <ChevronRight className="h-3 w-3" />
+                                       </button>
+                                    </>
+                                 )}
+                              </div>
+                           )}
+
                            {/* Event card */}
-                           <div className="relative group">
+                           <div className="relative group md:col-start-1 md:row-start-1">
                               {/* Glow effect */}
                               <div className="absolute -inset-2 bg-elden-gold/5 rounded-xl blur-xl group-hover:bg-elden-gold/10 transition-all duration-500" />
 
-                              <div className="relative bg-elden-dark-light/60 backdrop-blur-sm border border-elden-gold/40 p-4 sm:p-6 md:p-8 rounded-xl hover:border-elden-gold/60 transition-all duration-300">
+                              <div className="relative border border-elden-gold/40 bg-elden-dark-light/60 p-4 transition-all duration-300 hover:border-elden-gold/60 sm:p-6 md:p-8">
                                  {/* Corner accents */}
                                  <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-elden-gold/50" />
                                  <div className="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-elden-gold/50" />
 
                                  {/* Header with icon and year */}
-                                 <div className="flex flex-col sm:flex-row items-start sm:justify-between gap-3 sm:gap-4 mb-4">
+                                 <div className="mb-4 flex flex-col items-start gap-3 sm:flex-row sm:justify-between sm:gap-4">
                                     <div className="flex items-start gap-3 sm:gap-4 flex-1">
                                        <div className="flex-shrink-0 p-2 sm:p-3 bg-elden-dark rounded-lg border-2 border-gold/60 group-hover:border-gold group-hover:shadow-lg group-hover:shadow-gold/30 transition-all duration-300">
                                           <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
                                        </div>
                                        <div className="flex-1 min-w-0">
+                                          <p className="mb-1 font-garamond text-xs uppercase tracking-[0.2em] text-elden-gold/70">Journey entry</p>
                                           <h3 className="font-cinzel text-xl sm:text-2xl md:text-3xl font-bold text-gold mb-1 group-hover:text-gold-light transition-colors">
                                              {event.title}
                                           </h3>
@@ -194,114 +222,14 @@ const TimelineSection = () => {
                                        </div>
                                     </div>
                                     <div className="flex-shrink-0 self-start">
-                                       <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-elden-gold/20 border border-elden-gold/50 text-gold font-cinzel font-bold text-base sm:text-lg rounded-lg shadow-lg">
+                                       <span className="inline-block border border-elden-gold/50 px-3 py-1.5 text-gold font-cinzel font-bold text-base sm:px-4 sm:py-2 sm:text-lg">
                                           {event.year}
                                        </span>
                                     </div>
                                  </div>
 
-                                 {/* Image Gallery */}
-                                 {eventImages.length > 0 &&
-                                    showGallery[event.eventKey] && (
-                                       <div className="mt-6 relative group/gallery">
-                                          <div className="relative w-full rounded-lg border-2 border-elden-gold/30 bg-elden-dark">
-                                             {/* Image */}
-                                             <img
-                                                src={
-                                                   eventImages[
-                                                      activeImageIndexes[
-                                                         event.eventKey
-                                                      ] || 0
-                                                   ]?.src
-                                                }
-                                                alt={`${event.title} - Image ${
-                                                   (activeImageIndexes[event.eventKey] ||
-                                                      0) + 1
-                                                }`}
-                                                className="w-full h-auto object-contain rounded-lg"
-                                             />
-                                             {/* Navigation Buttons */}
-                                             {eventImages.length > 1 && (
-                                                <>
-                                                   <button
-                                                      onClick={() =>
-                                                         handlePrevImage(
-                                                            event.eventKey,
-                                                            eventImages.length
-                                                         )
-                                                      }
-                                                      className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 p-1.5 sm:p-2 bg-elden-dark/80 backdrop-blur-sm border border-elden-gold/50 rounded-lg opacity-100 sm:opacity-0 group-hover/gallery:opacity-100 hover:bg-elden-dark hover:border-gold transition-all duration-300"
-                                                      aria-label="Previous image"
-                                                   >
-                                                      <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
-                                                   </button>
-                                                   <button
-                                                      onClick={() =>
-                                                         handleNextImage(
-                                                            event.eventKey,
-                                                            eventImages.length
-                                                         )
-                                                      }
-                                                      className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 p-1.5 sm:p-2 bg-elden-dark/80 backdrop-blur-sm border border-elden-gold/50 rounded-lg opacity-100 sm:opacity-0 group-hover/gallery:opacity-100 hover:bg-elden-dark hover:border-gold transition-all duration-300"
-                                                      aria-label="Next image"
-                                                   >
-                                                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
-                                                   </button>
-                                                </>
-                                             )}
-                                             {/* Image Counter */}
-                                             {eventImages.length > 1 && (
-                                                <div className="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 px-2 sm:px-3 py-1 sm:py-1.5 bg-elden-dark/90 backdrop-blur-sm border border-elden-gold/50 rounded-md">
-                                                   <span className="text-[10px] sm:text-xs font-cinzel text-gold">
-                                                      {(activeImageIndexes[
-                                                         event.eventKey
-                                                      ] || 0) + 1}{" "}
-                                                      / {eventImages.length}
-                                                   </span>
-                                                </div>
-                                             )}
-                                          </div>
-                                          {/* Thumbnail Navigation */}
-                                          {eventImages.length > 1 && (
-                                             <div className="flex gap-1.5 sm:gap-2 mt-2 sm:mt-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-elden-gold/30 scrollbar-track-transparent">
-                                                {eventImages.map(
-                                                   (img, imgIndex) => (
-                                                      <button
-                                                         key={imgIndex}
-                                                         onClick={() =>
-                                                            setActiveImageIndexes(
-                                                               (prev) => ({
-                                                                  ...prev,
-                                                                  [event.eventKey]:
-                                                                     imgIndex,
-                                                               })
-                                                            )
-                                                         }
-                                                         className={`flex-shrink-0 w-12 h-9 sm:w-16 sm:h-12 rounded-md border-2 overflow-hidden transition-all duration-300 ${
-                                                            (activeImageIndexes[
-                                                               event.eventKey
-                                                            ] || 0) === imgIndex
-                                                               ? "border-gold shadow-lg shadow-gold/30"
-                                                               : "border-elden-gold/30 hover:border-elden-gold/60"
-                                                         }`}
-                                                      >
-                                                         <img
-                                                            src={img.src}
-                                                            alt={`Thumbnail ${
-                                                               imgIndex + 1
-                                                            }`}
-                                                            className="w-full h-full object-cover"
-                                                         />
-                                                      </button>
-                                                   )
-                                                )}
-                                             </div>
-                                          )}
-                                       </div>
-                                    )}
-
-                                 {/* Details and View Photos Button */}
-                                 <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-3 sm:gap-4 mt-4">
+                                 {/* Event details */}
+                                 <div className="mt-4 flex flex-col flex-wrap items-start gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                                     <div className="flex flex-wrap gap-1.5 sm:gap-2">
                                        {event.details.map((detail, i) => (
                                           <span
@@ -313,23 +241,6 @@ const TimelineSection = () => {
                                        ))}
                                     </div>
 
-                                    {/* View Photos Button */}
-                                    {eventImages.length > 0 && (
-                                       <button
-                                          onClick={() =>
-                                             setShowGallery((prev) => ({
-                                                ...prev,
-                                                [event.eventKey]: !prev[event.eventKey],
-                                             }))
-                                          }
-                                          className="w-full sm:w-auto flex-shrink-0 px-4 sm:px-6 py-2 sm:py-2.5 bg-elden-gold/20 border-2 border-elden-gold/50 rounded-lg font-cinzel text-sm sm:text-base text-gold hover:bg-elden-gold/30 hover:border-gold hover:shadow-lg hover:shadow-gold/30 transition-all duration-300 flex items-center justify-center gap-2"
-                                       >
-                                          <Palette className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                                          {showGallery[event.eventKey]
-                                             ? "Hide Photos"
-                                             : `View Photos (${eventImages.length})`}
-                                       </button>
-                                    )}
                                  </div>
                               </div>
                            </div>

@@ -109,30 +109,18 @@ import img_2025_22 from "@/assets/scout/542755469_1211662341001703_1081942842471
 import img_2025_23 from "@/assets/scout/565151223_1255038413330762_9010870579905776087_n.jpg";
 import img_2025_24 from "@/assets/scout/565624865_1255039493330654_9192054243005857325_n.jpg";
 import img_2025_25 from "@/assets/scout/a1528d76-2ba7-483e-97ad-827df32177e1.jpg";
-type YearCategory = "all" | "2018" | "2019" | "2020" | "2024" | "2025";
+type ScoutYear = "2018" | "2019" | "2020" | "2024" | "2025";
 
 interface ScoutPhoto {
    url: string;
-   year: YearCategory;
+   year: ScoutYear;
 }
 
-// Loading skeleton component
-const ImageSkeleton = () => (
-   <div className="aspect-square rounded-lg bg-elden-dark-light/60 border-2 border-elden-gold/20 overflow-hidden">
-      <div className="w-full h-full animate-pulse bg-gradient-to-br from-elden-gold/5 via-elden-gold/10 to-elden-gold/5" />
-   </div>
-);
-
-const INITIAL_PHOTOS_SHOWN = 15;
-const PHOTOS_INCREMENT = 15;
-
 const ScoutSection = () => {
-   const [selectedYear, setSelectedYear] = useState<YearCategory>("all");
    const [currentImageIndex, setCurrentImageIndex] = useState(0);
    const [lightboxOpen, setLightboxOpen] = useState(false);
    const [isPlaying, setIsPlaying] = useState(false);
    const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
-   const [visibleCount, setVisibleCount] = useState(INITIAL_PHOTOS_SHOWN);
    const lightboxRef = useRef<HTMLDivElement>(null);
 
    const scoutPhotos: ScoutPhoto[] = useMemo(
@@ -250,23 +238,8 @@ const ScoutSection = () => {
    );
 
    const filteredPhotos = useMemo(() => {
-      const filtered =
-         selectedYear === "all"
-            ? scoutPhotos
-            : scoutPhotos.filter((photo) => photo.year === selectedYear);
-
-      // Reverse to show latest photos first
-      return [...filtered].reverse();
-   }, [selectedYear, scoutPhotos]);
-
-   const years: YearCategory[] = [
-      "all",
-      "2018",
-      "2019",
-      "2020",
-      "2024",
-      "2025",
-   ];
+      return [...scoutPhotos].reverse();
+   }, [scoutPhotos]);
 
    const nextImage = useCallback(() => {
       setCurrentImageIndex((prev) => (prev + 1) % filteredPhotos.length);
@@ -358,9 +331,9 @@ const ScoutSection = () => {
 
          <div className="relative z-10 max-w-7xl mx-auto px-6">
             {/* Section Header */}
-            <div className="text-center mb-16 animate-fadeIn">
-               <h2 className="font-cinzel text-3xl md:text-4xl lg:text-5xl font-bold text-gold mb-6">
-                  Scouts Gallery
+            <div className="text-center mb-8 animate-fadeIn">
+               <h2 className="font-cinzel text-3xl md:text-4xl lg:text-5xl font-bold text-gold mb-5">
+                  Scouts Cutscene
                </h2>
                <div className="flex items-center justify-center gap-4 mb-6">
                   <div className="h-px w-20 bg-gradient-to-r from-transparent via-elden-gold/70 to-elden-gold/40" />
@@ -371,136 +344,60 @@ const ScoutSection = () => {
                   13 years in the Tunisian Scouts shaped me into a leader,
                   taught me resilience, and gave me a second family
                </p>
+               <p className="mt-2 font-cinzel text-sm uppercase tracking-[0.3em] text-gold">
+                  Memories in Motion
+               </p>
             </div>
 
-            {/* Year Filter Tabs */}
-            <div className="flex flex-wrap justify-center gap-3 mb-12">
-               {years.map((year) => (
-                  <button
-                     key={year}
-                     onClick={() => {
-                        setSelectedYear(year);
-                        setCurrentImageIndex(0);
-                        setVisibleCount(INITIAL_PHOTOS_SHOWN);
-                     }}
-                     className={`px-6 py-2 rounded-full font-cinzel text-sm transition-all duration-300 border ${
-                        selectedYear === year
-                           ? "bg-elden-gold/20 border-elden-gold text-gold shadow-lg shadow-elden-gold/20"
-                           : "bg-elden-dark-light/40 border-elden-gold/30 text-muted-foreground hover:border-elden-gold/60 hover:text-gold"
-                     }`}
-                  >
-                     {year === "all" ? "All Years" : year}
-                  </button>
-               ))}
-            </div>
-
-            {/* Photo Count */}
-            <div className="text-center mb-8">
-               <span className="font-garamond text-muted-foreground/60">
-                  Showing {Math.min(visibleCount, filteredPhotos.length)} of{" "}
-                  {filteredPhotos.length} photos
-                  {selectedYear !== "all" && ` from ${selectedYear}`}
-               </span>
-            </div>
-
-            {/* Gallery Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-               {filteredPhotos.slice(0, visibleCount).map((photo, index) => (
-                  <button
-                     key={index}
-                     onClick={() => openLightbox(index)}
-                     className="relative aspect-square rounded-lg overflow-hidden border-2 border-elden-gold/30 
-                                 hover:border-elden-gold/60 hover:scale-105 transition-all duration-300 group"
-                  >
-                     {/* Skeleton placeholder */}
-                     {!loadedImages.has(index) && (
-                        <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-elden-gold/5 via-elden-gold/10 to-elden-gold/5" />
-                     )}
-                     <img
-                        src={photo.url}
-                        alt={`Scout memory from ${photo.year}`}
-                        loading="lazy"
-                        onLoad={() => handleImageLoad(index)}
-                        className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${
-                           loadedImages.has(index) ? "opacity-100" : "opacity-0"
-                        }`}
-                     />
-                     <div
-                        className="absolute inset-0 bg-gradient-to-t from-elden-dark/80 via-transparent to-transparent 
-                                        opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                     >
-                        <span className="absolute bottom-2 left-2 font-cinzel text-xs text-gold">
-                           {photo.year}
-                        </span>
+            {/* Endless two-row film cutscene */}
+            <div className="relative overflow-hidden border border-elden-gold/30 bg-elden-dark/60 p-2 shadow-[0_0_30px_rgba(218,165,32,0.12)] sm:p-3">
+               <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-elden-dark to-transparent" />
+               <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-elden-dark to-transparent" />
+               {[0, 1].map((row) => {
+                  const rowPhotos = filteredPhotos
+                     .map((photo, index) => ({ photo, index }))
+                     .filter((_, index) => index % 2 === row);
+                  return (
+                     <div key={row} className="relative overflow-hidden py-1.5 sm:py-2">
+                        <div className={`scout-film-row flex w-max gap-2 sm:gap-3 ${row === 1 ? "scout-film-row-reverse" : ""}`}>
+                           {[0, 1].map((copy) => (
+                              <div key={copy} className="flex shrink-0 gap-2 sm:gap-3" aria-hidden={copy === 1}>
+                                 {rowPhotos.map(({ photo, index }) => (
+                                    <button
+                                       key={`${row}-${copy}-${photo.year}-${index}`}
+                                       type="button"
+                                       onClick={() => openLightbox(index)}
+                                       aria-label={`Open Scout memory from ${photo.year}`}
+                                       tabIndex={copy === 1 ? -1 : 0}
+                                       className={`group relative h-32 w-40 shrink-0 overflow-hidden border border-elden-gold/40 bg-elden-dark shadow-[0_0_12px_rgba(218,165,32,0.16)] transition-all duration-300 hover:z-20 hover:scale-105 hover:border-elden-gold hover:shadow-[0_0_24px_rgba(218,165,32,0.45)] sm:h-44 sm:w-56 ${
+                                          index % 7 === 0 ? "-rotate-1 sm:w-64" : index % 5 === 0 ? "rotate-1 sm:w-48" : ""
+                                       }`}
+                                    >
+                                       {!loadedImages.has(index) && (
+                                          <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-elden-gold/5 via-elden-gold/10 to-elden-gold/5" />
+                                       )}
+                                       <img
+                                          src={photo.url}
+                                          alt={`Scout memory from ${photo.year}`}
+                                          loading="lazy"
+                                          draggable={false}
+                                          onLoad={() => handleImageLoad(index)}
+                                          className={`h-full w-full select-none object-cover transition-all duration-500 group-hover:scale-110 ${
+                                             loadedImages.has(index) ? "opacity-100" : "opacity-0"
+                                          }`}
+                                       />
+                                       <div className="absolute inset-0 bg-gradient-to-t from-elden-dark/85 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                          <span className="absolute bottom-2 left-2 font-cinzel text-xs text-gold">{photo.year}</span>
+                                       </div>
+                                    </button>
+                                 ))}
+                              </div>
+                           ))}
+                        </div>
                      </div>
-                  </button>
-               ))}
+                  );
+               })}
             </div>
-
-            {/* See More / See Less Buttons */}
-            {filteredPhotos.length > INITIAL_PHOTOS_SHOWN && (
-               <div className="flex justify-center gap-4 mt-10">
-                  {visibleCount < filteredPhotos.length && (
-                     <button
-                        onClick={() =>
-                           setVisibleCount((prev) =>
-                              Math.min(
-                                 prev + PHOTOS_INCREMENT,
-                                 filteredPhotos.length
-                              )
-                           )
-                        }
-                        className="px-8 py-3 rounded-full font-cinzel text-sm transition-all duration-300 
-                                   bg-elden-dark-light/60 border-2 border-elden-gold/40 text-gold
-                                   hover:bg-elden-gold/20 hover:border-elden-gold hover:shadow-lg hover:shadow-elden-gold/20
-                                   active:scale-95"
-                     >
-                        <span className="flex items-center gap-2">
-                           See More
-                           <svg
-                              className="w-4 h-4"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                           >
-                              <path
-                                 strokeLinecap="round"
-                                 strokeLinejoin="round"
-                                 strokeWidth={2}
-                                 d="M19 9l-7 7-7-7"
-                              />
-                           </svg>
-                        </span>
-                     </button>
-                  )}
-                  {visibleCount > INITIAL_PHOTOS_SHOWN && (
-                     <button
-                        onClick={() => setVisibleCount(INITIAL_PHOTOS_SHOWN)}
-                        className="px-8 py-3 rounded-full font-cinzel text-sm transition-all duration-300 
-                                   bg-elden-dark-light/60 border-2 border-elden-gold/40 text-gold
-                                   hover:bg-elden-gold/20 hover:border-elden-gold hover:shadow-lg hover:shadow-elden-gold/20
-                                   active:scale-95"
-                     >
-                        <span className="flex items-center gap-2">
-                           See Less
-                           <svg
-                              className="w-4 h-4"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                           >
-                              <path
-                                 strokeLinecap="round"
-                                 strokeLinejoin="round"
-                                 strokeWidth={2}
-                                 d="M5 15l7-7 7 7"
-                              />
-                           </svg>
-                        </span>
-                     </button>
-                  )}
-               </div>
-            )}
          </div>
 
          {/* Lightbox */}

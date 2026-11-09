@@ -22,8 +22,7 @@ const CertificatesSection = () => {
                   <div className="h-px w-20 bg-gradient-to-l from-transparent via-elden-gold/70 to-elden-gold/40" />
                </div>
                <p className="font-garamond text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Legendary marks of mastery, bestowed by ancient guilds of
-                  wisdom
+                  Verified achievements earned along the path
                </p>
             </div>
 
@@ -32,7 +31,7 @@ const CertificatesSection = () => {
                {certificateItems.map((cert, index) => (
                   <div
                      key={index}
-                     className="group relative bg-card border border-elden-mist rounded-lg overflow-hidden shadow-gold hover:shadow-gold-intense hover:scale-[1.02] transition-all duration-500 cursor-pointer animate-slideUp"
+                     className="group relative overflow-hidden border border-elden-mist bg-card/80 transition-colors duration-300 hover:border-elden-gold/60 cursor-pointer animate-slideUp"
                      style={{ animationDelay: `${index * 0.15}s` }}
                      onClick={() => setSelectedCert(index)}
                   >
@@ -45,13 +44,14 @@ const CertificatesSection = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-elden-dark via-transparent to-transparent opacity-40" />
                         <div className="absolute top-3 right-3">
-                           <div className="w-10 h-10 bg-elden-gold rounded-full flex items-center justify-center shadow-gold">
+                           <div className="flex h-10 w-10 items-center justify-center border border-elden-gold bg-elden-dark">
                               <Award className="w-5 h-5 text-elden-dark" />
                            </div>
                         </div>
                      </div>
 
-                     <div className="p-5">
+                     <div className="border-t border-elden-mist p-5">
+                        <p className="mb-1 font-garamond text-xs uppercase tracking-[0.2em] text-elden-gold/70">Achievement unlocked</p>
                         <h3 className="font-cinzel text-lg font-bold text-gold mb-1 group-hover:glow-gold transition-all">
                            {cert.title}
                         </h3>
@@ -84,7 +84,7 @@ const CertificatesSection = () => {
                   <X className="w-5 h-5" />
                </button>
 
-               <div className="max-w-2xl w-full bg-card border-2 border-gold rounded-lg overflow-hidden shadow-gold-intense my-8">
+               <div className="max-w-2xl w-full bg-card border-2 border-gold overflow-hidden shadow-gold-intense my-8">
                   <img
                      src={certificateItems[selectedCert].imageUrl}
                      alt={certificateItems[selectedCert].title}

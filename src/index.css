@@ -270,6 +270,25 @@ All colors MUST be HSL.
       animation: spin 8s linear infinite;
    }
 
+   .scout-film-row {
+      animation: scout-film-cut 200s linear infinite;
+      will-change: transform;
+   }
+
+   .scout-film-row-reverse {
+      animation-direction: reverse;
+      animation-duration: 230s;
+   }
+
+   @keyframes scout-film-cut {
+      from {
+         transform: translateX(0);
+      }
+      to {
+         transform: translateX(calc(-50% - 0.375rem));
+      }
+   }
+
    @keyframes float {
       0%,
       100% {

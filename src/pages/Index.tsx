@@ -340,27 +340,34 @@ const Index = () => {
                </p>
 
                {/* Hidden Easter Eggs */}
-               <div className="flex flex-col items-center gap-2 mb-4">
+               <div className="mx-auto mb-4 max-w-md border border-elden-gold/20 bg-elden-dark/30 p-3">
+                  <p className="mb-2 text-center font-cinzel text-[9px] uppercase tracking-[0.35em] text-elden-gold/50">
+                     Secret Quests // Optional Discoveries
+                  </p>
+                  <div className="grid gap-2 sm:grid-cols-2">
                   <button
                      onClick={() => setShowEldenRing(true)}
-                     className="group relative text-xs text-muted-foreground/40 hover:text-gold/80 transition-all duration-500 font-garamond italic"
-                     title="Discover the inspiration"
+                     className="group relative border border-elden-gold/20 bg-elden-dark/40 px-3 py-2 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-elden-gold/60 hover:bg-elden-gold/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold"
+                     title="Optional quest: discover the inspiration"
                   >
-                     <span className="relative z-10">
-                        Inspired by the Lands Between
+                     <span className="block font-cinzel text-[9px] uppercase tracking-widest text-elden-gold/50">Quest 01</span>
+                     <span className="relative z-10 block font-garamond text-xs italic text-muted-foreground/60 group-hover:text-gold/90">
+                        Discover the Lands Between
                      </span>
-                     <div className="absolute inset-0 bg-gold/5 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                     <span className="mt-1 block font-garamond text-[10px] text-elden-gold/40 group-hover:text-elden-gold/70">Reward: inspiration log</span>
                   </button>
                   <button
                      onClick={() => setShowAchievements(true)}
-                     className="group relative text-xs text-muted-foreground/30 hover:text-gold/70 transition-all duration-500 font-garamond italic"
-                     title="View character stats"
+                     className="group relative border border-elden-gold/20 bg-elden-dark/40 px-3 py-2 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-elden-gold/60 hover:bg-elden-gold/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold"
+                     title="Optional quest: view character stats"
                   >
-                     <span className="relative z-10">
-                        ✦ Tarnished One's Legacy ✦
+                     <span className="block font-cinzel text-[9px] uppercase tracking-widest text-elden-gold/50">Quest 02</span>
+                     <span className="relative z-10 block font-garamond text-xs italic text-muted-foreground/60 group-hover:text-gold/90">
+                        Unlock the Tarnished&apos;s Legacy
                      </span>
-                     <div className="absolute inset-0 bg-gold/5 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                     <span className="mt-1 block font-garamond text-[10px] text-elden-gold/40 group-hover:text-elden-gold/70">Reward: character stats</span>
                   </button>
+                  </div>
                </div>
 
                {/* Social links or additional info can go here */}

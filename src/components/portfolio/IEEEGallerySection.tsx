@@ -60,7 +60,7 @@ const IEEEGallerySection = () => {
                         {collageImages.map((image, imageIndex) => (
                            <figure
                               key={`ieee-gallery-${imageIndex}`}
-                              className={`absolute overflow-hidden rounded-xl border-2 border-elden-gold/60 bg-elden-dark shadow-[0_0_22px_rgba(218,165,32,0.28)] transition-all duration-500 group hover:scale-105 hover:border-gold hover:shadow-[0_0_34px_rgba(218,165,32,0.55)] ${
+                              className={`absolute overflow-hidden border border-elden-gold/60 bg-elden-dark shadow-[0_0_22px_rgba(218,165,32,0.28)] transition-all duration-500 group hover:scale-105 hover:border-gold hover:shadow-[0_0_34px_rgba(218,165,32,0.55)] ${
                                  imageIndex === 0
                                     ? "left-1/2 top-1/2 z-10 h-[52%] w-[74%] -translate-x-1/2 -translate-y-1/2 rotate-0 sm:h-[62%] sm:w-[58%]"
                                     : imageIndex === 1
@@ -88,7 +88,7 @@ const IEEEGallerySection = () => {
                                  src={image}
                                  alt={`IEEE activity photo ${imageIndex + 1}`}
                                  onError={() => setError("One or more IEEE images could not be loaded.")}
-                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                               />
                               <div className="absolute inset-0 bg-gradient-to-t from-elden-dark/70 via-transparent to-transparent" />
                            </figure>

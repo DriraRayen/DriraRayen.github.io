@@ -27,28 +27,28 @@ const ProjectCard = ({
 }: ProjectCardProps) => {
    return (
       <div
-         className="bg-card border border-elden-mist p-4 sm:p-6 md:p-8 rounded-lg shadow-gold hover:shadow-gold-intense hover:scale-[1.02] transition-all duration-500 group animate-slideUp"
+         className="border border-elden-mist bg-card/80 p-4 transition-colors duration-300 hover:border-elden-gold/60 sm:p-6 md:p-8 group animate-slideUp"
          style={{ animationDelay: `${index * 0.1}s` }}
          role="article"
          aria-label={`Project: ${title}`}
       >
          {/* Header */}
          <div className="flex items-center gap-4 mb-6">
-            <div className="flex-shrink-0 p-4 bg-elden-dark-light rounded-lg border border-gold group-hover:animate-glow">
+            <div className="flex-shrink-0 border border-gold bg-elden-dark-light p-4 group-hover:animate-glow">
                <Icon className="w-8 h-8 text-gold" />
             </div>
             <h3 className="min-w-0 flex-1 font-cinzel text-xl md:text-2xl font-bold text-foreground group-hover:text-gold transition-colors">
                {title}
             </h3>
             <div className="flex-shrink-0 text-right">
-               <span className="font-garamond text-sm text-gold border border-gold px-3 py-1 rounded-full">
+               <span className="font-garamond text-xs uppercase tracking-widest text-gold border border-gold px-3 py-1">
                   {category}
                </span>
             </div>
          </div>
 
          {/* Interface preview */}
-         <div className="mb-6 overflow-hidden rounded-lg border border-elden-gold/30 bg-elden-dark">
+         <div className="mb-6 overflow-hidden border border-elden-gold/30 bg-elden-dark">
             <img
                src={imageUrl}
                alt={`${title} interface preview`}
@@ -66,7 +66,7 @@ const ProjectCard = ({
             {technologies.map((tech) => (
                <span
                   key={tech}
-                  className="font-garamond text-sm bg-elden-dark-light text-gold-light border border-elden-mist px-3 py-1 rounded-md"
+                  className="font-garamond text-sm border-b border-elden-gold/30 pb-1 text-gold-light"
                >
                   {tech}
                </span>
@@ -88,7 +88,7 @@ const ProjectCard = ({
                         href={githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 bg-elden-dark-light border border-elden-gold/40 rounded-lg hover:border-gold hover:bg-elden-dark transition-all duration-300 group/link"
+                        className="border border-elden-gold/40 bg-elden-dark-light p-2 hover:border-gold hover:bg-elden-dark transition-all duration-300 group/link"
                         aria-label="View on GitHub"
                      >
                         <Github className="w-5 h-5 text-gold-light group-hover/link:text-gold transition-colors" />
@@ -99,7 +99,7 @@ const ProjectCard = ({
                         href={liveLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 bg-elden-dark-light border border-elden-gold/40 rounded-lg hover:border-gold hover:bg-elden-dark transition-all duration-300 group/link"
+                        className="border border-elden-gold/40 bg-elden-dark-light p-2 hover:border-gold hover:bg-elden-dark transition-all duration-300 group/link"
                         aria-label="View live project"
                      >
                         <ExternalLink className="w-5 h-5 text-gold-light group-hover/link:text-gold transition-colors" />

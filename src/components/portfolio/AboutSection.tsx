@@ -1,4 +1,4 @@
-import { Shield, Cpu, Users } from "lucide-react";
+import { Languages, Sparkles, Shield, Cpu, Users } from "lucide-react";
 import { educationItems } from "@/lib/content";
 import EducationCard from "./EducationCard";
 
@@ -41,11 +41,18 @@ const AboutSection = () => {
                      {/* Glow effect */}
                      <div className="absolute -inset-2 bg-elden-gold/5 rounded-xl blur-xl group-hover:bg-elden-gold/10 transition-all duration-500" />
 
-                     <div className="relative bg-elden-dark-light/50 backdrop-blur-sm border border-elden-gold/30 p-10 rounded-xl shadow-2xl hover:border-elden-gold/50 transition-all duration-300">
+                     <div className="relative border border-elden-gold/30 bg-elden-dark-light/50 p-8 shadow-2xl transition-all duration-300 hover:border-elden-gold/50 md:p-10">
                         {/* Decorative corner accent */}
                         <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-elden-gold/50" />
                         <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-elden-gold/50" />
 
+                        <div className="mb-6 flex items-center gap-3 border-b border-elden-mist pb-4">
+                           <Shield className="h-5 w-5 shrink-0 text-gold" />
+                           <div>
+                              <p className="font-garamond text-xs uppercase tracking-[0.2em] text-elden-gold/70">Character profile</p>
+                              <p className="font-cinzel text-lg text-gold">The Wanderer</p>
+                           </div>
+                        </div>
                         <div className="space-y-5">
                            <p className="font-garamond text-xl leading-relaxed text-foreground/95">
                               I'm an engineering student in{" "}
@@ -120,9 +127,9 @@ const AboutSection = () => {
                   <div className="relative group">
                      <div className="absolute -inset-1 bg-gradient-to-r from-elden-gold/20 to-elden-gold/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                     <div className="relative bg-elden-dark-light/60 backdrop-blur-sm border border-elden-gold/40 p-7 rounded-xl hover:border-elden-gold/60 transition-all duration-300">
-                        <h3 className="font-cinzel text-2xl font-semibold text-gold mb-5 flex items-center gap-3">
-                           <span className="text-2xl">🌍</span>
+                     <div className="relative border border-elden-gold/40 bg-elden-dark-light/60 p-6 transition-all duration-300 hover:border-elden-gold/60 md:p-7">
+                        <h3 className="mb-5 flex items-center gap-3 border-b border-elden-mist pb-4 font-cinzel text-2xl font-semibold text-gold">
+                           <Languages className="h-5 w-5" />
                            Languages
                         </h3>
                         <div className="space-y-4">
@@ -130,7 +137,7 @@ const AboutSection = () => {
                               <span className="font-garamond text-lg text-foreground/90">
                                  Arabic
                               </span>
-                              <span className="font-cinzel text-sm text-gold/80 bg-elden-gold/10 px-3 py-1.5 rounded-full">
+                              <span className="font-cinzel text-sm text-gold/80">
                                  Native
                               </span>
                            </div>
@@ -138,7 +145,7 @@ const AboutSection = () => {
                               <span className="font-garamond text-lg text-foreground/90">
                                  French
                               </span>
-                              <span className="font-cinzel text-sm text-gold/80 bg-elden-gold/10 px-3 py-1.5 rounded-full">
+                              <span className="font-cinzel text-sm text-gold/80">
                                  Intermediate
                               </span>
                            </div>
@@ -146,7 +153,7 @@ const AboutSection = () => {
                               <span className="font-garamond text-lg text-foreground/90">
                                  English
                               </span>
-                              <span className="font-cinzel text-sm text-gold/80 bg-elden-gold/10 px-3 py-1.5 rounded-full">
+                              <span className="font-cinzel text-sm text-gold/80">
                                  Advanced
                               </span>
                            </div>
@@ -158,25 +165,25 @@ const AboutSection = () => {
                   <div className="relative group">
                      <div className="absolute -inset-1 bg-gradient-to-r from-elden-gold/20 to-elden-gold/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                     <div className="relative bg-elden-dark-light/60 backdrop-blur-sm border border-elden-gold/40 p-7 rounded-xl hover:border-elden-gold/60 transition-all duration-300">
-                        <h3 className="font-cinzel text-2xl font-semibold text-gold mb-5 flex items-center gap-3">
-                           <span className="text-2xl">⚡</span>
+                     <div className="relative border border-elden-gold/40 bg-elden-dark-light/60 p-6 transition-all duration-300 hover:border-elden-gold/60 md:p-7">
+                        <h3 className="mb-5 flex items-center gap-3 border-b border-elden-mist pb-4 font-cinzel text-2xl font-semibold text-gold">
+                           <Sparkles className="h-5 w-5" />
                            Interests
                         </h3>
                         <div className="flex flex-wrap gap-3">
-                           <span className="px-4 py-2 bg-elden-gold/10 border border-elden-gold/30 rounded-lg text-sm font-garamond text-foreground/90 hover:bg-elden-gold/20 hover:border-elden-gold/50 transition-all duration-300 cursor-default">
+                           <span className="border-b border-elden-gold/30 px-2 py-2 text-sm font-garamond text-foreground/90">
                               🎮 Gaming
                            </span>
-                           <span className="px-4 py-2 bg-elden-gold/10 border border-elden-gold/30 rounded-lg text-sm font-garamond text-foreground/90 hover:bg-elden-gold/20 hover:border-elden-gold/50 transition-all duration-300 cursor-default">
+                           <span className="border-b border-elden-gold/30 px-2 py-2 text-sm font-garamond text-foreground/90">
                               🏕️ Scouting
                            </span>
-                           <span className="px-4 py-2 bg-elden-gold/10 border border-elden-gold/30 rounded-lg text-sm font-garamond text-foreground/90 hover:bg-elden-gold/20 hover:border-elden-gold/50 transition-all duration-300 cursor-default">
+                           <span className="border-b border-elden-gold/30 px-2 py-2 text-sm font-garamond text-foreground/90">
                               💻 Chess
                            </span>
-                           <span className="px-4 py-2 bg-elden-gold/10 border border-elden-gold/30 rounded-lg text-sm font-garamond text-foreground/90 hover:bg-elden-gold/20 hover:border-elden-gold/50 transition-all duration-300 cursor-default">
+                           <span className="border-b border-elden-gold/30 px-2 py-2 text-sm font-garamond text-foreground/90">
                               ⚽ Football
                            </span>
-                           <span className="px-4 py-2 bg-elden-gold/10 border border-elden-gold/30 rounded-lg text-sm font-garamond text-foreground/90 hover:bg-elden-gold/20 hover:border-elden-gold/50 transition-all duration-300 cursor-default">
+                           <span className="border-b border-elden-gold/30 px-2 py-2 text-sm font-garamond text-foreground/90">
                               🎬 Cinephile
                            </span>
                         </div>

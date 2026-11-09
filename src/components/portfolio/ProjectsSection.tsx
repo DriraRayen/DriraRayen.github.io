@@ -26,7 +26,7 @@ const ProjectsSection = () => {
                   <div className="h-px w-20 bg-gradient-to-l from-transparent via-elden-gold/70 to-elden-gold/40" />
                </div>
                <p className="font-garamond text-lg text-muted-foreground/70 max-w-2xl mx-auto">
-                  Recent development projects and applications
+                  Forged works from the current inventory
                </p>
             </div>
 
