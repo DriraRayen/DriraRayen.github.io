@@ -24,7 +24,7 @@ const IEEEGallerySection = () => {
          .finally(() => setLoading(false));
    }, []);
    const collageImages = images.length > 0
-      ? images.slice(0, 10).map((image) => image.src)
+      ? images.map((image) => image.src)
       : [
            heroBackground,
            profilePhoto,
@@ -36,6 +36,20 @@ const IEEEGallerySection = () => {
            scoutPhotoSix,
            scoutPhotoSeven,
         ];
+   const collagePositions = [
+      "left-1/2 top-1/2 z-20 h-[48%] w-[48%] -translate-x-1/2 -translate-y-1/2",
+      "left-[2%] top-[4%] z-30 h-[30%] w-[28%] -rotate-6",
+      "right-[2%] top-[3%] z-30 h-[29%] w-[28%] rotate-6",
+      "bottom-[3%] left-[3%] z-30 h-[30%] w-[29%] rotate-6",
+      "bottom-[2%] right-[3%] z-30 h-[29%] w-[28%] -rotate-6",
+      "left-[25%] top-[2%] z-10 h-[22%] w-[25%] -rotate-3",
+      "left-[1%] top-[39%] z-40 h-[20%] w-[22%] -rotate-12",
+      "right-[1%] top-[38%] z-40 h-[21%] w-[23%] rotate-12",
+      "left-[19%] bottom-[1%] z-10 h-[20%] w-[23%] rotate-6",
+      "right-[19%] bottom-[1%] z-10 h-[20%] w-[23%] -rotate-6",
+      "left-[42%] top-[17%] z-40 h-[20%] w-[18%] rotate-3",
+      "left-[40%] bottom-[14%] z-40 h-[18%] w-[20%] -rotate-3",
+   ];
 
    return (
       <section id="ieee-gallery" className="relative py-24 px-4 md:px-8 lg:px-16">
@@ -54,35 +68,12 @@ const IEEEGallerySection = () => {
             ) : error ? (
                <p className="text-center font-garamond text-lg text-red-300">{error}</p>
             ) : (
-               <div className="relative mx-auto max-w-4xl">
-                  <div className="relative overflow-visible p-2 sm:p-3">
-                     <div className="relative h-[20rem] min-h-[20rem] sm:h-[28rem] sm:min-h-[28rem] lg:h-[36rem] lg:min-h-[36rem]">
+               <div className="relative mx-auto max-w-5xl">
+                  <div className="relative isolate h-[24rem] sm:h-[32rem] lg:h-[40rem]">
                         {collageImages.map((image, imageIndex) => (
                            <figure
                               key={`ieee-gallery-${imageIndex}`}
-                              className={`absolute overflow-hidden border border-elden-gold/60 bg-elden-dark shadow-[0_0_22px_rgba(218,165,32,0.28)] transition-all duration-500 group hover:scale-105 hover:border-gold hover:shadow-[0_0_34px_rgba(218,165,32,0.55)] ${
-                                 imageIndex === 0
-                                    ? "left-1/2 top-1/2 z-10 h-[52%] w-[74%] -translate-x-1/2 -translate-y-1/2 rotate-0 sm:h-[62%] sm:w-[58%]"
-                                    : imageIndex === 1
-                                      ? "left-[3%] top-[4%] z-20 h-[29%] w-[38%] -rotate-6 sm:left-[7%] sm:top-[5%] sm:h-[32%] sm:w-[29%]"
-                                      : imageIndex === 2
-                                        ? "right-[3%] top-[2%] z-20 h-[27%] w-[36%] rotate-6 sm:right-[6%] sm:top-[4%] sm:h-[31%] sm:w-[28%]"
-                                        : imageIndex === 3
-                                          ? "bottom-[4%] left-[2%] z-20 h-[28%] w-[40%] rotate-6 sm:bottom-[5%] sm:left-[5%] sm:h-[31%] sm:w-[29%]"
-                                          : imageIndex === 4
-                                            ? "bottom-[2%] right-[3%] z-20 h-[27%] w-[38%] -rotate-6 sm:bottom-[4%] sm:right-[6%] sm:h-[30%] sm:w-[28%]"
-                                            : imageIndex === 5
-                                              ? "left-[28%] top-[1%] z-0 h-[20%] w-[30%] -rotate-3 sm:left-[31%] sm:top-[2%] sm:h-[23%] sm:w-[22%]"
-                                              : imageIndex === 6
-                                                ? "left-[1%] top-[38%] z-20 h-[19%] w-[27%] -rotate-12 sm:left-[2%] sm:top-[39%] sm:h-[22%] sm:w-[20%]"
-                                                : imageIndex === 7
-                                                  ? "right-[1%] top-[36%] z-20 h-[20%] w-[28%] rotate-12 sm:right-[2%] sm:top-[38%] sm:h-[23%] sm:w-[20%]"
-                                                  : imageIndex === 8
-                                                    ? "left-[19%] bottom-[1%] z-0 h-[18%] w-[29%] rotate-6 sm:left-[22%] sm:bottom-[2%] sm:h-[21%] sm:w-[21%]"
-                                                    : imageIndex === 9
-                                                      ? "right-[19%] bottom-[1%] z-0 h-[18%] w-[29%] -rotate-6 sm:right-[22%] sm:bottom-[2%] sm:h-[21%] sm:w-[21%]"
-                                                      : "left-1/2 top-[18%] z-0 h-[15%] w-[22%] rotate-3 -translate-x-1/2 sm:top-[19%] sm:h-[18%] sm:w-[17%]"
-                              }`}
+                              className={`group absolute transform-gpu overflow-hidden border border-elden-gold/60 bg-elden-dark shadow-[0_0_22px_rgba(218,165,32,0.28)] transition-[transform,box-shadow,border-color] duration-500 ease-out hover:z-[60] hover:scale-[1.14] hover:rotate-0 hover:border-gold hover:shadow-[0_0_42px_rgba(218,165,32,0.7)] ${collagePositions[imageIndex % collagePositions.length]}`}
                            >
                               <img
                                  src={image}
@@ -93,7 +84,6 @@ const IEEEGallerySection = () => {
                               <div className="absolute inset-0 bg-gradient-to-t from-elden-dark/70 via-transparent to-transparent" />
                            </figure>
                         ))}
-                     </div>
                   </div>
                </div>
             )}

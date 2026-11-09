@@ -15,7 +15,7 @@ import AchievementsModal from "@/components/portfolio/AchievementsModal";
 import ScoutSection from "@/components/portfolio/ScoutSection";
 import InternshipsSection from "@/components/portfolio/InternshipsSection";
 import IEEEGallerySection from "@/components/portfolio/IEEEGallerySection";
-import { Menu } from "lucide-react";
+import { Menu, ScrollText, X } from "lucide-react";
 
 const Index = () => {
    const [isVisible, setIsVisible] = useState(false);
@@ -25,6 +25,7 @@ const Index = () => {
    const [showAchievements, setShowAchievements] = useState(false);
    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
    const [showBackToTop, setShowBackToTop] = useState(false);
+   const [showSecretQuests, setShowSecretQuests] = useState(false);
    const [notification, setNotification] = useState<"message" | "cv" | null>(null);
 
    useEffect(() => {
@@ -339,35 +340,23 @@ const Index = () => {
                   © {new Date().getFullYear()} • All Rights Reserved
                </p>
 
-               {/* Hidden Easter Eggs */}
-               <div className="mx-auto mb-4 max-w-md border border-elden-gold/20 bg-elden-dark/30 p-3">
-                  <p className="mb-2 text-center font-cinzel text-[9px] uppercase tracking-[0.35em] text-elden-gold/50">
-                     Secret Quests // Optional Discoveries
-                  </p>
-                  <div className="grid gap-2 sm:grid-cols-2">
+               <div className="mb-4 flex flex-col items-center gap-2">
                   <button
                      onClick={() => setShowEldenRing(true)}
-                     className="group relative border border-elden-gold/20 bg-elden-dark/40 px-3 py-2 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-elden-gold/60 hover:bg-elden-gold/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold"
-                     title="Optional quest: discover the inspiration"
+                     className="group relative font-garamond text-xs italic text-muted-foreground/40 transition-all duration-500 hover:text-gold/80"
+                     title="Discover the inspiration"
                   >
-                     <span className="block font-cinzel text-[9px] uppercase tracking-widest text-elden-gold/50">Quest 01</span>
-                     <span className="relative z-10 block font-garamond text-xs italic text-muted-foreground/60 group-hover:text-gold/90">
-                        Discover the Lands Between
-                     </span>
-                     <span className="mt-1 block font-garamond text-[10px] text-elden-gold/40 group-hover:text-elden-gold/70">Reward: inspiration log</span>
+                     <span className="relative z-10">Inspired by the Lands Between</span>
+                     <div className="absolute inset-0 bg-gold/5 blur-lg opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   </button>
                   <button
                      onClick={() => setShowAchievements(true)}
-                     className="group relative border border-elden-gold/20 bg-elden-dark/40 px-3 py-2 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-elden-gold/60 hover:bg-elden-gold/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold"
-                     title="Optional quest: view character stats"
+                     className="group relative font-garamond text-xs italic text-muted-foreground/30 transition-all duration-500 hover:text-gold/70"
+                     title="View character stats"
                   >
-                     <span className="block font-cinzel text-[9px] uppercase tracking-widest text-elden-gold/50">Quest 02</span>
-                     <span className="relative z-10 block font-garamond text-xs italic text-muted-foreground/60 group-hover:text-gold/90">
-                        Unlock the Tarnished&apos;s Legacy
-                     </span>
-                     <span className="mt-1 block font-garamond text-[10px] text-elden-gold/40 group-hover:text-elden-gold/70">Reward: character stats</span>
+                     <span className="relative z-10">✦ Tarnished One&apos;s Legacy ✦</span>
+                     <div className="absolute inset-0 bg-gold/5 blur-lg opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   </button>
-                  </div>
                </div>
 
                {/* Social links or additional info can go here */}
@@ -410,6 +399,56 @@ const Index = () => {
                />
             </div>
          </footer>
+
+         <div className="fixed bottom-6 left-6 z-40">
+            {showSecretQuests && (
+               <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4 backdrop-blur-sm">
+                  <div className="relative w-full max-w-2xl border-2 border-elden-gold/50 bg-gradient-to-b from-elden-dark-light to-elden-dark p-6 shadow-2xl shadow-elden-gold/30 sm:p-10">
+                     <div className="absolute left-3 top-3 h-8 w-8 border-l-2 border-t-2 border-elden-gold/70" />
+                     <div className="absolute right-3 top-3 h-8 w-8 border-r-2 border-t-2 border-elden-gold/70" />
+                     <div className="mb-6 flex items-center justify-between border-b border-elden-gold/30 pb-4">
+                     <div>
+                        <p className="font-cinzel text-xs uppercase tracking-[0.35em] text-elden-gold/70">Optional Discoveries</p>
+                        <h2 className="mt-1 font-cinzel text-2xl text-gold sm:text-3xl">Secret Quests</h2>
+                     </div>
+                     <button
+                        type="button"
+                        onClick={() => setShowSecretQuests(false)}
+                        className="text-muted-foreground transition-colors hover:text-gold"
+                        aria-label="Close secret quests"
+                     >
+                        <X className="h-4 w-4" />
+                     </button>
+                  </div>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                     <div
+                        className="group border border-elden-gold/30 bg-elden-dark/60 p-5 text-left transition-all hover:-translate-y-1 hover:border-elden-gold hover:bg-elden-gold/10"
+                     >
+                        <span className="block font-cinzel text-xs uppercase tracking-widest text-elden-gold/60">Quest 01</span>
+                        <span className="mt-2 block font-cinzel text-lg text-gold group-hover:text-gold-light">Discover the Lands Between</span>
+                        <span className="mt-3 block font-garamond text-sm text-elden-gold/60">Reward: inspiration log</span>
+                     </div>
+                     <div
+                        className="group border border-elden-gold/30 bg-elden-dark/60 p-5 text-left transition-all hover:-translate-y-1 hover:border-elden-gold hover:bg-elden-gold/10"
+                     >
+                        <span className="block font-cinzel text-xs uppercase tracking-widest text-elden-gold/60">Quest 02</span>
+                        <span className="mt-2 block font-cinzel text-lg text-gold group-hover:text-gold-light">Unlock the Tarnished&apos;s Legacy</span>
+                        <span className="mt-3 block font-garamond text-sm text-elden-gold/60">Reward: character stats</span>
+                     </div>
+                  </div>
+                  </div>
+               </div>
+            )}
+            <button
+               type="button"
+               onClick={() => setShowSecretQuests((visible) => !visible)}
+               className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-elden-gold/60 bg-elden-dark/90 text-gold shadow-lg shadow-elden-gold/20 transition-all hover:scale-110 hover:border-gold hover:bg-elden-gold/20"
+               aria-label="Open secret quests"
+               title="Secret quests"
+            >
+               <ScrollText className="h-5 w-5" />
+            </button>
+         </div>
 
          {/* Elden Ring Modal */}
          <EldenRingSection
