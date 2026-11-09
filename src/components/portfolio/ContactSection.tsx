@@ -55,7 +55,7 @@ const ContactSection = () => {
                            Current Realm
                         </p>
                         <p className="font-garamond text-muted-foreground">
-                           Sousse, Tunisia
+                           Sfax, Tunisia
                         </p>
                      </div>
                   </div>

@@ -40,7 +40,7 @@ const HeroSection = () => {
                         {/* Profile Photo */}
                         <img
                            src={profilePhoto}
-                           alt="Rayen Drira - IoT & Embedded Systems Engineering Student"
+                           alt="Rayen Drira - Electronic Communication Systems Engineering Student"
                            className="w-full h-full object-cover object-center"
                            loading="eager"
                            onError={(e) => {
@@ -98,7 +98,7 @@ const HeroSection = () => {
 
                   {/* Professional title with better hierarchy */}
                   <p className="font-garamond text-2xl md:text-3xl text-gold-light/95 mb-4 font-medium">
-                     IoT & Embedded Systems Student
+                     Electronic Communication Systems Engineering Student
                   </p>
 
                   {/* Subtitle */}

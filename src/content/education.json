@@ -1,17 +1,26 @@
 [
   {
-    "title": "Computer Engineering Student",
+    "title": "Engineering Degree in Electronic Communication Systems",
+    "institution": "National School of Electronics and Telecommunications of Sfax (ENET'Com)",
+    "location": "Sfax, Tunisia",
+    "status": "In Progress",
+    "period": "2026 – Present",
+    "description": "First-year engineering student in electronic communication systems with a focus on cybersecurity and artificial intelligence.",
+    "tags": ["Electronic Communication Systems", "Cybersecurity", "Artificial Intelligence"]
+  },
+  {
+    "title": "Licence in Computer Systems Engineering",
     "institution": "Institut Supérieur d'Informatique et des Techniques de Communication (ISITCom)",
     "location": "Hammam Sousse, Tunisia",
-    "status": "In Progress",
-    "period": "2023 - 2026",
-    "description": "Third-year computer engineering student specializing in Internet of Things and embedded systems.",
+    "status": "Completed",
+    "period": "2023 – 2026",
+    "description": "Completed an engineering degree in computer systems with a focus on Internet of Things and embedded systems.",
     "tags": ["Embedded Systems", "IoT Architecture", "Network Security", "Cybersecurity", "Artificial Intelligence"]
   },
   {
     "title": "Baccalaureate in Mathematics",
-    "institution": "Secondary Education",
-    "location": "Tunisia",
+    "institution": "15 November 1955 High School",
+    "location": "Sfax, Tunisia",
     "status": "Completed",
     "period": "2023",
     "description": "Specialized in Mathematics with strong foundations in analytical thinking, problem-solving, and mathematical reasoning. This rigorous academic background laid the groundwork for my next studies.",

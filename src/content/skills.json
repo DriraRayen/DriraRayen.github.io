@@ -8,13 +8,13 @@
   {
     "title": "Frameworks",
     "rune": "Web Development",
-    "skills": ["Spring Boot", "Laravel", "React.js"],
+    "skills": ["Spring Boot", "Laravel", "React.js", "Next.js", "Nest.js", "Tailwind CSS", "Bootstrap", "Android (Java)"],
     "description": "Modern frameworks for building scalable and maintainable applications"
   },
   {
     "title": "Databases",
     "rune": "Data Management",
-    "skills": ["MySQL", "MongoDB"],
+    "skills": ["MySQL", "Oracle Database", "MongoDB", "PostgreSQL"],
     "description": "Database design and management for efficient data storage"
   },
   {
@@ -26,13 +26,19 @@
   {
     "title": "Systems & Security",
     "rune": "DevOps & Security",
-    "skills": ["Kali Linux", "Git", "Postman"],
+    "skills": ["Kali Linux", "Ubuntu", "Git", "Postman", "Docker"],
     "description": "Security tools, version control, and API testing"
   },
   {
     "title": "Design Tools",
     "rune": "UI/UX Design",
-    "skills": ["Figma", "Canva"],
+    "skills": ["Figma", "Canva", "Photoshop", "Lightroom"],
     "description": "Design tools for creating user interfaces and visual content"
+  },
+  {
+    "title": "AI & Deep Learning",
+    "rune": "Intelligent Systems",
+    "skills": ["PyTorch", "TensorFlow", "NumPy", "Pandas", "Roboflow"],
+    "description": "Tools for machine learning, data analysis, and computer vision"
   }
 ]

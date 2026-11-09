@@ -135,7 +135,10 @@ const Index = () => {
                      onClick={() => handleNavClick("hero")}
                      className="font-cinzel text-xl md:text-2xl font-bold text-gold hover:text-gold-light transition-all duration-300 relative group"
                   >
-                     <span className="relative z-10">RAYEN DRIRA</span>
+                     <span className="relative z-10">
+                        <span className="hidden sm:inline">RAYEN DRIRA</span>
+                        <span className="sm:hidden">RD</span>
+                     </span>
                      {/* Subtle hover glow */}
                      <div className="absolute inset-0 bg-gold/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </button>

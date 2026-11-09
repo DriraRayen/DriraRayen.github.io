@@ -48,12 +48,16 @@ const AboutSection = () => {
 
                         <div className="space-y-5">
                            <p className="font-garamond text-xl leading-relaxed text-foreground/95">
-                              I'm a third-year{" "}
+                              I'm an engineering student in{" "}
                               <span className="text-gold font-semibold">
-                                 Computer Engineering
+                                 Electronic Communication Systems
                               </span>{" "}
-                              student specializing in IoT and Embedded Systems
                               at{" "}
+                              <span className="text-gold font-semibold">
+                                 ENET'Com
+                              </span>
+                              . Previously, I completed my computer engineering
+                              studies at{" "}
                               <span className="text-gold font-semibold">
                                  ISITCom
                               </span>
@@ -75,6 +79,22 @@ const AboutSection = () => {
                               and spend time outdoors. Scouting has shaped my
                               sense of teamwork, responsibility, and curiosity —
                               qualities I bring into everything I do.
+                           </p>
+                           <p className="font-garamond text-xl leading-relaxed text-foreground/95">
+                              I am currently an IEEE member of{" "}
+                              <span className="text-gold font-semibold">
+                                 IEEE ENET'Com Student Branch
+                              </span>
+                              and{" "}
+                              <span className="text-gold font-semibold">
+                                 ORBEATS
+                              </span>
+                              . Previously, I was an active member of{" "}
+                              <span className="text-gold font-semibold">
+                                 Securinets ISITCom
+                              </span>
+                              , GamingFreaks ISITCom, and the IEEE ESSTHS
+                              Student Branch.
                            </p>
                            <p className="font-garamond text-xl leading-relaxed text-foreground/95">
                               When I'm not coding or tinkering with tech, you'll
@@ -119,7 +139,7 @@ const AboutSection = () => {
                                  French
                               </span>
                               <span className="font-cinzel text-sm text-gold/80 bg-elden-gold/10 px-3 py-1.5 rounded-full">
-                                 Fluent
+                                 Intermediate
                               </span>
                            </div>
                            <div className="flex items-center justify-between">
@@ -127,7 +147,7 @@ const AboutSection = () => {
                                  English
                               </span>
                               <span className="font-cinzel text-sm text-gold/80 bg-elden-gold/10 px-3 py-1.5 rounded-full">
-                                 Professional
+                                 Advanced
                               </span>
                            </div>
                         </div>

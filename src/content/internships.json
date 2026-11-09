@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "title": "Summer Intern",
+    "company": "MTD Group",
+    "period": "June 2024",
+    "location": "Sfax, Tunisia",
+    "description": "Developed and designed websites for the company.",
+    "skills": ["Figma", "HTML", "CSS", "JavaScript", "PHP", "SQL"]
+  },
+  {
+    "title": "Summer Intern",
+    "company": "MEGA PIXEL",
+    "period": "June - August 2025",
+    "location": "Sfax, Tunisia",
+    "description": "Developed financial modules and integrated them with existing platforms, and created VitaCare, a health monitoring web application.",
+    "skills": ["Laravel", "Bootstrap", "Chart.js", "Material UI", "Spring Boot", "React.js", "Ant Design", "OAuth 2.0", "JWT"]
+  },
+  {
+    "title": "End Of Studies Intern",
+    "company": "SOTUPUB",
+    "period": "February - May 2026",
+    "location": "Sousse, Tunisia",
+    "description": "Designed and developed an intelligent management system for money transfer agencies.",
+    "skills": ["Next.js", "Nest.js", "PostgreSQL", "Redis", "Python", "Neo4j", "Docker"]
+  }
+]

@@ -27,10 +27,10 @@ const EducationCard = ({ education, index }: EducationCardProps) => (
                      <h4 className="font-cinzel text-xl sm:text-2xl font-bold text-gold mb-2">{education.title}</h4>
                      <p className="font-garamond text-base sm:text-lg text-foreground/90 mb-1">{education.institution}</p>
                      <p className="font-garamond text-sm sm:text-base text-muted-foreground/70">{education.location}</p>
+                     <p className="font-cinzel text-xs sm:text-sm text-muted-foreground/70 mt-2">{education.period}</p>
                   </div>
-                  <div className="flex sm:flex-col items-center sm:items-end gap-2 sm:gap-0 sm:text-right">
-                     <span className="inline-block px-3 py-1 bg-elden-gold/20 border border-elden-gold/50 rounded-full text-gold font-cinzel text-xs sm:text-sm">{education.status}</span>
-                     <p className="font-cinzel text-xs sm:text-sm text-muted-foreground/70">{education.period}</p>
+                  <div className="flex w-full sm:w-auto flex-col items-center sm:items-end gap-2 sm:gap-0 sm:text-right">
+                     <span className="inline-block whitespace-nowrap px-3 py-1 bg-elden-gold/20 border border-elden-gold/50 rounded-full text-gold font-cinzel text-xs sm:text-sm">{education.status}</span>
                   </div>
                </div>
                <p className="font-garamond text-base text-foreground/80 leading-relaxed mb-4">{education.description}</p>

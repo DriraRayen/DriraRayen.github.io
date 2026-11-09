@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Code2, Database, Cpu, Shield, Palette, Server } from "lucide-react";
+import { Code2, Database, Cpu, Shield, Palette, Server, Brain } from "lucide-react";
 import SkillRune from "./SkillRune";
 import { skillCategories } from "@/lib/content";
 
-const skillIcons = { Languages: Code2, Frameworks: Server, Databases: Database, "Embedded Systems": Cpu, "Systems & Security": Shield, "Design Tools": Palette };
+const skillIcons = { Languages: Code2, Frameworks: Server, Databases: Database, "Embedded Systems": Cpu, "Systems & Security": Shield, "Design Tools": Palette, "AI & Deep Learning": Brain };
 
 const SkillsSection = () => {
    const [activeSkill, setActiveSkill] = useState<string | null>(null);
