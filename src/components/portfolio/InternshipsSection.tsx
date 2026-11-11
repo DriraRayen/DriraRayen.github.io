@@ -6,7 +6,7 @@ const InternshipsSection = () => (
       <div className="max-w-6xl mx-auto">
          <div className="text-center mb-16 animate-fadeIn">
             <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-gold mb-4">Experience</h2>
-            <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="grace-divider flex items-center justify-center gap-4 mb-6">
                <div className="h-px w-20 bg-gradient-to-r from-transparent via-elden-gold/70 to-elden-gold/40" />
                <div className="w-2 h-2 bg-elden-gold rounded-full shadow-lg shadow-elden-gold/50" />
                <div className="h-px w-20 bg-gradient-to-l from-transparent via-elden-gold/70 to-elden-gold/40" />
@@ -18,7 +18,7 @@ const InternshipsSection = () => (
          ) : (
             <div className="grid md:grid-cols-2 gap-6">
                {internshipItems.map((internship) => (
-                  <article key={`${internship.company}-${internship.title}`} className="relative border border-elden-mist bg-card/80 p-6 transition-colors duration-300 hover:border-elden-gold/60">
+                  <article key={`${internship.company}-${internship.title}`} className="elden-card relative border border-elden-mist bg-card/80 p-6 transition-colors duration-300 hover:border-elden-gold/60">
                      <div className="flex items-start gap-4">
                         <div className="border border-gold bg-elden-dark-light p-3">
                            <Briefcase className="w-7 h-7 text-gold" />

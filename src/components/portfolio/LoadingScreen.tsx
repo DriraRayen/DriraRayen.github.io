@@ -73,23 +73,20 @@ const LoadingScreen = () => {
          }`}
       >
          <img
-   src={loadingArtwork}
-   alt=""
-   className={`absolute left-1/2 top-1/2 h-screen w-screen object-cover transition-[transform,filter] ease-out ${
-      isExiting
-         ? "-translate-x-1/2 -translate-y-1/2 rotate-90 scale-110 blur-sm"
-         : "-translate-x-1/2 -translate-y-1/2 rotate-90"
-   }`}
-   style={{
-      width: "100vh",
-      height: "100vw",
-      maxWidth: "none",
-      transformOrigin: "center",
-      transitionDuration: "2500ms",
-   }}
-/>
+            src={loadingArtwork}
+            alt=""
+            className={`absolute inset-0 h-full w-full object-contain transition-[transform,filter] ease-out ${
+               isExiting ? "scale-110 blur-sm" : "scale-100"
+            }`}
+            style={{ transitionDuration: "1400ms" }}
+         />
          <div className="absolute inset-0 bg-gradient-to-t from-[#030504]/85 via-[#030504]/25 to-black/10" />
          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.7)_100%)]" />
+         <div
+            className={`pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(218,165,32,0.48),rgba(218,165,32,0.12)_24%,transparent_68%)] transition-opacity duration-700 ${
+               isExiting ? "opacity-100" : "opacity-0"
+            }`}
+         />
 
          <div className="relative flex min-h-full items-end justify-center px-6 pb-16 sm:pb-20">
             <div

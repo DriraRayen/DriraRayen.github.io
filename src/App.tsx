@@ -1,9 +1,11 @@
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoadingScreen from "@/components/portfolio/LoadingScreen";
+import { soundEffects, SOUND_EFFECTS_ENABLED } from "@/lib/soundEffects";
 import Index from "./pages/Index";
 import Menu from "./pages/Menu";
 import About from "./pages/About";
@@ -19,31 +21,53 @@ import IEEEGallery from "./pages/IEEEGallery";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-   <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-         <LoadingScreen />
-         <Toaster />
-         <Sonner />
-         <BrowserRouter>
-            <Routes>
-               <Route path="/" element={<Index />} />
-               <Route path="/menu" element={<Menu />} />
-               <Route path="/about" element={<About />} />
-               <Route path="/projects" element={<Projects />} />
-               <Route path="/skills" element={<Skills />} />
-               <Route path="/gallery" element={<Gallery />} />
-               <Route path="/certificates" element={<Certificates />} />
-               <Route path="/timeline" element={<Timeline />} />
-               <Route path="/contact" element={<Contact />} />
-               <Route path="/internships" element={<Internships />} />
-               <Route path="/ieee-gallery" element={<IEEEGallery />} />
-               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-               <Route path="*" element={<NotFound />} />
-            </Routes>
-         </BrowserRouter>
-      </TooltipProvider>
-   </QueryClientProvider>
-);
+const App = () => {
+   useEffect(() => {
+      if (!SOUND_EFFECTS_ENABLED) return;
+
+      const handleGlobalClick = (event: MouseEvent) => {
+         const target = event.target as HTMLElement | null;
+         if (!target) return;
+         const interactive = target.closest(
+            'button, a, input[type="submit"], input[type="button"], [role="button"], [role="tab"], summary'
+         );
+         if (interactive) {
+            soundEffects.playClick();
+         }
+      };
+
+      document.addEventListener("click", handleGlobalClick, { capture: true });
+      return () => {
+         document.removeEventListener("click", handleGlobalClick, { capture: true });
+      };
+   }, []);
+
+   return (
+      <QueryClientProvider client={queryClient}>
+         <TooltipProvider>
+            <LoadingScreen />
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+               <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/menu" element={<Menu />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/projects" element={<Projects />} />
+                  <Route path="/skills" element={<Skills />} />
+                  <Route path="/gallery" element={<Gallery />} />
+                  <Route path="/certificates" element={<Certificates />} />
+                  <Route path="/timeline" element={<Timeline />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/internships" element={<Internships />} />
+                  <Route path="/ieee-gallery" element={<IEEEGallery />} />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
+               </Routes>
+            </BrowserRouter>
+         </TooltipProvider>
+      </QueryClientProvider>
+   );
+};
 
 export default App;

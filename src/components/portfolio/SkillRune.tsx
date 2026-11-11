@@ -25,7 +25,7 @@ const SkillRune = ({
 }: SkillRuneProps) => {
    return (
       <div
-         className="relative animate-slideUp border border-elden-mist bg-card/80 p-5 transition-colors duration-300 hover:border-elden-gold/60"
+         className="elden-card relative animate-slideUp border border-elden-mist bg-card/80 p-5 transition-colors duration-300 hover:border-elden-gold/60"
          style={{ animationDelay: `${index * 0.1}s` }}
          onMouseEnter={onHover}
          onMouseLeave={onLeave}

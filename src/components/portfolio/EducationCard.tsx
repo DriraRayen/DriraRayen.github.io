@@ -11,7 +11,7 @@ const EducationCard = ({ education, index }: EducationCardProps) => (
       className="relative group animate-slideUp"
       style={{ animationDelay: `${index * 0.1}s` }}
    >
-      <div className="relative border border-elden-gold/30 bg-elden-dark-light/50 p-4 transition-colors duration-300 hover:border-elden-gold/60 sm:p-6 md:p-8">
+      <div className="elden-card relative border border-elden-gold/30 bg-elden-dark-light/50 p-4 transition-colors duration-300 hover:border-elden-gold/60 sm:p-6 md:p-8">
          <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
             <div className="flex-shrink-0">
                <div className="border border-gold/60 bg-elden-dark p-3 sm:p-4">

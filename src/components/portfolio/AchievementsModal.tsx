@@ -7,6 +7,7 @@ interface AchievementsModalProps {
 }
 
 const AchievementsModal = ({ isOpen, onClose }: AchievementsModalProps) => {
+   const [isMounted, setIsMounted] = useState(false);
    const [isVisible, setIsVisible] = useState(false);
    const [hoveredStat, setHoveredStat] = useState<string | null>(null);
    const [hoveredAchievement, setHoveredAchievement] = useState<string | null>(
@@ -15,13 +16,28 @@ const AchievementsModal = ({ isOpen, onClose }: AchievementsModalProps) => {
 
    useEffect(() => {
       if (isOpen) {
-         setTimeout(() => setIsVisible(true), 50);
-      } else {
-         setIsVisible(false);
+         setIsMounted(true);
+         const showTimer = window.setTimeout(() => setIsVisible(true), 50);
+         return () => window.clearTimeout(showTimer);
       }
+
+      setIsVisible(false);
+      const hideTimer = window.setTimeout(() => setIsMounted(false), 500);
+      return () => window.clearTimeout(hideTimer);
    }, [isOpen]);
 
-   if (!isOpen) return null;
+   useEffect(() => {
+      if (!isOpen) return;
+
+      const handleKeyDown = (event: KeyboardEvent) => {
+         if (event.key === "Escape") onClose();
+      };
+
+      window.addEventListener("keydown", handleKeyDown);
+      return () => window.removeEventListener("keydown", handleKeyDown);
+   }, [isOpen, onClose]);
+
+   if (!isMounted) return null;
 
    // Character Stats - Elden Ring style
    const characterStats = [
@@ -147,13 +163,13 @@ const AchievementsModal = ({ isOpen, onClose }: AchievementsModalProps) => {
 
    return (
       <div
-         className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-500 ${
+         className={`fixed inset-0 z-50 flex justify-end transition-opacity duration-500 ${
             isVisible ? "opacity-100" : "opacity-0"
          }`}
          onClick={onClose}
       >
-         {/* Backdrop with mystical fog effect */}
-         <div className="absolute inset-0 bg-black/90 backdrop-blur-md">
+         {/* Darkened world behind the character record */}
+         <div className="absolute inset-0 bg-black/70 backdrop-blur-sm">
             {/* Animated particles */}
             <div className="absolute inset-0 overflow-hidden">
                {[...Array(20)].map((_, i) => (
@@ -171,52 +187,54 @@ const AchievementsModal = ({ isOpen, onClose }: AchievementsModalProps) => {
             </div>
          </div>
 
-         {/* Modal content */}
+         {/* Character stats sidebar */}
          <div
-            className={`relative max-w-6xl w-full max-h-[90vh] bg-gradient-to-b from-elden-dark via-elden-dark-light to-elden-dark border-2 border-elden-gold/50 rounded-2xl shadow-2xl transform transition-all duration-500 ${
-               isVisible ? "scale-100 translate-y-0" : "scale-95 translate-y-4"
+            className={`relative ml-auto h-full max-h-screen w-full max-w-md overflow-y-auto border-l-2 border-elden-gold/50 bg-gradient-to-b from-elden-dark via-elden-dark-light to-elden-dark shadow-2xl shadow-black/60 transform transition-transform duration-500 ${
+               isVisible ? "translate-x-0" : "translate-x-full"
             }`}
             onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="character-record-heading"
          >
-            {/* Decorative corner accents - fixed to modal container */}
-            <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-elden-gold/70 pointer-events-none z-20" />
-            <div className="absolute top-4 right-4 w-16 h-16 border-t-2 border-r-2 border-elden-gold/70 pointer-events-none z-20" />
-            <div className="absolute bottom-4 left-4 w-16 h-16 border-b-2 border-l-2 border-elden-gold/70 pointer-events-none z-20" />
-            <div className="absolute bottom-4 right-4 w-16 h-16 border-b-2 border-r-2 border-elden-gold/70 pointer-events-none z-20" />
+            {/* Decorative corner accents */}
+            <div className="pointer-events-none absolute left-3 top-3 z-20 h-10 w-10 border-l-2 border-t-2 border-elden-gold/60" />
+            <div className="pointer-events-none absolute right-3 top-3 z-20 h-10 w-10 border-r-2 border-t-2 border-elden-gold/60" />
+            <div className="pointer-events-none absolute bottom-3 left-3 z-20 h-10 w-10 border-b-2 border-l-2 border-elden-gold/60" />
+            <div className="pointer-events-none absolute bottom-3 right-3 z-20 h-10 w-10 border-b-2 border-r-2 border-elden-gold/60" />
 
-            {/* Scrollable content wrapper */}
-            <div className="max-h-[90vh] overflow-y-auto">
                {/* Close button */}
                <button
                   onClick={onClose}
-                  className="absolute top-6 right-6 z-10 p-2 text-muted-foreground hover:text-gold transition-colors rounded-lg hover:bg-elden-gold/10"
+                  className="absolute right-5 top-5 z-30 rounded-lg p-2 text-muted-foreground transition-colors hover:bg-elden-gold/10 hover:text-gold"
+                  aria-label="Close character record"
                >
-                  <X className="w-6 h-6" />
+                  <X className="h-5 w-5" />
                </button>
 
                {/* Header */}
-               <div className="text-center pt-12 pb-8 px-8 border-b border-elden-gold/30">
-                  <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-gold mb-4">
+               <div className="border-b border-elden-gold/30 px-7 pb-6 pt-12 text-left">
+                  <h2 id="character-record-heading" className="mb-4 pr-10 font-cinzel text-2xl font-bold text-gold sm:text-3xl">
                      Tarnished One's Legacy
                   </h2>
-                  <div className="flex items-center justify-center gap-4 mb-3">
+                  <div className="mb-3 flex items-center gap-4">
                      <div className="h-px w-16 bg-gradient-to-r from-transparent via-elden-gold/70 to-elden-gold/40" />
-                     <Trophy className="w-5 h-5 text-elden-gold animate-pulse" />
-                     <div className="h-px w-16 bg-gradient-to-l from-transparent via-elden-gold/70 to-elden-gold/40" />
+                     <Trophy className="h-4 w-4 text-elden-gold/80" />
+                     <div className="h-px flex-1 bg-gradient-to-r from-elden-gold/40 to-transparent" />
                   </div>
-                  <p className="font-garamond text-lg text-muted-foreground/80">
+                  <p className="font-garamond text-base text-muted-foreground/80">
                      Character Stats & Achievements Unlocked
                   </p>
                </div>
 
-               <div className="p-8 space-y-12">
+               <div className="space-y-8 p-5 sm:p-6">
                   {/* Character Stats Section */}
                   <div>
-                     <h3 className="font-cinzel text-2xl font-bold text-gold mb-6 flex items-center gap-3">
-                        <Sparkles className="w-6 h-6" />
+                     <h3 className="mb-4 flex items-center gap-3 font-cinzel text-xl font-bold text-gold">
+                        <Sparkles className="h-5 w-5" />
                         Character Attributes
                      </h3>
-                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                     <div className="grid gap-3">
                         {characterStats.map((stat, index) => {
                            const Icon = stat.icon;
                            return (
@@ -245,7 +263,7 @@ const AchievementsModal = ({ isOpen, onClose }: AchievementsModalProps) => {
                                              {stat.name}
                                           </p>
                                           <p
-                                             className={`font-cinzel text-3xl font-bold ${stat.color}`}
+                                       className={`font-cinzel text-2xl font-bold ${stat.color}`}
                                           >
                                              {stat.value}
                                           </p>
@@ -266,11 +284,11 @@ const AchievementsModal = ({ isOpen, onClose }: AchievementsModalProps) => {
 
                   {/* Achievements Section */}
                   <div>
-                     <h3 className="font-cinzel text-2xl font-bold text-gold mb-6 flex items-center gap-3">
-                        <Trophy className="w-6 h-6" />
+                     <h3 className="mb-4 flex items-center gap-3 font-cinzel text-xl font-bold text-gold">
+                        <Trophy className="h-5 w-5" />
                         Legendary Achievements
                      </h3>
-                     <div className="grid md:grid-cols-2 gap-4">
+                     <div className="grid gap-3">
                         {achievements.map((achievement, index) => (
                            <div
                               key={achievement.title}
@@ -342,7 +360,6 @@ const AchievementsModal = ({ isOpen, onClose }: AchievementsModalProps) => {
                      </p>
                   </div>
                </div>
-            </div>
          </div>
       </div>
    );

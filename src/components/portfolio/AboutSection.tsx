@@ -14,7 +14,7 @@ const AboutSection = () => {
                <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-gold mb-6 tracking-wide">
                   About Me
                </h2>
-               <div className="flex items-center justify-center gap-4 mb-4">
+               <div className="grace-divider flex items-center justify-center gap-4 mb-4">
                   <div className="h-px w-20 bg-gradient-to-r from-transparent via-elden-gold/70 to-elden-gold/40" />
                   <div className="w-2 h-2 bg-elden-gold rounded-full shadow-lg shadow-elden-gold/50" />
                   <div className="h-px w-20 bg-gradient-to-l from-transparent via-elden-gold/70 to-elden-gold/40" />
@@ -198,7 +198,7 @@ const AboutSection = () => {
                   <h3 className="font-cinzel text-3xl md:text-4xl lg:text-5xl font-bold text-gold mb-4 md:mb-6">
                      Academic Path
                   </h3>
-                  <div className="flex items-center justify-center gap-4 mb-4">
+                  <div className="grace-divider flex items-center justify-center gap-4 mb-4">
                      <div className="h-px w-16 bg-gradient-to-r from-transparent via-elden-gold/70 to-elden-gold/40" />
                      <div className="w-2 h-2 bg-elden-gold rounded-full shadow-lg shadow-elden-gold/50" />
                      <div className="h-px w-16 bg-gradient-to-l from-transparent via-elden-gold/70 to-elden-gold/40" />

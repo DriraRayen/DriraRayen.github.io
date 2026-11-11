@@ -16,7 +16,7 @@ const CertificatesSection = () => {
                <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-gold mb-4">
                   Sacred Seals of Achievement
                </h2>
-               <div className="flex items-center justify-center gap-4 mb-6">
+               <div className="grace-divider flex items-center justify-center gap-4 mb-6">
                   <div className="h-px w-20 bg-gradient-to-r from-transparent via-elden-gold/70 to-elden-gold/40" />
                   <div className="w-2 h-2 bg-elden-gold rounded-full shadow-lg shadow-elden-gold/50" />
                   <div className="h-px w-20 bg-gradient-to-l from-transparent via-elden-gold/70 to-elden-gold/40" />
@@ -31,7 +31,7 @@ const CertificatesSection = () => {
                {certificateItems.map((cert, index) => (
                   <div
                      key={index}
-                     className="group relative overflow-hidden border border-elden-mist bg-card/80 transition-colors duration-300 hover:border-elden-gold/60 cursor-pointer animate-slideUp"
+                     className="elden-card group relative overflow-hidden border border-elden-mist bg-card/80 transition-colors duration-300 hover:border-elden-gold/60 cursor-pointer animate-slideUp"
                      style={{ animationDelay: `${index * 0.15}s` }}
                      onClick={() => setSelectedCert(index)}
                   >

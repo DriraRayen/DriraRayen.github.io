@@ -2,10 +2,38 @@ import { Filter, ShoppingCart, Brain, HeartPulse, MessageSquare, Lock } from "lu
 import ProjectCard from "./ProjectCard";
 import { projectItems } from "@/lib/content";
 import projectPlaceholder from "@/assets/hero-background.jpg";
+import superCleanerCurrentSite from "@/assets/projects/supercleaner-current-site.png";
+import superCleanerSpecifications from "@/assets/projects/supercleaner-specifications.png";
+import tawTawChatScreenshot from "@/assets/projects/tawtaw-chat.png";
+import cryptoVerseScreenshot from "@/assets/projects/crypto-verse.png";
 
 const projectIcons = { Filter, ShoppingCart, Brain, HeartPulse, MessageSquare, Lock };
 const projectImages = {
    placeholder: projectPlaceholder,
+};
+const projectScreenshots = {
+   SuperCleaner: [
+      {
+         src: superCleanerCurrentSite,
+         alt: "SuperCleaner current-site controls with cleaning, ad blocking, edit and zoom modes, pause presets, and counts",
+      },
+      {
+         src: superCleanerSpecifications,
+         alt: "SuperCleaner specifications tab with available cleaning rules",
+      },
+   ],
+   "TawTaw Chat": [
+      {
+         src: tawTawChatScreenshot,
+         alt: "TawTaw Chat terminal welcome screen and main menu",
+      },
+   ],
+   CryptoVerse: [
+      {
+         src: cryptoVerseScreenshot,
+         alt: "CryptoVerse hybrid encryption web demo interface",
+      },
+   ],
 };
 
 const ProjectsSection = () => {
@@ -20,7 +48,7 @@ const ProjectsSection = () => {
                <h2 className="font-cinzel text-4xl md:text-5xl font-bold text-gold mb-6 tracking-wide">
                   Projects
                </h2>
-               <div className="flex items-center justify-center gap-4 mb-4">
+               <div className="grace-divider flex items-center justify-center gap-4 mb-4">
                   <div className="h-px w-20 bg-gradient-to-r from-transparent via-elden-gold/70 to-elden-gold/40" />
                   <div className="w-2 h-2 bg-elden-gold rounded-full shadow-lg shadow-elden-gold/50" />
                   <div className="h-px w-20 bg-gradient-to-l from-transparent via-elden-gold/70 to-elden-gold/40" />
@@ -37,6 +65,7 @@ const ProjectsSection = () => {
                      key={project.title}
                      {...project}
                      imageUrl={projectImages[project.image as keyof typeof projectImages]}
+                     screenshots={projectScreenshots[project.title as keyof typeof projectScreenshots]}
                      icon={projectIcons[project.icon as keyof typeof projectIcons]}
                      index={index}
                   />
