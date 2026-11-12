@@ -7,7 +7,7 @@
 
 > A mystical, Elden Ring-inspired portfolio showcasing my journey as a computer engineering student, a Cybersecurity enthusiast, and a Scout leader.
 
-🌐 **Live Site:** [rayendrira.me](http://rayendrira.me)
+🌐 **Live Site:** [drirarayen.github.io](https://drirarayen.github.io/)
 
 ---
 
@@ -222,7 +222,7 @@ Try finding these hidden features:
 
 -  Static HTML/CSS portfolio
 -  Basic project showcase
--  [View legacy version](http://rayendrira.me/rayen-portfolio/)
+-  [View legacy version](http://drirarayen.github.io/rayen-portfolio/)
 
 ---
 
