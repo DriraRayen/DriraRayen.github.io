@@ -1,3 +1,4 @@
+
 name: Deploy portfolio
 
 on:
@@ -33,6 +34,10 @@ jobs:
 
       - name: Build site
         run: npm run build
+
+      # Remove any custom domain configuration
+      - name: Remove custom domain
+        run: rm -f ./dist/CNAME
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
